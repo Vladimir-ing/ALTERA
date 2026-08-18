@@ -67,6 +67,28 @@ git push
 
 **`favicon.svg`** — иконка вкладки.
 
+## Витрина проектов
+
+Карточки в секции `#projects` — это и есть витрина наработок ALTERA. Каждая
+карточка выглядит так:
+
+```html
+<a class="project-card purple" href="АДРЕС" target="_blank" rel="noreferrer">
+  <div class="project-meta"><span>03</span><span class="live"><i></i> LIVE</span></div>
+  <div class="project-main"><p>КОРОТКАЯ ПОДПИСЬ</p><h3>НАЗВАНИЕ</h3><span class="project-arrow">&#8599;</span></div>
+  <p class="project-description">Одно-два предложения о продукте.</p><div class="project-line"></div>
+</a>
+```
+
+Цвет свечения задаётся вторым классом: `blue`, `pink`, `purple`, `cyan`, `orange`.
+Номера карточек (`01`, `02`, `03`) идут по порядку.
+
+Добавлять карточки руками не обязательно — в корневой папке
+`C:\Users\PC\Documents\CLADE\ОБУЧЕНИЕ\ALTERA` лежит скрипт `add-project.ps1`.
+Он показывает, какие проекты уже выведены на лендинг, какие ещё нет, и вставляет
+новую карточку с правильной разметкой и номером. Подробности — в файле
+`ОБНОВЛЕНИЕ-САЙТОВ.md` там же.
+
 ## Ссылки на другие проекты
 
 Карточки в секции `#projects` ведут на соседние сайты:
