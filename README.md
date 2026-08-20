@@ -12,7 +12,7 @@
 
 | Где | Что это |
 |---|---|
-| `C:\Users\PC\Documents\CLADE\ОБУЧЕНИЕ\ALTERA\ALTERA_Lending` | рабочая папка на компьютере |
+| `C:\Users\PC\Documents\Z.Ai\ALTERA\ALTERA_Lending` | рабочая папка на компьютере |
 | https://github.com/Vladimir-ing/ALTERA | GitHub, отсюда собирается живой сайт |
 
 **Правило: любая правка должна попасть в оба места.** Живой сайт
@@ -23,14 +23,14 @@
 ### Забрать изменения с GitHub в папку
 
 ```bash
-cd "C:\Users\PC\Documents\CLADE\ОБУЧЕНИЕ\ALTERA\ALTERA_Lending"
+cd "C:\Users\PC\Documents\Z.Ai\ALTERA\ALTERA_Lending"
 git pull
 ```
 
 Если папка пустая или в ней нет `.git`, забери проект целиком:
 
 ```bash
-cd "C:\Users\PC\Documents\CLADE\ОБУЧЕНИЕ\ALTERA"
+cd "C:\Users\PC\Documents\Z.Ai\ALTERA"
 git clone https://github.com/Vladimir-ing/ALTERA.git ALTERA_Lending
 ```
 
@@ -124,7 +124,7 @@ git push
 два, они растягиваются на всю ширину.
 
 Добавлять карточки руками не обязательно — в корневой папке
-`C:\Users\PC\Documents\CLADE\ОБУЧЕНИЕ\ALTERA` лежит скрипт `add-project.ps1`.
+`C:\Users\PC\Documents\Z.Ai\ALTERA` лежит скрипт `add-project.ps1`.
 Он показывает, какие проекты уже выведены на лендинг, какие ещё нет, и вставляет
 новую карточку с правильной разметкой, номером и английским переводом. Подробности — в файле
 `ОБНОВЛЕНИЕ-САЙТОВ.md` там же.
