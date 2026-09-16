@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>РОД — семейное древо · ALTERA</title>
+<meta name="description" content="РОД — частный семейный архив: дерево, фотографии и даты в собственной базе, открывается с телефона и видно только тем, кого вы позвали. Демонстрация возможностей.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400&family=Golos+Text:wght@400;500;600&display=swap">
+
+<style>
+  :root {
+    --paper: #efe9dd;
+    --sheet: #fdfbf6;
+    --sunk: #e3dacb;
+    --ink: #241c14;
+    --muted: #6f6152;
+    --faint: #9c8c78;
+    --rule: #d7cab4;
+    --rule-firm: #bfae92;
+    --male: #7d99ae;
+    --female: #bf8f96;
+    --holiday: #c94f1c;
+    --deep: #3c2f22;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #16120e;
+      --sheet: #201b15;
+      --sunk: #1a1612;
+      --ink: #eee6d8;
+      --muted: #9d8f79;
+      --faint: #6f6453;
+      --rule: #33291f;
+      --rule-firm: #4a3d2e;
+      --male: #5d7f9c;
+      --female: #a0707a;
+      --holiday: #e0703d;
+      --deep: #eee6d8;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #16120e;
+    --sheet: #201b15;
+    --sunk: #1a1612;
+    --ink: #eee6d8;
+    --muted: #9d8f79;
+    --faint: #6f6453;
+    --rule: #33291f;
+    --rule-firm: #4a3d2e;
+    --male: #5d7f9c;
+    --female: #a0707a;
+    --holiday: #e0703d;
+    --deep: #eee6d8;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Golos Text", ui-sans-serif, system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 50rem; margin: 0 auto; padding: 3.5rem 1.25rem 5rem; }
+
+  h1, h2, h3 { font-family: "Lora", Georgia, serif; font-weight: 600; text-wrap: balance; }
+
+  h1 {
+    font-size: clamp(2rem, 6vw, 3.1rem);
+    line-height: 1.08;
+    letter-spacing: -.015em;
+    margin: 0;
+  }
+
+  h2 { font-size: clamp(1.35rem, 3.4vw, 1.7rem); line-height: 1.2; margin: 0; }
+  h3 { font-size: 1.05rem; margin: 0; }
+
+  p { margin: 0; }
+
+  .lede { font-size: clamp(1.05rem, 2.4vw, 1.2rem); color: var(--muted); margin-top: 1.1rem; max-width: 36rem; }
+
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--holiday);
+    font-weight: 600;
+    margin: 0 0 .7rem;
+  }
+
+  section { margin-top: 4rem; display: flex; flex-direction: column; gap: 1.1rem; }
+
+  .rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+
+  /* ── Рисунок дерева ─────────────────────────────────────── */
+
+  .canvas {
+    margin-top: 2.25rem;
+    padding: 1.5rem 1rem;
+    background: var(--sheet);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow-x: auto;
+  }
+
+  .canvas svg { display: block; width: 100%; min-width: 30rem; height: auto; }
+
+  .caption { margin-top: .7rem; font-size: 13px; color: var(--faint); text-align: center; }
+
+  /* ── Умеет ──────────────────────────────────────────────── */
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.5rem 2rem; }
+
+  .item { display: flex; flex-direction: column; gap: .35rem; }
+  .item p { font-size: 14.5px; color: var(--muted); }
+
+  /* ── Цифры ──────────────────────────────────────────────── */
+
+  .figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+
+  .fig { background: var(--sheet); padding: 1.1rem 1rem; display: flex; flex-direction: column; gap: .2rem; }
+
+  .fig b {
+    font-family: "Lora", Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .fig span { font-size: 13px; color: var(--muted); }
+
+  /* ── Сравнение ──────────────────────────────────────────── */
+
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.75rem; }
+
+  .col { display: flex; flex-direction: column; gap: .6rem; }
+
+  .col ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+
+  .col li { display: grid; grid-template-columns: 1.1rem 1fr; gap: .55rem; font-size: 14.5px; color: var(--muted); align-items: start; }
+
+  .mark { font-weight: 600; line-height: 1.5; }
+  .yes { color: var(--male); }
+  .no { color: var(--female); }
+
+  /* ── Шаги ───────────────────────────────────────────────── */
+
+  .steps { display: flex; flex-direction: column; gap: 0; }
+
+  .step {
+    display: grid;
+    grid-template-columns: 2.2rem 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step b {
+    font-family: "Lora", Georgia, serif;
+    font-size: 1.3rem;
+    color: var(--holiday);
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .step p { font-size: 14.5px; color: var(--muted); margin-top: .2rem; }
+
+  /* ── Врезка ─────────────────────────────────────────────── */
+
+  .aside {
+    background: var(--sunk);
+    border-left: 3px solid var(--holiday);
+    border-radius: 0 8px 8px 0;
+    padding: 1.1rem 1.25rem;
+    font-size: 14.5px;
+  }
+
+  .aside strong { font-weight: 600; }
+
+  footer { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); color: var(--faint); font-size: 13.5px; }
+</style>
+</head>
+<body>
+<!-- Возврат на лендинг: страница открывается как демо продукта РОД -->
+<div style="display:flex;gap:18px;padding:14px clamp(16px,5vw,40px);border-bottom:1px solid var(--rule);background:var(--sheet);font-family:'Golos Text',Arial,sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase">
+  <a href="../index.html" style="color:var(--muted);text-decoration:none">← ALTERA</a>
+  <a href="../index.html#projects" style="color:var(--muted);text-decoration:none">Все продукты</a>
+</div>
+<div class="page">
+
+  <header>
+    <p class="eyebrow">Частный семейный архив</p>
+    <h1>Семейное древо,<br>которое принадлежит семье</h1>
+    <p class="lede">
+      Сайт вместо подписки на чужой сервис. Дерево, фотографии и даты лежат
+      в вашей собственной базе, открываются с телефона и видны только тем,
+      кого вы позвали.
+    </p>
+  </header>
+
+  <div class="canvas">
+    <svg viewBox="0 0 720 330" role="img" aria-label="Схема дерева: три поколения карточек, соединённых линиями, и пустое место для неизвестной матери">
+      <g stroke="var(--rule-firm)" stroke-width="1.5" fill="none" stroke-linecap="round">
+        <path d="M250 62 L250 82 M250 82 L420 82 M420 82 L420 96" />
+        <path d="M340 152 L340 172 M200 172 L470 172 M200 172 L200 186 M470 172 L470 186" />
+        <path d="M265 242 L265 262 M265 262 L265 276" />
+      </g>
+
+      <g font-family="Lora, Georgia, serif">
+        <!-- Ряд прадедов -->
+        <g transform="translate(180, 20)">
+          <rect width="140" height="56" rx="7" fill="var(--sheet)" stroke="var(--male)" stroke-width="1.6"/>
+          <circle cx="26" cy="28" r="15" fill="var(--male)"/>
+          <text x="26" y="33" font-size="12" fill="var(--sheet)" text-anchor="middle" font-family="Golos Text, sans-serif">ИП</text>
+          <text x="50" y="25" font-size="13" fill="var(--ink)">Иван Петров</text>
+          <text x="50" y="42" font-size="11" fill="var(--muted)" font-family="Golos Text, sans-serif">1901 – 1974</text>
+        </g>
+
+        <g transform="translate(330, 20)">
+          <rect width="70" height="56" rx="7" fill="none" stroke="var(--rule-firm)" stroke-width="1.6" stroke-dasharray="5 4"/>
+          <g stroke="var(--faint)" stroke-width="1.6" stroke-linecap="round">
+            <path d="M35 22 v12 M29 28 h12"/>
+          </g>
+          <text x="35" y="48" font-size="9.5" fill="var(--faint)" text-anchor="middle" font-family="Golos Text, sans-serif">мать</text>
+        </g>
+
+        <!-- Ряд дедов -->
+        <g transform="translate(350, 96)">
+          <rect width="140" height="56" rx="7" fill="var(--sheet)" stroke="var(--male)" stroke-width="1.6"/>
+          <circle cx="26" cy="28" r="15" fill="var(--male)"/>
+          <text x="26" y="33" font-size="12" fill="var(--sheet)" text-anchor="middle" font-family="Golos Text, sans-serif">СП</text>
+          <text x="50" y="25" font-size="13" fill="var(--ink)">Сергей</text>
+          <text x="50" y="41" font-size="13" fill="var(--ink)">Петров</text>
+        </g>
+
+        <g transform="translate(500, 96)">
+          <rect width="140" height="56" rx="7" fill="var(--sheet)" stroke="var(--female)" stroke-width="1.6"/>
+          <circle cx="26" cy="28" r="15" fill="var(--female)"/>
+          <text x="26" y="33" font-size="12" fill="var(--sheet)" text-anchor="middle" font-family="Golos Text, sans-serif">АК</text>
+          <text x="50" y="25" font-size="13" fill="var(--ink)">Анна</text>
+          <text x="50" y="41" font-size="13" fill="var(--ink)">Ковалёва</text>
+        </g>
+        <path d="M490 124 L500 124" stroke="var(--rule-firm)" stroke-width="1.5"/>
+
+        <!-- Ряд родителей -->
+        <g transform="translate(130, 186)">
+          <rect width="140" height="56" rx="7" fill="var(--sheet)" stroke="var(--male)" stroke-width="1.6"/>
+          <circle cx="26" cy="28" r="15" fill="var(--male)"/>
+          <text x="26" y="33" font-size="12" fill="var(--sheet)" text-anchor="middle" font-family="Golos Text, sans-serif">ПП</text>
+          <text x="50" y="25" font-size="13" fill="var(--ink)">Павел</text>
+          <text x="50" y="41" font-size="13" fill="var(--ink)">Петров</text>
+          <circle cx="126" cy="12" r="9" fill="var(--sheet)" stroke="var(--rule)" stroke-width="1"/>
+          <g transform="translate(126, 12)" fill="var(--holiday)">
+            <rect x="-4.5" y="-1" width="9" height="6" rx="1.5"/>
+            <rect x="-.8" y="-5" width="1.6" height="3.4" rx=".8"/>
+          </g>
+        </g>
+
+        <g transform="translate(400, 186)">
+          <rect width="140" height="56" rx="7" fill="var(--sheet)" stroke="var(--female)" stroke-width="1.6"/>
+          <circle cx="26" cy="28" r="15" fill="var(--female)"/>
+          <text x="26" y="33" font-size="12" fill="var(--sheet)" text-anchor="middle" font-family="Golos Text, sans-serif">МП</text>
+          <text x="50" y="25" font-size="13" fill="var(--ink)">Мария</text>
+          <text x="50" y="41" font-size="13" fill="var(--ink)">Петрова</text>
+        </g>
+
+        <!-- Ребёнок -->
+        <g transform="translate(195, 276)">
+          <rect width="140" height="48" rx="7" fill="var(--sheet)" stroke="var(--male)" stroke-width="1.6"/>
+          <circle cx="24" cy="24" r="13" fill="var(--male)"/>
+          <text x="24" y="28" font-size="11" fill="var(--sheet)" text-anchor="middle" font-family="Golos Text, sans-serif">НП</text>
+          <text x="46" y="22" font-size="12.5" fill="var(--ink)">Никита</text>
+          <text x="46" y="37" font-size="12.5" fill="var(--ink)">Петров</text>
+        </g>
+      </g>
+    </svg>
+    <p class="caption">
+      Имена в примере выдуманы. Пунктирное место — там, где род обрывается:
+      прабабушку никто не помнит. Оранжевый значок — через неделю день рождения.
+    </p>
+  </div>
+
+  <section>
+    <hr class="rule">
+    <h2>Что это на самом деле</h2>
+    <p>
+      Не сервис с подпиской, а ваш собственный сайт. Дерево строится вокруг
+      выбранного человека: нажали на карточку — перестроилось вокруг него.
+      Можно смотреть всю семью, только предков, только потомков или веером.
+      На телефоне работает так же, как на большом экране.
+    </p>
+    <p>
+      Дополнять может вся родня, а не один человек. Каждая правка попадает
+      в журнал: видно, кто и что изменил, и любую можно вернуть.
+    </p>
+  </section>
+
+  <section>
+    <hr class="rule">
+    <h2>Что умеет</h2>
+    <div class="grid">
+      <div class="item">
+        <h3>Дерево на любой вкус</h3>
+        <p>Сверху вниз, слева направо и веером предков. Пустые места показывают, где род обрывается.</p>
+      </div>
+      <div class="item">
+        <h3>Карточка человека</h3>
+        <p>Короткий рассказ, собранный из дат и мест. Все поля. Хронология жизни с возрастом на каждое событие. Фотографии.</p>
+      </div>
+      <div class="item">
+        <h3>Общие фотографии</h3>
+        <p>На снимке отмечают, кто где стоит, — и он появляется у каждого отмеченного. Одна карточка на всю семью.</p>
+      </div>
+      <div class="item">
+        <h3>Напоминания</h3>
+        <p>О днях рождения, годовщинах свадеб и днях памяти — за неделю. Письмом, а кто хочет — в телеграм или MAX.</p>
+      </div>
+      <div class="item">
+        <h3>Кто что может</h3>
+        <p>Наблюдатель смотрит, участник правит, хранитель зовёт новых и решает, кого убрать. Запрет живёт в базе, а не в спрятанных кнопках.</p>
+      </div>
+      <div class="item">
+        <h3>Проверка дерева</h3>
+        <p>Тринадцать правил находят несходящееся: ребёнок раньше отца, свадьба после смерти. И показывают, где чего не хватает.</p>
+      </div>
+      <div class="item">
+        <h3>Откуда известен факт</h3>
+        <p>К дате можно приложить источник: справку, фотографию документа, чей-то рассказ. Видно, что подтверждено бумагой, а что памятью.</p>
+      </div>
+      <div class="item">
+        <h3>Архив остаётся вашим</h3>
+        <p>Дерево забирается одним файлом .ged — его откроет MyHeritage и любая программа для родословных. Вы ничем не привязаны.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <hr class="rule">
+    <h2>Сколько влезает</h2>
+    <div class="figures">
+      <div class="fig"><b>3 000</b><span>человек без единой задержки</span></div>
+      <div class="fig"><b>10 000</b><span>фотографий на бесплатном месте</span></div>
+      <div class="fig"><b>97 КБ</b><span>весит снимок после сжатия</span></div>
+      <div class="fig"><b>0 ₽</b><span>в месяц на семью в сотню человек</span></div>
+    </div>
+    <p class="aside">
+      <strong>Цифры настоящие, не обещания.</strong> Они посчитаны на работающем
+      дереве из двухсот пятидесяти человек: снимок с телефона ужимается
+      до сотни килобайт, а всё дерево целиком весит меньше мегабайта.
+      Расходы появляются на своём домене — около тысячи рублей в год.
+    </p>
+  </section>
+
+  <section>
+    <hr class="rule">
+    <div class="cols">
+      <div class="col">
+        <h3>Чего здесь нет</h3>
+        <ul>
+          <li><span class="mark no">—</span> Поиска предков по архивам и переписям</li>
+          <li><span class="mark no">—</span> Совпадений с чужими деревьями</li>
+          <li><span class="mark no">—</span> Анализа ДНК</li>
+          <li><span class="mark no">—</span> Приложения в магазине: это сайт, открытый в браузере телефона</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Что взамен</h3>
+        <ul>
+          <li><span class="mark yes">+</span> Ни подписки, ни платы за каждого добавленного человека</li>
+          <li><span class="mark yes">+</span> Данные в вашей базе, а не на чужом сервере под чужими правилами</li>
+          <li><span class="mark yes">+</span> Снаружи не видно ничего: ни имён, ни фотографий, ни дат</li>
+          <li><span class="mark yes">+</span> Никакой рекламы и предложений купить тест</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <hr class="rule">
+    <h2>Как это происходит</h2>
+    <div class="steps">
+      <div class="step">
+        <b>1</b>
+        <div>
+          <h3>Разговор и выгрузка</h3>
+          <p>Полчаса вопросов: сколько человек, откуда переносить, нужны ли напоминания. Если дерево уже где-то ведётся — просим файл .ged, он есть почти везде.</p>
+        </div>
+      </div>
+      <div class="step">
+        <b>2</b>
+        <div>
+          <h3>Перенос</h3>
+          <p>Своя база, свой адрес, перенос дерева со всеми датами, местами и связями. Проверка, что ничего не потерялось по дороге.</p>
+        </div>
+      </div>
+      <div class="step">
+        <b>3</b>
+        <div>
+          <h3>Настройка почты и ботов</h3>
+          <p>Ящик, с которого уходят напоминания, и боты, если они нужны. Всё заводится на вас: аккаунты, домен, карта — ваши.</p>
+        </div>
+      </div>
+      <div class="step">
+        <b>4</b>
+        <div>
+          <h3>Приглашения</h3>
+          <p>Одноразовая ссылка каждому родственнику и готовое сообщение к ней. Дальше семья дополняет дерево сама.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <hr class="rule">
+    <h2>Что понадобится от вас</h2>
+    <p>
+      Немного: человек, который возьмёт дерево под свою руку, выгрузка
+      из нынешнего сервиса или список родни, почтовый ящик для напоминаний
+      и полчаса на разговор.
+    </p>
+    <p class="aside">
+      <strong>Первый вопрос — самый важный.</strong> Ведётся ли дерево уже
+      где-то, откуда можно взять файл. С ним перенос занимает вечер;
+      без него всё начинается с набора, и это совсем другая работа.
+    </p>
+  </section>
+
+  <footer>
+    Сайт работает и используется семьёй каждый день: дерево из двухсот
+    пятидесяти человек, напоминания приходят, родня правит карточки сама.
+    Всё, что здесь описано, сделано и проверено — не замысел.
+  </footer>
+
+</div>
+</body>
+</html>

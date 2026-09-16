@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>КАРТОТЕКА — демонстрация · ALTERA</title>
+<meta name="description" content="Картотека одежды и обуви: домашний учёт вещей с поиском обычными словами и телеграм-ботом. Демонстрация возможностей.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=Unbounded:wght@700&family=Inter:wght@300;400;600&display=swap">
+<style>
+  /* Палитра лендинга ALTERA — страница держится того же стиля. */
+  :root{--bg:#050507;--bg-card:#0c0c10;--gold:#daa520;--gold-bright:#ffd95a;
+        --gold-border:rgba(218,165,32,.3);--text:#e8e8ed;--muted:#8a8aa0;
+        --line:rgba(255,255,255,.06);--cyan:#00d9e8;
+        --mono:'Space Mono',ui-monospace,monospace;--display:'Unbounded',Arial,sans-serif;
+        --body:'Inter',Arial,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:18px;
+       padding:16px clamp(20px,5vw,60px);border-bottom:1px solid var(--line);
+       background:rgba(5,5,7,.85);backdrop-filter:blur(18px)}
+  .bar a{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;
+         text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s}
+  .bar a:hover{color:var(--gold-bright)}
+  .wrap{max-width:1100px;margin:auto;padding:clamp(48px,7vw,90px) clamp(20px,5vw,60px) 90px}
+  .kicker{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.22em;
+          text-transform:uppercase;color:var(--cyan)}
+  h1{margin:24px 0 20px;font-family:var(--display);font-weight:700;
+     font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.05;letter-spacing:-.02em}
+  .lead{max-width:680px;color:var(--muted);font-weight:300;line-height:1.85;font-size:clamp(.95rem,1.2vw,1.05rem)}
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin:52px 0 12px}
+  .fact{padding:22px;border:1px solid var(--line);border-radius:8px;background:var(--bg-card)}
+  .fact b{display:block;font-family:var(--display);font-size:1.05rem;margin-bottom:8px}
+  .fact span{color:var(--muted);font-weight:300;font-size:.92rem;line-height:1.7}
+  figure{margin:54px 0 0}
+  figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:8px}
+  figcaption{margin-top:14px;color:var(--muted);font-family:var(--mono);font-size:10px;
+             font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  .note{margin-top:60px;padding:26px;border:1px solid var(--gold-border);border-radius:8px;
+        background:rgba(218,165,32,.05);color:var(--muted);font-weight:300;line-height:1.8}
+  .note b{color:var(--text);font-weight:600}
+  footer{border-top:1px solid var(--line);padding:38px clamp(20px,5vw,60px);
+         display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;
+         color:var(--muted);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+  footer a{text-decoration:none}
+  footer a:hover{color:var(--gold-bright)}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../index.html">← ALTERA</a>
+  <a href="../index.html#projects">Все продукты</a>
+</div>
+
+<div class="wrap">
+  <p class="kicker">Home inventory · демонстрация</p>
+  <h1>КАРТОТЕКА<br>одежды и обуви</h1>
+  <p class="lead">
+    Домашний учёт вещей: что есть в семье, где лежит, кому принадлежит и что пора
+    продать. Работает на домашнем компьютере, открывается с телефона по Wi-Fi.
+    Ниже — снимки рабочих экранов.
+  </p>
+
+  <div class="facts">
+    <div class="fact"><b>Поиск обычными словами</b><span>«обувь зима 42», «куртка Ира» — без фильтров и категорий.</span></div>
+    <div class="fact"><b>Места хранения</b><span>Шкаф, кладовка, гараж, комод в детской — видно, где искать.</span></div>
+    <div class="fact"><b>Телеграм-бот</b><span>Добавить вещь и найти нужное прямо из переписки.</span></div>
+    <div class="fact"><b>Свой компьютер</b><span>Ничего не уходит наружу: база и фотографии остаются дома.</span></div>
+  </div>
+
+  <figure><img src="../assets/demo/kartoteka/02.jpg" alt="Сводка: сколько вещей в доме и как они распределены по сезонам, владельцам и местам хранения" loading="lazy" width="1600" height="2221"><figcaption>01 — Сводка: сколько вещей и как они распределены</figcaption></figure>
+  <figure><img src="../assets/demo/kartoteka/03.jpg" alt="Каталог всех вещей с фильтрами по типу, сезону, размеру и месту хранения" loading="lazy" width="1600" height="2221"><figcaption>02 — Каталог: все вещи с фильтрами</figcaption></figure>
+  <figure><img src="../assets/demo/kartoteka/04.jpg" alt="Поиск обычными словами: запрос «обувь зима» и три найденные пары" loading="lazy" width="1600" height="2221"><figcaption>03 — Поиск обычными словами</figcaption></figure>
+  <figure><img src="../assets/demo/kartoteka/05.jpg" alt="Карточка вещи: размер, сезон, владелец, место хранения и фотографии" loading="lazy" width="1600" height="2221"><figcaption>04 — Карточка вещи</figcaption></figure>
+  <figure><img src="../assets/demo/kartoteka/06.jpg" alt="Места хранения: шкафы, кладовки и полки со списком того, что в них лежит" loading="lazy" width="1600" height="2221"><figcaption>05 — Места хранения</figcaption></figure>
+  <figure><img src="../assets/demo/kartoteka/07.jpg" alt="Раздел продажи: вещи, выставленные на продажу, и их статус" loading="lazy" width="1600" height="2221"><figcaption>06 — Продажа: что выставлено и в каком статусе</figcaption></figure>
+
+  <div class="note">
+    <b>Это демонстрация.</b> Снимки сделаны на учебной базе: вещи и владельцы
+    показаны для примера. Картотеку разворачиваем под вашу семью — со своими
+    местами хранения, владельцами и телеграм-ботом.
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 ALTERA</span>
+  <a href="https://t.me/VlV_7777" target="_blank" rel="noreferrer">Telegram ↗</a>
+</footer>
+
+</body>
+</html>
