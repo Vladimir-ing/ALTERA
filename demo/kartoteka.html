@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>КАРТОТЕКА — демонстрация · ALTERA</title>
-<meta name="description" content="Картотека одежды и обуви: домашний учёт вещей с поиском обычными словами и телеграм-ботом. Демонстрация возможностей.">
+<title data-en="CATALOG — demonstration · ALTERA">КАРТОТЕКА — демонстрация · ALTERA</title>
+<meta name="description" content="Картотека одежды и обуви: домашний учёт вещей с поиском обычными словами и телеграм-ботом. Демонстрация возможностей." data-en="A clothing and shoe catalog: home inventory with plain-language search and a Telegram bot. A demonstration of what it can do.">
 <meta name="robots" content="index, follow">
 <link rel="icon" href="../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=Unbounded:wght@700&family=Inter:wght@300;400;600&display=swap">
+<script src="../lang.js" defer></script>
 <style>
   /* Палитра лендинга ALTERA — страница держится того же стиля. */
   :root{--bg:#050507;--bg-card:#0c0c10;--gold:#daa520;--gold-bright:#ffd95a;
@@ -48,39 +49,46 @@
          color:var(--muted);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
   footer a{text-decoration:none}
   footer a:hover{color:var(--gold-bright)}
+  .lang-switch{margin-left:auto;display:inline-flex;border:1px solid var(--gold-border);border-radius:6px;overflow:hidden}
+  .lang-switch button{padding:8px 12px;border:0;background:transparent;color:var(--muted);font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;line-height:1;cursor:pointer}
+  .lang-switch button:hover{color:var(--text)}
+  .lang-switch button.is-active{color:#0a0a0f;background:var(--gold)}
 </style>
 </head>
 <body>
 
 <div class="bar">
   <a href="../index.html">← ALTERA</a>
-  <a href="../index.html#projects">Все продукты</a>
+  <a href="../index.html#projects" data-en="All products">Все продукты</a>
+  <div class="lang-switch" role="group" aria-label="Язык / Language" data-en-aria="Language / Язык">
+    <button type="button" data-lang="ru" class="is-active" aria-pressed="true">RU</button><button type="button" data-lang="en" aria-pressed="false">EN</button>
+  </div>
 </div>
 
 <div class="wrap">
-  <p class="kicker">Home inventory · демонстрация</p>
-  <h1>КАРТОТЕКА<br>одежды и обуви</h1>
-  <p class="lead">
+  <p class="kicker" data-en="Home inventory · demonstration">Home inventory · демонстрация</p>
+  <h1 data-en="CATALOG<br>of clothes and shoes">КАРТОТЕКА<br>одежды и обуви</h1>
+  <p class="lead" data-en="Home inventory of things: what the family owns, where it is kept, who it belongs to, and what it's time to sell. It runs on a home computer and opens from a phone over Wi-Fi. Below are shots of the working screens.">
     Домашний учёт вещей: что есть в семье, где лежит, кому принадлежит и что пора
     продать. Работает на домашнем компьютере, открывается с телефона по Wi-Fi.
     Ниже — снимки рабочих экранов.
   </p>
 
   <div class="facts">
-    <div class="fact"><b>Поиск обычными словами</b><span>«обувь зима 42», «куртка Ира» — без фильтров и категорий.</span></div>
-    <div class="fact"><b>Места хранения</b><span>Шкаф, кладовка, гараж, комод в детской — видно, где искать.</span></div>
-    <div class="fact"><b>Телеграм-бот</b><span>Добавить вещь и найти нужное прямо из переписки.</span></div>
-    <div class="fact"><b>Свой компьютер</b><span>Ничего не уходит наружу: база и фотографии остаются дома.</span></div>
+    <div class="fact"><b data-en="Plain-language search">Поиск обычными словами</b><span data-en="&quot;winter shoes 42&quot;, &quot;Ira's jacket&quot; — no filters and no categories.">«обувь зима 42», «куртка Ира» — без фильтров и категорий.</span></div>
+    <div class="fact"><b data-en="Storage places">Места хранения</b><span data-en="A wardrobe, a closet, a garage, a chest of drawers in the children's room — you can see where to look.">Шкаф, кладовка, гараж, комод в детской — видно, где искать.</span></div>
+    <div class="fact"><b data-en="Telegram bot">Телеграм-бот</b><span data-en="Add an item and find what you need right from the chat.">Добавить вещь и найти нужное прямо из переписки.</span></div>
+    <div class="fact"><b data-en="Your own computer">Свой компьютер</b><span data-en="Nothing leaves the house: the database and the photos stay at home.">Ничего не уходит наружу: база и фотографии остаются дома.</span></div>
   </div>
 
-  <figure><img src="../assets/demo/kartoteka/02.jpg" alt="Сводка: сколько вещей в доме и как они распределены по сезонам, владельцам и местам хранения" loading="lazy" width="1600" height="2221"><figcaption>01 — Сводка: сколько вещей и как они распределены</figcaption></figure>
-  <figure><img src="../assets/demo/kartoteka/03.jpg" alt="Каталог всех вещей с фильтрами по типу, сезону, размеру и месту хранения" loading="lazy" width="1600" height="2221"><figcaption>02 — Каталог: все вещи с фильтрами</figcaption></figure>
-  <figure><img src="../assets/demo/kartoteka/04.jpg" alt="Поиск обычными словами: запрос «обувь зима» и три найденные пары" loading="lazy" width="1600" height="2221"><figcaption>03 — Поиск обычными словами</figcaption></figure>
-  <figure><img src="../assets/demo/kartoteka/05.jpg" alt="Карточка вещи: размер, сезон, владелец, место хранения и фотографии" loading="lazy" width="1600" height="2221"><figcaption>04 — Карточка вещи</figcaption></figure>
-  <figure><img src="../assets/demo/kartoteka/06.jpg" alt="Места хранения: шкафы, кладовки и полки со списком того, что в них лежит" loading="lazy" width="1600" height="2221"><figcaption>05 — Места хранения</figcaption></figure>
-  <figure><img src="../assets/demo/kartoteka/07.jpg" alt="Раздел продажи: вещи, выставленные на продажу, и их статус" loading="lazy" width="1600" height="2221"><figcaption>06 — Продажа: что выставлено и в каком статусе</figcaption></figure>
+  <figure><img src="../assets/demo/kartoteka/02.jpg" alt="Сводка: сколько вещей в доме и как они распределены по сезонам, владельцам и местам хранения" data-en-alt="Summary: how many items are in the house and how they are split by season, owner and storage place" loading="lazy" width="1600" height="2221"><figcaption data-en="01 — Summary: how many items and how they are distributed">01 — Сводка: сколько вещей и как они распределены</figcaption></figure>
+  <figure><img src="../assets/demo/kartoteka/03.jpg" alt="Каталог всех вещей с фильтрами по типу, сезону, размеру и месту хранения" data-en-alt="Catalog of every item with filters by type, season, size and storage place" loading="lazy" width="1600" height="2221"><figcaption data-en="02 — Catalog: every item, with filters">02 — Каталог: все вещи с фильтрами</figcaption></figure>
+  <figure><img src="../assets/demo/kartoteka/04.jpg" alt="Поиск обычными словами: запрос «обувь зима» и три найденные пары" data-en-alt="Plain-language search: the query &quot;winter shoes&quot; and three pairs found" loading="lazy" width="1600" height="2221"><figcaption data-en="03 — Plain-language search">03 — Поиск обычными словами</figcaption></figure>
+  <figure><img src="../assets/demo/kartoteka/05.jpg" alt="Карточка вещи: размер, сезон, владелец, место хранения и фотографии" data-en-alt="Item card: size, season, owner, storage place and photos" loading="lazy" width="1600" height="2221"><figcaption data-en="04 — An item card">04 — Карточка вещи</figcaption></figure>
+  <figure><img src="../assets/demo/kartoteka/06.jpg" alt="Места хранения: шкафы, кладовки и полки со списком того, что в них лежит" data-en-alt="Storage places: wardrobes, closets and shelves with a list of what is in them" loading="lazy" width="1600" height="2221"><figcaption data-en="05 — Storage places">05 — Места хранения</figcaption></figure>
+  <figure><img src="../assets/demo/kartoteka/07.jpg" alt="Раздел продажи: вещи, выставленные на продажу, и их статус" data-en-alt="Sale section: items listed for sale, and their status" loading="lazy" width="1600" height="2221"><figcaption data-en="06 — Sale: what is listed and in what status">06 — Продажа: что выставлено и в каком статусе</figcaption></figure>
 
-  <div class="note">
+  <div class="note" data-en="<b>This is a demonstration.</b> The shots were taken on a sample database: the items and owners are shown as an example. We set the catalog up for your family — with your own storage places, owners and a Telegram bot.">
     <b>Это демонстрация.</b> Снимки сделаны на учебной базе: вещи и владельцы
     показаны для примера. Картотеку разворачиваем под вашу семью — со своими
     местами хранения, владельцами и телеграм-ботом.

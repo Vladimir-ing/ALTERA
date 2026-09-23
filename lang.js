@@ -7,6 +7,7 @@
 
     <p data-en="English text">Русский текст</p>
     <a aria-label="Русский" data-en-aria="English">…</a>
+    <img alt="Русский" data-en-alt="English">
 
   Выбор языка запоминается в браузере. При первом визите язык берётся из
   настроек браузера: русский — RU, любой другой — EN.
@@ -18,6 +19,7 @@
 
   var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-en]'));
   var arias = Array.prototype.slice.call(document.querySelectorAll('[data-en-aria]'));
+  var alts = Array.prototype.slice.call(document.querySelectorAll('[data-en-alt]'));
   var buttons = Array.prototype.slice.call(document.querySelectorAll('.lang-switch button'));
 
   function isMeta(el) {
@@ -30,6 +32,9 @@
   });
   arias.forEach(function (el) {
     el.dataset.ruAria = el.getAttribute('aria-label');
+  });
+  alts.forEach(function (el) {
+    el.dataset.ruAlt = el.getAttribute('alt');
   });
 
   function apply(lang) {
@@ -45,6 +50,11 @@
     arias.forEach(function (el) {
       var value = en ? el.dataset.enAria : el.dataset.ruAria;
       if (typeof value === 'string') { el.setAttribute('aria-label', value); }
+    });
+
+    alts.forEach(function (el) {
+      var value = en ? el.dataset.enAlt : el.dataset.ruAlt;
+      if (typeof value === 'string') { el.setAttribute('alt', value); }
     });
 
     document.documentElement.lang = en ? 'en' : 'ru';
