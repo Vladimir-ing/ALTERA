@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ЛИЧНЫЙ ДОКТОР — демонстрация · ALTERA</title>
+<meta name="description" content="Связка агентов вместо чат-бота: терапевт разбирает жалобу, ловит опасные признаки и передаёт разговор субагенту-специалисту. Демонстрация маршрутизации.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Unbounded:wght@700&family=Inter:wght@300;400;600&display=swap">
+<style>
+  /* Палитра лендинга ALTERA — страница держится того же стиля. */
+  :root{--bg:#050507;--bg-raised:#0a0a0f;--bg-card:#0c0c10;--gold:#daa520;--gold-bright:#ffd95a;
+        --gold-border:rgba(218,165,32,.3);--text:#e8e8ed;--muted:#8a8aa0;--faint:#555570;
+        --line:rgba(255,255,255,.06);--line-hover:rgba(255,255,255,.14);
+        --cyan:#00d9e8;--orange:#ff7a18;--alarm:#ff4d4d;
+        --mono:'Space Mono',ui-monospace,monospace;--display:'Unbounded',Arial,sans-serif;
+        --body:'Inter',Arial,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:18px;
+       padding:16px clamp(20px,5vw,60px);border-bottom:1px solid var(--line);
+       background:rgba(5,5,7,.85);backdrop-filter:blur(18px)}
+  .bar a{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;
+         text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s}
+  .bar a:hover{color:var(--gold-bright)}
+  .wrap{max-width:1100px;margin:auto;padding:clamp(44px,6vw,80px) clamp(20px,5vw,60px) 90px}
+  .kicker{margin:0;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.22em;
+          text-transform:uppercase;color:var(--orange)}
+  h1{margin:24px 0 20px;font-family:var(--display);font-weight:700;
+     font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.05;letter-spacing:-.02em}
+  h2{margin:0 0 22px;font-family:var(--display);font-weight:700;font-size:clamp(1.25rem,2.4vw,1.7rem);letter-spacing:-.01em}
+  .lead{max-width:680px;margin:0;color:var(--muted);font-weight:300;line-height:1.85;font-size:clamp(.95rem,1.2vw,1.05rem)}
+  section{margin-top:clamp(56px,7vw,86px)}
+  .index{margin:0 0 14px;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.22em;
+         text-transform:uppercase;color:var(--gold)}
+
+  /* Предупреждение — первое, что должно быть прочитано. */
+  .warning{margin-top:38px;padding:22px 24px;border:1px solid rgba(255,77,77,.35);border-radius:8px;
+           background:rgba(255,77,77,.06);color:var(--muted);font-weight:300;line-height:1.8;font-size:.94rem}
+  .warning b{color:var(--text);font-weight:600}
+  .warning p{margin:0}
+  .warning p+p{margin-top:10px}
+
+  /* Схема связки агентов. */
+  .map{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
+  .node{padding:20px;border:1px solid var(--line);border-radius:8px;background:var(--bg-card)}
+  .node.lead-node{border-color:var(--gold-border);background:rgba(218,165,32,.05)}
+  .node.ready{border-color:rgba(0,217,232,.3)}
+  .node span{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+  .node.lead-node span{color:var(--gold)}
+  .node.ready span{color:var(--cyan)}
+  .node b{display:block;margin:10px 0 8px;font-family:var(--display);font-size:1rem}
+  .node p{margin:0;color:var(--muted);font-weight:300;font-size:.88rem;line-height:1.7}
+
+  /* Демонстрация. */
+  .stage{margin-top:26px;border:1px solid var(--line);border-radius:10px;background:var(--bg-raised);overflow:hidden}
+  .stage-head{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;
+              padding:14px 20px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
+  .stage-head p{margin:0;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.16em;
+                text-transform:uppercase;color:var(--faint)}
+  .stage-head p b{color:var(--muted);font-weight:700}
+  #thread{max-height:min(64vh,640px);overflow-y:auto;padding:24px 20px;display:flex;flex-direction:column;gap:20px}
+  .msg{display:flex;flex-direction:column;gap:8px;max-width:88%}
+  .who{margin:0;display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:9px;font-weight:700;
+       letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .who i{width:6px;height:6px;border-radius:50%;background:var(--muted)}
+  .bubble{padding:16px 18px;border:1px solid var(--line);border-radius:10px;background:var(--bg-card);
+          font-weight:300;font-size:.94rem;line-height:1.75}
+  .bubble p{margin:0}
+  .bubble p+p,.bubble ul+p,.bubble ol+p,.bubble p+ul,.bubble p+ol{margin-top:12px}
+  .bubble b{color:var(--text);font-weight:600}
+  .bubble ul,.bubble ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;color:var(--muted)}
+  .bubble ul.avoid li::marker{color:var(--alarm)}
+  .bubble ul.urgent li::marker{color:var(--orange)}
+  .msg-therapist .who i{background:var(--gold);box-shadow:0 0 8px var(--gold)}
+  .msg-therapist .who{color:var(--gold)}
+  .msg-derm .who i{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+  .msg-derm .who{color:var(--cyan)}
+  .msg-derm .bubble{border-color:rgba(0,217,232,.22)}
+  .msg-you{align-self:flex-end;align-items:flex-end;max-width:78%}
+  .msg-you .bubble{background:rgba(218,165,32,.08);border-color:var(--gold-border);color:var(--text);font-weight:400}
+  .msg-you .who i{background:var(--gold-bright)}
+  .msg-system{max-width:100%}
+  .msg-system .who{color:var(--faint)}
+  .msg-system .bubble{border-style:dashed;background:transparent;padding:0;border:0}
+  .msg-alarm{max-width:100%}
+  .msg-alarm .who,.msg-alarm .who i{color:var(--alarm)}
+  .msg-alarm .who i{background:var(--alarm);box-shadow:0 0 10px var(--alarm);animation:blink 1.4s ease-in-out infinite}
+  .msg-alarm .bubble{border-color:rgba(255,77,77,.4);background:rgba(255,77,77,.06)}
+  .alarm-title{font-family:var(--display);font-size:1.05rem;color:#ffb3b3}
+  .alarm-call{padding:12px 14px;border-radius:8px;background:rgba(255,77,77,.12);color:var(--text);font-weight:400}
+  .alarm-call b{font-family:var(--mono);font-size:1.05rem;color:#ffd5d5}
+  .alarm-sub,.block-title{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.16em;
+                          text-transform:uppercase;color:var(--gold)}
+  .msg-derm .block-title{color:var(--cyan)}
+  .alarm-stop{color:var(--muted);font-size:.88rem}
+  .caveat,.soon{padding:12px 14px;border-left:2px solid var(--gold-border);background:rgba(218,165,32,.04);
+                color:var(--muted);font-size:.88rem;line-height:1.7}
+  .versions{list-style:none;padding:0;counter-reset:v}
+  .versions li{counter-increment:v;display:grid;grid-template-columns:22px 1fr;gap:4px 10px;color:var(--text)}
+  .versions li::before{content:counter(v);grid-row:span 2;font-family:var(--mono);font-size:10px;font-weight:700;
+                       color:var(--cyan);padding-top:5px}
+  .versions li b{font-weight:600}
+  .versions li span{color:var(--muted);font-size:.89rem;line-height:1.7}
+  .shot{margin:0}
+  .shot img{display:block;max-width:220px;max-height:220px;width:auto;border-radius:8px;border:1px solid var(--line)}
+  .shot figcaption{margin-top:7px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--faint)}
+
+  /* Карточка передачи. */
+  .handoff{padding:16px 18px;border:1px dashed var(--gold-border);border-radius:10px;background:rgba(218,165,32,.03)}
+  .handoff-title{margin:0 0 12px;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.16em;
+                 text-transform:uppercase;color:var(--gold)}
+  .handoff-row{display:grid;grid-template-columns:150px 1fr;gap:6px 14px;padding:6px 0;border-top:1px solid var(--line)}
+  .handoff-row span{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--faint)}
+  .handoff-row b{font-weight:400;font-size:.88rem;color:var(--text)}
+
+  /* Панель ввода. */
+  #panel{border-top:1px solid var(--line);background:rgba(255,255,255,.015)}
+  #panel:empty{display:none}
+  .ask{padding:20px}
+  .ask-label{display:block;margin:0 0 10px;font-family:var(--mono);font-size:9.5px;font-weight:700;
+             letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  textarea{width:100%;padding:14px;border:1px solid var(--line-hover);border-radius:8px;background:var(--bg);
+           color:var(--text);font-family:var(--body);font-size:.95rem;font-weight:300;line-height:1.6;resize:vertical}
+  textarea:focus{outline:none;border-color:var(--gold-border)}
+  .examples{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}
+  .examples>span{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.14em;
+                 text-transform:uppercase;color:var(--faint)}
+  .chip{padding:8px 12px;border:1px solid var(--line-hover);border-radius:20px;background:transparent;
+        color:var(--muted);font-family:var(--body);font-size:.82rem;font-weight:300;cursor:pointer;transition:.25s}
+  .chip:hover{border-color:var(--gold-border);color:var(--text)}
+  .ask-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:16px}
+  .attach{display:inline-flex;align-items:center;gap:9px;padding:13px 16px;border:1px dashed var(--line-hover);
+          border-radius:8px;color:var(--muted);font-family:var(--mono);font-size:10px;font-weight:700;
+          letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:.25s}
+  .attach:hover{border-color:var(--gold-border);color:var(--text)}
+  .attach input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+  .go{padding:14px 22px;border:0;border-radius:8px;background:var(--gold);color:#0a0a0f;font-family:var(--mono);
+      font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:.25s}
+  .go:hover{background:var(--gold-bright);transform:translateY(-2px)}
+  .hint{margin:14px 0 0;color:var(--faint);font-weight:300;font-size:.8rem;line-height:1.6}
+  .options{display:flex;flex-wrap:wrap;gap:9px}
+  .option{padding:12px 15px;border:1px solid var(--line-hover);border-radius:8px;background:var(--bg-card);
+          color:var(--text);font-family:var(--body);font-size:.88rem;font-weight:300;cursor:pointer;
+          text-align:left;transition:.25s}
+  .option:hover{border-color:var(--gold-border);background:var(--bg-raised)}
+  .ask-end{display:flex;flex-wrap:wrap;gap:12px}
+  .again{padding:14px 20px;border:1px solid var(--line-hover);border-radius:8px;background:transparent;
+         color:var(--muted);font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.1em;
+         text-transform:uppercase;cursor:pointer;transition:.25s}
+  .again:hover{border-color:var(--gold-border);color:var(--text)}
+
+  /* Списки-факты и правила. */
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:16px}
+  .fact{padding:22px;border:1px solid var(--line);border-radius:8px;background:var(--bg-card)}
+  .fact b{display:block;margin-bottom:8px;font-family:var(--display);font-size:.98rem}
+  .fact span{color:var(--muted);font-weight:300;font-size:.89rem;line-height:1.75}
+  .rules{margin:0;padding:0;list-style:none;display:grid;gap:1px;border:1px solid var(--line);
+         border-radius:8px;overflow:hidden;background:var(--line)}
+  .rules li{padding:18px 20px;background:var(--bg-card);display:grid;grid-template-columns:26px 1fr;gap:14px;
+            color:var(--muted);font-weight:300;font-size:.92rem;line-height:1.75}
+  .rules li i{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--gold);font-style:normal;padding-top:4px}
+  .rules li b{color:var(--text);font-weight:600}
+  .files{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .files a{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border:1px solid var(--line-hover);
+           border-radius:8px;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;
+           text-transform:uppercase;color:var(--muted);text-decoration:none;transition:.25s}
+  .files a:hover{border-color:var(--gold-border);color:var(--gold-bright)}
+
+  footer{border-top:1px solid var(--line);padding:38px clamp(20px,5vw,60px);display:flex;flex-wrap:wrap;gap:18px;
+         justify-content:space-between;color:var(--muted);font-family:var(--mono);font-size:10px;
+         letter-spacing:.14em;text-transform:uppercase}
+  footer a{text-decoration:none}
+  footer a:hover{color:var(--gold-bright)}
+
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  @media(max-width:600px){
+    .msg,.msg-you{max-width:100%}
+    .handoff-row{grid-template-columns:1fr}
+    .options{flex-direction:column}
+    .option{width:100%}
+    .go,.again{width:100%}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../index.html">← ALTERA</a>
+  <a href="../index.html#projects">Все продукты</a>
+</div>
+
+<div class="wrap">
+  <p class="kicker">Personal doctor · демонстрация</p>
+  <h1>ЛИЧНЫЙ ДОКТОР<br>связка агентов</h1>
+  <p class="lead">
+    Не один чат-бот, который отвечает на всё. Терапевт разбирает жалобу, отсекает
+    опасное и передаёт разговор тому специалисту, который в этом разбирается —
+    вместе со сводкой, чтобы человек не рассказывал одно и то же дважды.
+  </p>
+
+  <div class="warning">
+    <p><b>Это не медицинская помощь и не диагноз.</b> Агент разбирает жалобу и
+    объясняет, к какому врачу с ней идти. Он не осматривает, не видит анализов и
+    не назначает лечение.</p>
+    <p>При боли в груди, нехватке воздуха, отёке губ или языка, спутанной речи,
+    потере сознания — <b>103</b> или <b>112</b>, не разговор с программой.</p>
+  </div>
+
+  <section>
+    <p class="index">01 / Как устроено</p>
+    <h2>Один принимает, другой разбирается</h2>
+    <p class="lead">
+      Терапевт — вход в систему. Он ловит опасные признаки, задаёт минимум
+      уточнений и определяет профиль. Дальше работает субагент: у него свои
+      вопросы, своя картина и свои правила срочности.
+    </p>
+    <div class="map">
+      <div class="node lead-node">
+        <span>Главный агент</span>
+        <b>Терапевт</b>
+        <p>Приём жалобы, красные флаги, маршрут. Диагнозов не ставит, лечения не назначает.</p>
+      </div>
+      <div class="node ready">
+        <span>Субагент · написан</span>
+        <b>Дерматолог</b>
+        <p>Кожа, ногти, волосы. Четыре своих вопроса, разбор фотографии, версии и срок визита.</p>
+      </div>
+      <div class="node">
+        <span>Профиль распознаётся</span>
+        <b>ЛОР · Невролог · Гастроэнтеролог</b>
+        <p>Терапевт уже готовит для них передачу. Самих субагентов пока нет — в этом случае он доводит до живого врача сам.</p>
+      </div>
+      <div class="node">
+        <span>Профиль распознаётся</span>
+        <b>Пульмонолог · Кардиолог · Ортопед · и ещё пять</b>
+        <p>Каждый добавляется одним файлом промпта и строкой в таблице маршрутизации.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="index">02 / Демонстрация</p>
+    <h2>Попробуйте на своей жалобе</h2>
+    <p class="lead">
+      Реплики собраны по правилам, без обращения к модели: страница работает даже
+      открытая с диска. Распознавание фотографии в демонстрации отключено — снимок
+      остаётся в браузере и никуда не отправляется.
+    </p>
+
+    <div class="stage">
+      <div class="stage-head">
+        <p>Приём · <b>агент терапевт</b></p>
+        <p>Демонстрация логики маршрутизации</p>
+      </div>
+      <div id="thread" aria-live="polite"></div>
+      <div id="panel"></div>
+    </div>
+    <p class="hint" style="padding:0 2px">
+      Попробуйте «родинка изменила цвет», «шелушится между пальцами на ногах»,
+      «сыпь после нового антибиотика» — маршрут и версии будут разными. А на
+      «давит в груди, отдаёт в руку» разговор прервётся на первом же сообщении.
+    </p>
+  </section>
+
+  <section>
+    <p class="index">03 / Правила</p>
+    <h2>Что агент не делает никогда</h2>
+    <ol class="rules">
+      <li><i>01</i><span><b>Не ставит диагноз.</b> Формулирует версии — «похоже на», «бывает при» — и объясняет, чем их различают.</span></li>
+      <li><i>02</i><span><b>Не назначает лечение.</b> Рецептурные препараты, антибиотики и гормональные мази не советует и не отменяет.</span></li>
+      <li><i>03</i><span><b>Обрывает разговор на красном флаге.</b> Признаки состояния, где счёт идёт на минуты, — сразу скорая, без уточнений и без версий.</span></li>
+      <li><i>04</i><span><b>Трактует сомнение в сторону осмотра.</b> Неясная картина — это «нужно показать врачу», а не догадка поуверенней.</span></li>
+      <li><i>05</i><span><b>Говорит, чего не знает.</b> Не видит анализов, не слышит дыхание, не щупает живот — и не делает вид, что видит.</span></li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="index">04 / Что получает человек</p>
+    <h2>Сводка, а не совет наугад</h2>
+    <div class="facts">
+      <div class="fact"><b>Маршрут</b><span>К какому врачу идти и в какой срок: сегодня, на этой неделе или плановой записью.</span></div>
+      <div class="fact"><b>Сводка для приёма</b><span>Жалоба, сроки, ответы и версии одним текстом — скопировать и показать врачу.</span></div>
+      <div class="fact"><b>Что не делать до осмотра</b><span>Зелёнка поверх сыпи и выдавленный элемент стирают картину, по которой врач работает.</span></div>
+      <div class="fact"><b>Когда не ждать</b><span>Признаки, при которых плановая запись отменяется и нужна помощь сегодня.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="index">05 / Под капотом</p>
+    <h2>Агенты — это текст, а не код</h2>
+    <p class="lead">
+      Поведение каждого агента живёт в отдельном файле промпта: рамка роли, порядок
+      работы, красные флаги, формат ответа. Передача между агентами описана схемой —
+      специалист получает одинаковый набор полей независимо от того, как шёл разговор.
+    </p>
+    <div class="files">
+      <a href="https://github.com/Vladimir-ing/ALTERA/blob/main/agents/README.md" target="_blank" rel="noreferrer">agents/README.md ↗</a>
+      <a href="https://github.com/Vladimir-ing/ALTERA/blob/main/agents/therapist.md" target="_blank" rel="noreferrer">therapist.md ↗</a>
+      <a href="https://github.com/Vladimir-ing/ALTERA/blob/main/agents/dermatologist.md" target="_blank" rel="noreferrer">dermatologist.md ↗</a>
+      <a href="https://github.com/Vladimir-ing/ALTERA/blob/main/agents/handoff.schema.json" target="_blank" rel="noreferrer">handoff.schema.json ↗</a>
+    </div>
+  </section>
+
+  <div class="warning" style="margin-top:56px">
+    <p><b>Ещё раз, потому что это важно.</b> Демонстрация показывает логику приёма и
+    передачи, а не медицинское заключение. Версии составлены по правилам из
+    ответов на вопросы — врач на осмотре может увидеть совсем другое. Решение о
+    диагнозе и лечении принимает только он.</p>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 ALTERA</span>
+  <a href="https://t.me/VlV_7777" target="_blank" rel="noreferrer">Telegram ↗</a>
+</footer>
+
+<script src="doctor.js"></script>
+</body>
+</html>
