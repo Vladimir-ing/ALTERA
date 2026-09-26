@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://altera-tau.vercel.app/agents/handoff.schema.json",
+  "title": "Передача от терапевта субагенту-специалисту",
+  "description": "Что терапевт направления ЛИЧНЫЙ ДОКТОР отдаёт специалисту вместо пересказа диалога. Специалист получает одинаковый набор полей независимо от того, как шёл разговор, и не переспрашивает то, что уже спросил терапевт.",
+  "type": "object",
+  "required": ["from", "to", "reason", "complaint", "redFlagsChecked"],
+  "additionalProperties": false,
+  "properties": {
+    "from": {
+      "description": "Кто передаёт. Пока всегда терапевт.",
+      "const": "therapist"
+    },
+    "to": {
+      "description": "Профиль специалиста. Полный список — DIRECTIONS в demo/doctor.js.",
+      "enum": [
+        "dermatologist",
+        "ent",
+        "neuro",
+        "gastro",
+        "pulmo",
+        "cardio",
+        "ophtha",
+        "ortho",
+        "dental",
+        "endo",
+        "therapist"
+      ]
+    },
+    "reason": {
+      "description": "Одной фразой: почему жалоба ушла в этот профиль. Читает и специалист, и человек.",
+      "type": "string",
+      "minLength": 1
+    },
+    "complaint": {
+      "description": "Жалоба словами человека, без переписывания в медицинские термины.",
+      "type": "string",
+      "minLength": 1
+    },
+    "duration": {
+      "description": "Сколько это длится, как ответил человек.",
+      "type": "string"
+    },
+    "temperature": {
+      "description": "Температура, как ответил человек: нет / до 37,5 / 37,5–38,5 / выше 38,5.",
+      "type": "string"
+    },
+    "answers": {
+      "description": "Ответы на уточняющие вопросы: ключ вопроса — выбранный вариант. Специалист эти вопросы не повторяет.",
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "attachments": {
+      "description": "Что приложил человек. Сам файл в передаче не лежит — только ссылка и то, что о нём известно.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind"],
+        "additionalProperties": false,
+        "properties": {
+          "kind": { "enum": ["photo", "document", "lab"] },
+          "note": {
+            "description": "Что на снимке: часть тела, освещение, есть ли масштаб в кадре.",
+            "type": "string"
+          },
+          "ref": {
+            "description": "Ссылка на файл в хранилище сессии. Пустая, если снимок остался на устройстве.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "redFlagsChecked": {
+      "description": "Терапевт прошёл список красных флагов. Без true специалист разбор не начинает — сначала проверяет сам.",
+      "type": "boolean"
+    },
+    "alsoConsider": {
+      "description": "Профили, которые терапевт увидел, но отложил как второстепенные.",
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "urgency": {
+      "description": "Срок, в который человек должен попасть к врачу, по оценке терапевта.",
+      "enum": ["emergency", "today", "this-week", "planned"]
+    },
+    "patientContext": {
+      "description": "Только то, что человек сказал сам. Пустые поля не выдумываются.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "age": { "type": "integer", "minimum": 0, "maximum": 120 },
+        "isChild": { "type": "boolean" },
+        "pregnancy": { "type": "boolean" },
+        "chronic": {
+          "description": "Хронические болезни.",
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "medications": {
+          "description": "Что принимает постоянно, включая добавки.",
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "allergies": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}
