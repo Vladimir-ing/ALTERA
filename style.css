@@ -68,6 +68,8 @@
 .project-card.purple .project-meta>span:first-child{color:var(--purple);text-shadow:0 0 12px var(--purple)}
 .project-card.cyan .project-meta>span:first-child{color:var(--cyan);text-shadow:0 0 12px var(--cyan)}
 .project-card.orange .project-meta>span:first-child{color:var(--orange);text-shadow:0 0 12px var(--orange)}
+.project-card.gold .project-meta>span:first-child{color:var(--gold-bright);text-shadow:0 0 12px var(--gold)}
+.project-card.green .project-meta>span:first-child{color:var(--live);text-shadow:0 0 12px var(--live)}
 .project-meta{display:flex;justify-content:space-between;color:var(--muted);font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.16em}
 .live{color:#b6ffd2}.live i{display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:var(--live);box-shadow:0 0 10px var(--live);animation:pulse 2.4s ease-in-out infinite}
 /* Продукт показывается демо-страницей: сам он частный (РОД) или работает на домашнем компьютере (Картотека) */

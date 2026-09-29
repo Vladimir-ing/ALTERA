@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>РЕСТАВРАЦИЯ — восстановление старых фото · ALTERA</title>
+<meta name="description" content="Реставрация старых фотографий: убираем царапины, заломы и выцветание, возвращаем контраст и резкость, при желании раскрашиваем. Оригинал остаётся нетронутым.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=Unbounded:wght@700&family=Inter:wght@300;400;600&display=swap">
+<style>
+  /* Палитра лендинга ALTERA — страница держится того же стиля. */
+  :root{--bg:#050507;--bg-card:#0c0c10;--gold:#daa520;--gold-bright:#ffd95a;
+        --gold-border:rgba(218,165,32,.3);--text:#e8e8ed;--muted:#8a8aa0;
+        --line:rgba(255,255,255,.06);--gold-soft:#daa520;
+        --mono:'Space Mono',ui-monospace,monospace;--display:'Unbounded',Arial,sans-serif;
+        --body:'Inter',Arial,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:18px;
+       padding:16px clamp(20px,5vw,60px);border-bottom:1px solid var(--line);
+       background:rgba(5,5,7,.85);backdrop-filter:blur(18px)}
+  .bar a{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;
+         text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s}
+  .bar a:hover{color:var(--gold-bright)}
+  .wrap{max-width:1100px;margin:auto;padding:clamp(48px,7vw,90px) clamp(20px,5vw,60px) 90px}
+  .kicker{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.22em;
+          text-transform:uppercase;color:var(--gold-soft)}
+  h1{margin:24px 0 20px;font-family:var(--display);font-weight:700;
+     font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.05;letter-spacing:-.02em}
+  .lead{max-width:680px;color:var(--muted);font-weight:300;line-height:1.85;font-size:clamp(.95rem,1.2vw,1.05rem)}
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin:52px 0 12px}
+  .fact{padding:22px;border:1px solid var(--line);border-radius:8px;background:var(--bg-card)}
+  .fact b{display:block;font-family:var(--display);font-size:1.05rem;margin-bottom:8px}
+  .fact span{color:var(--muted);font-weight:300;font-size:.92rem;line-height:1.7}
+  h2{margin:70px 0 0;font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,2.4vw,2rem);letter-spacing:-.01em}
+  .steps{display:grid;gap:14px;margin-top:30px}
+  .step{display:flex;gap:20px;padding:24px;border:1px solid var(--line);border-radius:8px;background:var(--bg-card)}
+  .step b{flex:none;width:34px;height:34px;border:1px solid var(--gold-border);border-radius:50%;
+          display:grid;place-items:center;font-family:var(--mono);font-size:13px;color:var(--gold-bright)}
+  .step h3{margin:2px 0 8px;font-family:var(--display);font-size:1.02rem;font-weight:700}
+  .step p{margin:0;color:var(--muted);font-weight:300;font-size:.93rem;line-height:1.75}
+  .note{margin-top:60px;padding:26px;border:1px solid var(--gold-border);border-radius:8px;
+        background:rgba(218,165,32,.05);color:var(--muted);font-weight:300;line-height:1.8}
+  .note b{color:var(--text);font-weight:600}
+  .cta{display:inline-block;margin-top:26px;padding:18px 30px;border-radius:6px;background:var(--gold);
+       color:#0a0a0f;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.16em;
+       text-transform:uppercase;text-decoration:none;transition:background .25s}
+  .cta:hover{background:var(--gold-bright)}
+  footer{border-top:1px solid var(--line);padding:38px clamp(20px,5vw,60px);
+         display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;
+         color:var(--muted);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+  footer a{text-decoration:none}
+  footer a:hover{color:var(--gold-bright)}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../index.html">← ALTERA</a>
+  <a href="../index.html#projects">Все продукты</a>
+</div>
+
+<div class="wrap">
+  <p class="kicker">Photo restoration · услуга</p>
+  <h1>РЕСТАВРАЦИЯ<br>старых фото</h1>
+  <p class="lead">
+    Выцветшие, мятые, надорванные снимки возвращаем к жизни: убираем царапины, заломы
+    и утраченные уголки, возвращаем контраст и резкость. При желании — аккуратная
+    расцветка. Работаем с копией: семейный оригинал остаётся нетронутым.
+  </p>
+
+  <div class="facts">
+    <div class="fact"><b>Любой носитель</b><span>Скан, пересъёмка с альбомного листа на телефон при дневном свете — подойдёт.</span></div>
+    <div class="fact"><b>Любые повреждения</b><span>Царапины, заломы, пятна, выцветание, утраченные фрагменты.</span></div>
+    <div class="fact"><b>Цвет — по желанию</b><span>Аккуратная расцветка или честное чёрно-белое, как решите.</span></div>
+    <div class="fact"><b>Готово к печати</b><span>Файлы в высоком разрешении: для рамки, альбома и семейного архива.</span></div>
+  </div>
+
+  <h2>Как это работает</h2>
+  <div class="steps">
+    <div class="step">
+      <b>1</b>
+      <div>
+        <h3>Присылаете снимки</h3>
+        <p>Скан или чёткая пересъёмка с телефона. Если снимков несколько — уточняете, какие важнее.</p>
+      </div>
+    </div>
+    <div class="step">
+      <b>2</b>
+      <div>
+        <h3>Восстанавливаем</h3>
+        <p>Убираем повреждения и возвращаем деталям форму: лица, одежду, фон. Сложные случаи дорабатываем вручную.</p>
+      </div>
+    </div>
+    <div class="step">
+      <b>3</b>
+      <div>
+        <h3>Получаете файлы</h3>
+        <p>Готовый снимок в высоком разрешении и, если заказали, раскрашенная версия. Правки по выбранному кадру входят в работу.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>Цена зависит от состояния снимка.</b> Лёгкая реставрация — быстро и недорого,
+    тяжёлые случаи — дольше и дороже. Напишите в Telegram, пришлите снимок —
+    назовём цену и срок за ваш конкретный кадр.
+    <br><a class="cta" href="https://t.me/VlV_7777" target="_blank" rel="noreferrer">Обсудить в Telegram</a>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 ALTERA</span>
+  <a href="https://t.me/VlV_7777" target="_blank" rel="noreferrer">Telegram ↗</a>
+</footer>
+
+</body>
+</html>
