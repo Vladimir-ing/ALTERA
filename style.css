@@ -24,7 +24,7 @@
 .hero-particles span:nth-child(6){left:90%;background:rgba(218,165,32,.3);animation-duration:12s;animation-delay:5s}
 .hero-grid{position:relative;z-index:2;width:min(1420px,100%);margin:auto;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:50px}.hero-copy{padding-top:18px}
 .kicker,.section-index{font-family:var(--mono);font-size:10px;letter-spacing:.22em;font-weight:700;text-transform:uppercase;color:var(--gold)}.kicker span{display:inline-block;width:25px;height:1px;vertical-align:middle;margin-right:10px;background:var(--gold);box-shadow:0 0 10px var(--gold)}
-.hero h1{margin:30px 0 28px;font-family:var(--display);font-size:clamp(2.5rem,5vw,5.4rem);line-height:1.02;letter-spacing:-.02em;font-weight:700;transition:transform .2s}
+.hero h1{margin:30px 0 28px;font-family:var(--display);font-size:clamp(2.5rem,4.6vw,5rem);line-height:1.02;letter-spacing:-.02em;font-weight:700;transition:transform .2s}
 .hero h1 em{font-style:normal;color:var(--gold);text-shadow:0 0 34px rgba(218,165,32,.35)}
 .hero h1:hover{text-shadow:3px 0 rgba(255,255,255,.5),-3px 0 rgba(218,165,32,.85);transform:skewX(-1deg)}
 .lead{max-width:640px;color:var(--muted);font-size:clamp(.95rem,1.2vw,1.1rem);font-weight:300;line-height:1.85}
@@ -72,6 +72,10 @@
 .live{color:#b6ffd2}.live i{display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:var(--live);box-shadow:0 0 10px var(--live);animation:pulse 2.4s ease-in-out infinite}
 /* Продукт показывается демо-страницей: сам он частный (РОД) или работает на домашнем компьютере (Картотека) */
 .demo{color:var(--gold-bright)}.demo i{display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+/* Бейдж NEXT — приглашение: место в экосистеме ещё занято не до конца */
+.next{color:var(--gold-bright)}.next i{display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);animation:pulse 2.4s ease-in-out infinite}
+.project-card.invite{border-style:dashed;border-color:var(--line-hover)}
+.project-card.invite:hover{border-style:dashed}
 .project-main{position:relative;margin-top:76px}
 .project-main p{color:var(--gold);font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.19em;text-transform:uppercase}
 .project-main h3{max-width:80%;margin:13px 0 0;font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,2vw,2.2rem);line-height:1.08;letter-spacing:-.01em}
@@ -120,6 +124,6 @@ footer h2{max-width:1150px;margin:30px 0 50px;font-family:var(--display);font-we
 @keyframes pulse{50%{opacity:.55}}
 
 /* ── адаптив ── */
-@media(max-width:950px){.topbar nav{display:none}.top-cta{margin-left:auto}.hero{padding-top:120px}.hero-grid{grid-template-columns:1fr}.core-visual{width:min(560px,86vw);justify-self:center;order:-1;margin-bottom:-30px}.hero-copy{text-align:center}.kicker{display:inline-block}.lead{margin-inline:auto}.hero-actions{justify-content:center}.hero-foot span:first-child,.hero-foot span:last-child{display:none}.hero-foot{justify-content:center;margin-top:70px}.section-head,.section-head.compact{grid-template-columns:1fr;gap:20px}.project-list{grid-template-columns:1fr}.project-main h3{font-size:clamp(1.7rem,6vw,2.6rem)}.principles{grid-template-columns:1fr}}
-@media(max-width:600px){.topbar{height:66px}.top-cta{display:none}.lang-switch{margin-left:auto}.lang-switch button{padding:12px 14px}.hero{min-height:auto;padding-top:105px}.hero::after{display:none}.core-visual{width:96vw;margin-left:-20px}.hero h1{font-size:clamp(1.9rem,9vw,3rem)}.hero-actions{flex-direction:column;gap:18px}.section{padding-block:90px}.project-card{min-height:500px;padding:25px}.project-main{margin-top:58px}.project-description{margin-top:55px}.project-line{left:25px;right:25px}.principles article{min-height:270px;padding:28px}.principles h3{margin-top:55px}.manifesto-box{padding:44px 22px}.footer-bottom{grid-template-columns:1fr;gap:35px}.footer-bottom>div{justify-content:flex-start}.footer-bottom>p{text-align:left}}
+@media(max-width:950px){.topbar nav{display:none}.top-cta{margin-left:auto}.hero{padding-top:120px}.hero-grid{grid-template-columns:1fr}.core-visual{width:min(560px,86vw);justify-self:center;margin-top:46px;margin-bottom:0}.hero-copy{text-align:center}.kicker{display:inline-block}.lead{margin-inline:auto}.hero-actions{justify-content:center}.hero-foot span:first-child,.hero-foot span:last-child{display:none}.hero-foot{justify-content:center;margin-top:70px}.section-head,.section-head.compact{grid-template-columns:1fr;gap:20px}.project-list{grid-template-columns:1fr}.project-main h3{font-size:clamp(1.7rem,6vw,2.6rem)}.principles{grid-template-columns:1fr}}
+@media(max-width:600px){.topbar{height:66px}.top-cta{display:none}.lang-switch{margin-left:auto}.lang-switch button{padding:12px 14px}.hero{min-height:auto;padding-top:105px}.hero::after{display:none}.core-visual{width:96vw;margin-left:-20px}.hero h1{font-size:clamp(1.8rem,8vw,2.7rem)}.hero-actions{flex-direction:column;gap:18px}.section{padding-block:90px}.project-card{min-height:500px;padding:25px}.project-main{margin-top:58px}.project-description{margin-top:55px}.project-line{left:25px;right:25px}.principles article{min-height:270px;padding:28px}.principles h3{margin-top:55px}.manifesto-box{padding:44px 22px}.footer-bottom{grid-template-columns:1fr;gap:35px}.footer-bottom>div{justify-content:flex-start}.footer-bottom>p{text-align:left}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important}.hero-particles{display:none}}
