@@ -1,0 +1,1147 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Анкета семейного сайта — ALTERA</title>
+  <meta name="description" content="Короткая анкета перед созданием закрытого семейного сайта-древа: 6 шагов, 5–7 минут.">
+  <meta name="robots" content="noindex,nofollow">
+  <!-- До нажатия «Отправить» страница не обращается ни к каким чужим адресам:
+       шрифты лежат рядом (fonts/), аналитики и сторонних скриптов нет. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com; base-uri 'none'; form-action 'none'">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <!-- Пути абсолютные: страница отдаётся и по /chek-list, и по /chek-list/ -->
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    /* ── Свои шрифты (лицензия SIL OFL), без Google Fonts ── */
+    @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(/chek-list/fonts/inter-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(/chek-list/fonts/inter-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+    @font-face{font-family:'Unbounded';font-style:normal;font-weight:200 900;font-display:swap;src:url(/chek-list/fonts/unbounded-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+    @font-face{font-family:'Unbounded';font-style:normal;font-weight:200 900;font-display:swap;src:url(/chek-list/fonts/unbounded-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+    @font-face{font-family:'Space Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/chek-list/fonts/spacemono-400.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2122}
+    @font-face{font-family:'Space Mono';font-style:normal;font-weight:700;font-display:swap;src:url(/chek-list/fonts/spacemono-700.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2122}
+
+    :root{--hint:#a9a9bf;--ctl:#7a7a96;--bad:#ffb27a}
+    [hidden]{display:none!important}
+    body{font-size:16px}
+    .cl-top{position:fixed;top:0;left:0;right:0;z-index:10;height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,4vw,70px);border-bottom:1px solid var(--line);background:rgba(5,5,7,.88);backdrop-filter:blur(18px)}
+    .cl-top .tag{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--hint)}
+    .cl-top .brand{min-height:44px}
+
+    /* Полоса «Шаг N из 6» */
+    .cl-progress{position:sticky;top:66px;z-index:9;margin:0 -18px;padding:10px 18px 9px;background:rgba(5,5,7,.94);border-bottom:1px solid var(--line)}
+    .cl-bar{height:6px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden}
+    .cl-bar i{display:block;height:100%;width:0;background:var(--gold);border-radius:3px;transition:width .35s}
+    .cl-stepinfo{margin:8px 0 0;font-size:14px;line-height:1.4;color:var(--hint)}
+    .cl-stepinfo b{color:var(--text);font-weight:600}
+
+    .cl-page{position:relative;z-index:2;max-width:780px;margin:0 auto;padding:66px 18px 130px}
+    .cl-head{padding-top:34px}
+    .cl-head h1{margin:20px 0 16px;font-family:var(--display);font-size:clamp(1.6rem,6vw,2.7rem);line-height:1.1;letter-spacing:-.02em}
+    .cl-head h1 em{font-style:normal;color:var(--gold)}
+    .cl-head .lead{margin:0;color:var(--hint)}
+    .kicker{font-size:12px}
+
+    .cl-banner{margin-top:18px;padding:12px 16px;border:1px solid var(--gold-border);border-radius:8px;background:var(--gold-dim);font-size:15px;line-height:1.6;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .cl-link{background:none;border:0;padding:0;min-height:44px;color:var(--gold-bright);font:inherit;font-size:15px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+    .cl-link.small{min-height:0;font-size:14px}
+    .cl-rows .cl-link{min-height:44px;min-width:44px;padding:0 4px;font-size:15px;flex:none;align-self:center}
+
+    .cl-privacy{margin:26px 0 0;padding:16px 18px;border:1px dashed var(--gold-border);background:rgba(218,165,32,.04);border-radius:8px;font-size:15px;line-height:1.7;font-weight:300}
+    .cl-privacy p{margin:0 0 10px}.cl-privacy p:last-child{margin:0}
+    .cl-privacy strong{color:var(--gold-bright);font-weight:600}
+    .cl-privacy a,.cl-hint a,.cl-card a,.cl-stop a{color:var(--gold-bright);text-decoration:underline;text-underline-offset:3px}
+
+    .cl-step{margin-top:30px}
+    .cl-step h2{margin:0;font-family:var(--display);font-size:clamp(1.15rem,4.2vw,1.6rem);line-height:1.2;outline:0}
+    .cl-step-num{display:block;margin-bottom:8px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--gold)}
+    .cl-why{margin:10px 0 0;color:var(--hint);font-weight:300;line-height:1.7;font-size:15px}
+
+    fieldset.cl-q{min-width:0;margin:0;padding:0 0 22px;border:0;border-bottom:1px solid var(--line)}
+    fieldset.cl-q:last-of-type{border-bottom:0}
+    .cl-ask{display:block;width:100%;float:none;padding:22px 0 0;font-size:17px;font-weight:600;line-height:1.45}
+    .cl-opt{font-weight:400;font-size:14px;color:var(--hint)}
+    .cl-hint{margin:6px 0 0;color:var(--hint);font-size:15px;font-weight:300;line-height:1.65}
+    .cl-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .chip{position:relative;display:inline-flex;align-items:center;gap:11px;min-height:48px;max-width:100%;padding:11px 16px;border:1px solid var(--line-hover);border-radius:8px;background:var(--bg-card);color:var(--text);font-size:16px;line-height:1.35;cursor:pointer;user-select:none;transition:border-color .2s,background .2s}
+    .chip input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+    .chip::before{content:"";flex:none;width:20px;height:20px;border:2px solid var(--ctl);border-radius:50%;background:transparent}
+    .chip.multi::before,.chip.check::before{border-radius:5px}
+    .chip:hover{border-color:var(--gold-border)}
+    .chip.is-on{border-color:var(--gold);background:var(--gold-dim);color:var(--gold-bright)}
+    .chip.is-on::before{border-color:var(--gold);background:var(--gold);box-shadow:inset 0 0 0 4px var(--bg-card)}
+    .chip.multi.is-on::before,.chip.check.is-on::before{box-shadow:none;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5' fill='none' stroke='%230a0a0f' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+    .chip:focus-within{outline:2px solid var(--gold);outline-offset:2px}
+    .chip.check{display:flex;width:100%;align-items:flex-start}
+    fieldset.cl-q>.chip.check{margin-top:22px}
+    .chip.check::before{margin-top:1px}
+    .cl-other{margin-top:12px}
+    .cl-other label,.cl-field label{display:block;margin-bottom:6px;font-size:15px;color:var(--text)}
+    .cl-input{width:100%;min-width:0;min-height:48px;font:inherit;font-size:16px;color:var(--text);background:var(--bg-card);border:1px solid var(--ctl);border-radius:8px;padding:12px 14px}
+    textarea.cl-input{min-height:96px;resize:vertical;line-height:1.5}
+    .cl-input::placeholder{color:var(--hint);opacity:1}
+    .cl-input[aria-invalid="true"]{border-color:var(--bad)}
+    .cl-count{margin:4px 0 0;font-size:13px;color:var(--hint);text-align:right}
+    .cl-warn{margin:6px 0 0;font-size:15px;line-height:1.5;color:var(--bad)}
+    .cl-warn::before{content:"! ";font-weight:700}
+    .cl-field{margin-top:12px}
+    input:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    .cl-stop{margin:14px 0 0;padding:14px 16px;border-left:3px solid var(--orange);background:rgba(255,122,24,.08);border-radius:0 8px 8px 0;font-size:15px;line-height:1.7}
+
+    /* Экран «Проверьте план» */
+    .cl-card{margin-top:18px;padding:20px;border:1px solid var(--line-hover);border-radius:8px;background:var(--bg-card)}
+    .cl-card h3{margin:0 0 12px;font-family:var(--display);font-size:1.05rem;line-height:1.3}
+    .cl-rows{margin:0;padding:0;list-style:none}
+    .cl-rows li{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line);font-size:16px;line-height:1.5}
+    .cl-rows li:last-child{border-bottom:0}
+    .cl-rows .k{color:var(--hint);font-size:14px;display:block}
+    .cl-rows .v.none{color:var(--hint)}
+    .cl-list{margin:0;padding-left:1.3rem;display:flex;flex-direction:column;gap:9px;font-size:16px;line-height:1.6}
+    .cl-list li::marker{color:var(--gold)}
+    .cl-note{margin:14px 0 0;color:var(--hint);font-size:15px;line-height:1.65}
+    details.cl-limits{margin-top:18px;border:1px solid var(--line-hover);border-radius:8px;background:var(--bg-card)}
+    details.cl-limits summary{min-height:48px;padding:13px 16px;cursor:pointer;font-weight:600;font-size:16px;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    details.cl-limits summary::-webkit-details-marker{display:none}
+    details.cl-limits summary::after{content:"+";font-size:22px;color:var(--gold)}
+    details.cl-limits[open] summary::after{content:"−"}
+    details.cl-limits .in{padding:0 16px 16px}
+    .cl-sendbox{margin-top:22px;padding:20px;border:1px solid var(--gold-border);border-radius:8px;background:var(--bg-card)}
+    .cl-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+    .cl-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:13px 20px;border-radius:8px;border:1px solid var(--line-hover);background:transparent;color:var(--text);font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;text-align:center;line-height:1.4;transition:transform .3s,background .3s,box-shadow .3s}
+    .cl-btn:hover{transform:translateY(-2px);border-color:var(--gold-border)}
+    .cl-btn.main{background:var(--gold);border-color:var(--gold);color:#0a0a0f}
+    .cl-btn.main:hover{background:var(--gold-bright);box-shadow:0 16px 40px -12px rgba(218,165,32,.55)}
+    .cl-btn.big{min-height:56px;padding:16px 24px;font-size:14px}
+    .cl-btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+    .cl-said{margin:14px 0 0;min-height:1.4em;font-size:15px;line-height:1.6;color:var(--hint)}
+    .cl-said.bad{color:var(--bad)}.cl-said.ok{color:#b6ffd2}
+    #cl-fallback{display:none;width:100%;margin-top:12px;min-height:160px;font-family:var(--mono);font-size:16px}
+
+    /* Спасибо */
+    .cl-thanks h2{margin:0;font-family:var(--display);font-size:clamp(1.4rem,5vw,2.1rem);line-height:1.15;outline:0}
+    .cl-order{display:inline-block;margin:14px 0 4px;padding:10px 16px;border:1px solid var(--gold-border);border-radius:8px;font-family:var(--mono);font-size:20px;letter-spacing:.12em;color:var(--gold-bright);background:var(--gold-dim)}
+    .cl-reply{margin:12px 0 0;font-size:18px;font-weight:600;line-height:1.5}
+
+    /* Панель «Назад / Дальше» */
+    .cl-nav{position:fixed;left:0;right:0;bottom:0;z-index:9;padding:10px 18px calc(10px + env(safe-area-inset-bottom));background:rgba(5,5,7,.94);border-top:1px solid var(--line-hover);backdrop-filter:blur(14px)}
+    .cl-nav .in{max-width:744px;margin:0 auto;display:flex;gap:12px;align-items:center}
+    .cl-nav .cl-btn{flex:1}
+    .cl-nav .cl-btn.main{flex:2}
+    .cl-navmsg{max-width:744px;margin:0 auto 8px;font-size:14px;line-height:1.5;color:var(--bad)}
+    .cl-trap{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+    .cl-confirm{margin-top:22px;padding:18px;border:1px solid var(--orange);border-radius:8px;background:rgba(255,122,24,.07)}
+    .cl-confirm p{margin:0 0 12px;font-size:16px;line-height:1.6}
+    .cl-foot{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);color:var(--hint);font-size:14px;line-height:1.8}
+    .cl-foot a{color:var(--text);text-decoration:underline;text-underline-offset:3px}
+    @media(max-width:600px){
+      .cl-actions{flex-direction:column}
+      .cl-actions .cl-btn{width:100%}
+      .cl-card,.cl-sendbox{padding:16px}
+      .cl-top .tag{display:none}
+    }
+    @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="cl-top">
+    <a class="brand" href="/" aria-label="ALTERA — на главную"><span class="brand-mark" aria-hidden="true"><i></i></span><span>ALTERA</span></a>
+    <span class="tag">Анкета семейного сайта</span>
+  </header>
+
+  <main class="cl-page">
+    <div class="cl-progress" id="cl-progress">
+      <div class="cl-bar" aria-hidden="true"><i id="cl-barfill"></i></div>
+      <p class="cl-stepinfo" id="cl-stepinfo" aria-live="polite"></p>
+    </div>
+
+    <div class="cl-head" id="cl-head">
+      <p class="kicker"><span></span> СЕМЕЙНЫЙ САЙТ</p>
+      <h1>Расскажите о <em>вашем древе</em></h1>
+      <p class="lead">Шесть коротких шагов, 5–7 минут. Почти везде достаточно нажать кнопку. Не знаете ответа — выберите «Не знаю», уточним при разговоре. Ответы сохраняются на вашем устройстве сами.</p>
+    </div>
+
+    <noscript><p class="cl-stop">Для анкеты нужен включённый JavaScript. Или просто напишите нам в <a href="https://t.me/VlV_7777">Telegram @VlV_7777</a>.</p></noscript>
+
+    <div class="cl-banner" id="cl-banner" hidden>
+      <span id="cl-banner-text"></span>
+      <button type="button" class="cl-link" id="cl-banner-reset">Начать заново</button>
+    </div>
+
+    <form id="cl-form" autocomplete="off" novalidate>
+      <div id="cl-steps"></div>
+
+      <!-- Экран «Проверьте план» -->
+      <section id="cl-review" hidden>
+        <div class="cl-step">
+          <span class="cl-step-num">ПОСЛЕДНИЙ ЭКРАН</span>
+          <h2 tabindex="-1" id="cl-review-h">Проверьте план</h2>
+          <p class="cl-why">Так мы поняли вашу задачу. Всё можно поправить: нажмите «изменить» у нужной строки.</p>
+        </div>
+        <div class="cl-card"><h3>Ваш сайт</h3><ul class="cl-rows" id="cl-rows"></ul></div>
+        <div class="cl-card"><h3>Что мы сделаем</h3><ol class="cl-list" id="cl-plan"></ol>
+          <p class="cl-note">Сроки и условия называем после разговора и фиксируем в договоре. Всё, что указано на этой странице, — ориентиры.</p></div>
+        <div class="cl-card"><h3>Что нужно от вас</h3><ul class="cl-list" id="cl-need"></ul></div>
+
+        <details class="cl-limits" id="cl-limits">
+          <summary>Что сайт не делает</summary>
+          <div class="in">
+            <ul class="cl-list">
+              <li>Не ищет предков сам: в нём нет архивов, ДНК-анализа и совпадений с чужими деревьями. Всё, что в дереве, вносит семья.</li>
+              <li>Нет распознавания лиц: людей на фотографиях отмечают вручную.</li>
+              <li>Не проверяет законность внесённых сведений и согласие родных. За содержимое сайта отвечает хранитель.</li>
+              <li>Хостинг и база данных находятся не в России (сервисы Vercel и Supabase). Их доступность и условия определяют сами сервисы.</li>
+              <li>Абсолютной защиты не бывает: безопасность зависит и от паролей родных. Мы не отвечаем за доступ, который родственник отдал другим.</li>
+              <li>Резервную копию делает хранитель кнопкой «Скачать .ged». У студии копий нет.</li>
+              <li>Это сайт, а не приложение из магазина. На телефоне он открывается и выглядит как приложение.</li>
+              <li>Карта мест, печать плакатом, набор дерева с бумаги и перенос фотографий — отдельная работа.</li>
+            </ul>
+          </div>
+        </details>
+        <div class="chip-wrap" id="cl-ack-limits-wrap"></div>
+        <div class="chip-wrap" id="cl-ack-keeper-wrap"></div>
+
+        <div class="cl-sendbox">
+          <div class="chip-wrap" id="cl-ack-notice-wrap"></div>
+          <p class="cl-note" style="margin-top:10px">Подробнее о данных — в заметке на первом шаге: имена и контакты в анкету не вписываются.</p>
+          <div class="cl-actions">
+            <button type="button" class="cl-btn main big" id="cl-send" hidden>Отправить заявку →</button>
+            <button type="button" class="cl-btn big" id="cl-copy">Скопировать текст заявки</button>
+            <a class="cl-btn main big" id="cl-tg-review" target="_blank" rel="noopener">Написать в Telegram</a>
+          </div>
+          <p class="cl-said" id="cl-said" role="status" aria-live="polite"></p>
+          <textarea id="cl-fallback" class="cl-input" readonly aria-label="Текст заявки для копирования"></textarea>
+        </div>
+      </section>
+
+      <!-- Экран «Спасибо» -->
+      <section id="cl-thanks" class="cl-thanks" hidden>
+        <div class="cl-step">
+          <span class="cl-step-num">ГОТОВО</span>
+          <h2 tabindex="-1" id="cl-thanks-h">Заявка отправлена. Спасибо!</h2>
+          <p class="cl-why">Номер вашей заявки:</p>
+          <div class="cl-order" id="cl-order-big"></div>
+          <p class="cl-reply">Напишите нам в Telegram и назовите этот номер: так мы поймём, чья это заявка. Ответим в течение 3 рабочих дней.</p>
+          <div class="cl-actions"><a class="cl-btn main big" id="cl-tg-thanks" target="_blank" rel="noopener">Написать в Telegram</a></div>
+        </div>
+        <div class="cl-card"><h3>Вот что вы рассказали</h3><ul class="cl-rows" id="cl-sum"></ul></div>
+        <div class="cl-card"><h3>Что дальше</h3>
+          <ol class="cl-list">
+            <li>Вы пишете нам в Telegram и называете номер заявки.</li>
+            <li>Мы читаем ответы и в течение 3 рабочих дней пишем вам вариант и ориентир по срокам.</li>
+            <li>Созвон на 15 минут: уточним детали. Условия фиксируем в договоре.</li>
+          </ol>
+          <p class="cl-note">Заявка ни к чему вас не обязывает.</p></div>
+        <div class="cl-card"><h3>Что нужно от вас дальше</h3><ul class="cl-list" id="cl-need2"></ul></div>
+        <div class="cl-card"><h3>Пока ждёте</h3>
+          <p class="cl-note" style="margin-top:0">Посмотрите, как выглядит такой сайт: <a href="https://altera-tau.vercel.app/demo/rod.html" target="_blank" rel="noopener">пример «РОД»</a>.</p>
+          <div class="cl-actions">
+            <button type="button" class="cl-btn" id="cl-copy2">Скопировать текст заявки</button>
+            <button type="button" class="cl-btn" id="cl-reset2">Начать заново</button>
+          </div>
+          <p class="cl-said" id="cl-said2" role="status" aria-live="polite"></p>
+          <textarea id="cl-fallback2" class="cl-input" readonly aria-label="Текст заявки для копирования" style="display:none;min-height:160px"></textarea>
+        </div>
+      </section>
+
+      <!-- Ловушка для ботов: человек её не видит и не заполняет -->
+      <div class="cl-trap" aria-hidden="true"><label>Не заполняйте это поле<input type="text" name="website" id="cl-trap" tabindex="-1" autocomplete="off"></label></div>
+    </form>
+
+    <div class="cl-confirm" id="cl-confirm" hidden role="alertdialog" aria-labelledby="cl-confirm-t">
+      <p id="cl-confirm-t">Точно начать заново? Все ответы на этом устройстве будут стёрты.</p>
+      <div class="cl-actions" style="margin-top:0">
+        <button type="button" class="cl-btn" id="cl-confirm-no">Нет, оставить</button>
+        <button type="button" class="cl-btn main" id="cl-confirm-yes">Да, стереть</button>
+      </div>
+    </div>
+
+    <p class="cl-foot">ALTERA · Красноярск · Страница закрыта от поисковиков и открывается только по ссылке. Пока вы ничего не отправили, ответы остаются только на вашем устройстве. Сроки и стоимость называем после разговора и закрепляем в договоре; указанное на странице — ориентиры.
+      <span id="cl-foot-reset-wrap"><br><button type="button" class="cl-link small" id="cl-foot-reset">Начать заново</button></span></p>
+  </main>
+
+  <div class="cl-nav" id="cl-nav">
+    <p class="cl-navmsg" id="cl-navmsg" role="alert" hidden></p>
+    <div class="in">
+      <button type="button" class="cl-btn" id="cl-back">Назад</button>
+      <button type="button" class="cl-btn main" id="cl-next">Дальше</button>
+    </div>
+  </div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Настройки ───────────────────────────────────────────────
+     SCRIPT_URL — адрес веб-приложения Google Apps Script. Пока пусто:
+     кнопка «Отправить заявку» скрыта, работают «Скопировать текст заявки»
+     и «Написать в Telegram». TOKEN — общая строка с google-apps-script.gs;
+     это не секрет, а защита от случайных вызовов. */
+  var SCRIPT_URL = '';
+  var TOKEN = '5812314a6dac426bfe2cede20f629995c7e37f3c7d6281e7';
+  var TG_URL = 'https://t.me/VlV_7777';
+  var VERSION = '2026-10-19.2';
+  var MIN_SECONDS = 5;       // быстрее человек форму не заполнит
+  var MAX_FIELD = 200;       // знаков в свободном поле
+  var DRAFT_KEY = 'altera.chek-list.draft.v1';
+
+  /* ── Вопросы ─────────────────────────────────────────────────
+     Ответы хранятся по id вопроса (не по порядку): новые вопросы
+     не ломают чужие черновики. type: one | multi | check | text | date.
+     other: true — при выборе «Не знаю / другое» появляется поле до 200 знаков. */
+  var DK = { id: 'unknown', label: 'Не знаю' };
+  var DKO = { id: 'unknown', label: 'Не знаю / другое' };
+  var YN = [{ id: 'yes', label: 'Да' }, { id: 'no', label: 'Нет' }, DK];
+
+  var STEPS = [
+    { t: 'Знакомство', why: 'Хранитель — человек, который ведёт дерево на сайте и зовёт родных.' },
+    { t: 'Ваше дерево', why: 'Это самое важное для оценки работы. Достаточно примерных ответов.' },
+    { t: 'Родные и закрытость', why: 'Сайт закрытый: войти можно только по приглашению хранителя, поисковики его не показывают.' },
+    { t: 'Название и адрес', why: 'Само название и адрес назовёте в Telegram. Здесь выбираем только вариант.' },
+    { t: 'Напоминания', why: 'Письма и сообщения о днях рождения, годовщинах и днях памяти.' },
+    { t: 'Сроки и условия', why: 'Последний шаг. Окончательные сроки и условия обсудим при разговоре.' }
+  ];
+
+  var Q = [
+    // шаг 1
+    { id: 'audience', s: 0, type: 'one', short: 'Для кого', label: 'Для кого вы заказываете сайт?',
+      hint: 'Мы делаем закрытые сайты для семьи. Для организаций, музеев и публикаций эта анкета не подходит.',
+      opts: [{ id: 'self', label: 'Для себя' }, { id: 'family', label: 'Для семьи, решаем вместе' }, { id: 'gift', label: 'Подарок родным' }, { id: 'org', label: 'Для организации или публикации' }] },
+    { id: 'keeper_who', s: 0, type: 'one', short: 'Хранитель', label: 'Кто будет хранителем дерева?',
+      hint: 'Хранитель создаёт первый вход и зовёт родных. Имя и почту обсудим в Telegram, здесь их не пишите.',
+      opts: [{ id: 'me', label: 'Я сам(а)' }, { id: 'other', label: 'Другой человек из семьи' }, { id: 'help', label: 'Нужна помощь, чтобы решить' }] },
+
+    // шаг 2
+    { id: 'tree_source', s: 1, type: 'one', other: true, short: 'Где ведётся дерево', label: 'Где сейчас ведётся ваше дерево?',
+      hint: 'Сервис в интернете — это MyHeritage, Ancestry, «Древо жизни», FamilySpace, Geni.',
+      opts: [{ id: 'service', label: 'В сервисе в интернете' }, { id: 'file', label: 'В файле: Word, Excel' }, { id: 'paper', label: 'На бумаге, в тетради' }, { id: 'memory', label: 'Только в памяти' }, { id: 'none', label: 'Дерева ещё нет' }, DKO] },
+    { id: 'tree_service', s: 1, type: 'multi', other: true, optional: true, short: 'Какой сервис', label: 'В каком именно сервисе?',
+      showIf: function () { return is('tree_source', 'service'); },
+      opts: [{ id: 'myheritage', label: 'MyHeritage' }, { id: 'ancestry', label: 'Ancestry' }, { id: 'drevo', label: 'Древо жизни' }, { id: 'familyspace', label: 'FamilySpace' }, { id: 'geni', label: 'Geni' }, DKO] },
+    { id: 'ged_status', s: 1, type: 'one', short: 'Файл .ged', label: 'Есть ли у вас файл дерева (.ged) или можете ли вы его скачать?',
+      hint: '.ged — файл, в который сервис выгружает дерево; обычно кнопка «Экспорт» или «Скачать». Сам файл сюда не прикладывайте и не присылайте в первом сообщении: в нём имена всех родных. Как его передать, договоримся отдельно.',
+      showIf: function () { return is('tree_source', 'service') || is('tree_source', 'unknown') || !A.tree_source; },
+      opts: [{ id: 'have', label: 'Файл .ged уже есть' }, { id: 'can', label: 'Могу скачать сам(а)' }, { id: 'help', label: 'Не знаю как, нужна помощь' }, { id: 'none', label: 'Файла не будет' }, DK] },
+    { id: 'tree_size', s: 1, type: 'one', short: 'Людей в дереве', label: 'Сколько человек в дереве?',
+      hint: 'Примерно, порядок цифры.',
+      opts: [{ id: 'u100', label: 'До 100' }, { id: 'u300', label: '100–300' }, { id: 'u1000', label: '300–1000' }, { id: 'o1000', label: 'Больше 1000' }, DK] },
+    { id: 'photos_count', s: 1, type: 'one', short: 'Фотографий', label: 'Сколько фотографий нужно перенести?',
+      hint: 'Фотографии в файл .ged не входят. Кто на них — не пишите.',
+      opts: [{ id: 'none', label: 'Нет' }, { id: 'u100', label: 'До 100' }, { id: 'u1000', label: '100–1000' }, { id: 'o1000', label: 'Больше 1000' }, DK] },
+    { id: 'typing_needed', s: 1, type: 'one', short: 'Кто вносит людей', label: 'Кто будет вносить людей в дерево?',
+      hint: 'Помощь с набором — отдельная работа. Условия обсудим после знакомства с материалом.',
+      showIf: function () { return anyOf('tree_source', ['file', 'paper', 'memory', 'none']); },
+      opts: [{ id: 'self', label: 'Внесу(ём) сами' }, { id: 'help', label: 'Нужна помощь с набором' }, { id: 'unknown', label: 'Пока не решили / не знаю' }] },
+
+    // шаг 3
+    { id: 'users_count', s: 2, type: 'one', short: 'Родных на сайте', label: 'Сколько родных будут заходить на сайт?',
+      hint: 'Примерно. От этого зависит тариф хостинга.',
+      opts: [{ id: 'u10', label: 'До 10' }, { id: 'u30', label: '10–30' }, { id: 'u100', label: '30–100' }, { id: 'o100', label: 'Больше 100' }, DK] },
+    { id: 'users_abroad', s: 2, type: 'one', short: 'Родные за границей', label: 'Есть ли родные, которые живут за границей?',
+      hint: 'Страны не называйте. Это нужно только для выбора мессенджера.', opts: YN },
+    { id: 'access_roles', s: 2, type: 'one', short: 'Кто правит', label: 'Кто сможет вносить правки?',
+      hint: 'Есть роль «наблюдатель»: человек видит всё, но ничего не меняет.',
+      opts: [{ id: 'all', label: 'Все могут править' }, { id: 'me', label: 'Правлю я, остальные смотрят' }, { id: 'unknown', label: 'Решим потом' }] },
+    { id: 'objections_exist', s: 2, type: 'one', short: 'Кто-то против', label: 'Может ли кто-то из живых родных быть против, чтобы его данные были на сайте?',
+      hint: 'Живой человек вправе отказаться. Хранитель в таком случае не заводит карточку или заводит её без дат и фото. Имена здесь не нужны.', opts: YN },
+    { id: 'people_separate', s: 2, type: 'check', optional: true, short: 'Люди для отдельного разговора', label: 'Есть люди, о которых мы поговорим отдельно',
+      hint: 'Кого и почему — здесь не пишите. Это разговор хранителя с самими людьми.' },
+
+    // шаг 4
+    { id: 'site_name_kind', s: 3, type: 'one', short: 'Название сайта', label: 'Как назвать сайт?',
+      hint: 'Одно слово в шапке сайта. Само слово назовёте в Telegram, здесь не пишите.',
+      opts: [{ id: 'surname', label: 'Фамилия рода' }, { id: 'own', label: 'Своё слово' }, { id: 'later', label: 'Решим позже' }] },
+    { id: 'domain_type', s: 3, type: 'one', other: true, short: 'Адрес сайта', label: 'Какой адрес у сайта?',
+      hint: 'Домен всегда оформляется на вас, не на студию. Окончательно решим после разговора.',
+      opts: [{ id: 'free', label: 'Бесплатный адрес на Vercel' }, { id: 'own', label: 'Свой домен, например название.ru (платно, оплачивается вами)' }, { id: 'help', label: 'Подскажите, что лучше' }, DKO] },
+    { id: 'look', s: 3, type: 'one', other: true, short: 'Оформление', label: 'Как оформить сайт?',
+      link: ['Посмотреть пример «РОД»', 'https://altera-tau.vercel.app/demo/rod.html'],
+      opts: [{ id: 'rod', label: 'Как в примере «РОД»' }, { id: 'colors', label: 'Свои цвета и название' }, { id: 'talk', label: 'Хочу обсудить' }, DKO] },
+    { id: 'language', s: 3, type: 'one', other: true, short: 'Язык сайта', label: 'На каком языке нужен сайт?',
+      hint: 'Спрашиваем, потому что есть родные за границей.',
+      showIf: function () { return is('users_abroad', 'yes') || is('users_abroad', 'unknown'); },
+      opts: [{ id: 'ru', label: 'На русском' }, { id: 'other', label: 'На другом (отдельная оценка)' }, DKO] },
+
+    // шаг 5
+    { id: 'notices', s: 4, type: 'one', short: 'Напоминания', label: 'Нужны ли напоминания о днях рождения и днях памяти?',
+      hint: 'Они приходят письмом или сообщением в мессенджер. Без них работа короче.',
+      opts: [{ id: 'yes', label: 'Да' }, { id: 'no', label: 'Нет' }, { id: 'unknown', label: 'Не уверен(а)' }] },
+    { id: 'notify_channels', s: 4, type: 'multi', short: 'Куда присылать', label: 'Куда присылать напоминания?',
+      hint: 'Можно выбрать несколько. Телеграм настраивается быстро (ориентир: около получаса). MAX проверяет сам мессенджер, на это может уйти до двух суток. Для писем понадобится отдельный почтовый ящик, поможем его завести.',
+      showIf: function () { return is('notices', 'yes'); },
+      opts: [{ id: 'mail', label: 'Почта' }, { id: 'tg', label: 'Телеграм' }, { id: 'max', label: 'MAX' }, DK] },
+    { id: 'timezone', s: 4, type: 'one', other: true, short: 'Часовой пояс', label: 'Какой у вас часовой пояс?',
+      hint: 'Время рассылки подберём под ваш пояс.',
+      showIf: function () { return is('notices', 'yes'); },
+      opts: [{ id: 'msk', label: 'Москва' }, { id: 'krsk', label: 'Красноярск' }, { id: 'other', label: 'Другой' }, DK] },
+
+    // шаг 6
+    { id: 'deadline', s: 5, type: 'one', short: 'Срок', label: 'Когда нужен готовый сайт?',
+      hint: 'Сроки называем после разговора, это ориентиры.',
+      opts: [{ id: 'month', label: 'В течение месяца' }, { id: 'date', label: 'К дате: юбилей, встреча семьи' }, { id: 'relaxed', label: 'Без спешки' }, DK] },
+    { id: 'deadline_date', s: 5, type: 'date', optional: true, short: 'Дата', label: 'К какому числу?',
+      showIf: function () { return is('deadline', 'date'); } },
+    { id: 'turnkey', s: 5, type: 'one', short: 'Кто заводит доступы', label: 'Кто будет заводить доступы: почту, адрес сайта, хранилище?',
+      hint: 'Всё оформляется на ваше имя. «Под ключ» значит, что мы ведём вас по шагам и настраиваем вместе с вами.',
+      opts: [{ id: 'self', label: 'Я сам(а), по вашим подсказкам' }, { id: 'turnkey', label: 'Хочу под ключ' }, DK] },
+    { id: 'support', s: 5, type: 'one', other: true, short: 'Поддержка', label: 'Нужна ли помощь после запуска?',
+      hint: 'Условия фиксируем в договоре.',
+      opts: [{ id: 'train', label: 'Только обучение в начале' }, { id: 'ask', label: 'Помощь по просьбе' }, { id: 'perm', label: 'Постоянная поддержка' }, { id: 'none', label: 'Не нужна' }, DKO] },
+    { id: 'hosting_pay', s: 5, type: 'one', short: 'Оплата хостинга', label: 'Готовы ли вы оплачивать хостинг со своего счёта, если понадобится платный тариф?',
+      hint: 'Хостинг и база оформляются на вас. Бесплатный тариф Vercel (Hobby) не разрешает коммерческое использование: он для личного сайта. Если сайт будет использоваться иначе, нужен платный тариф. Окончательно решим после разговора.',
+      opts: [{ id: 'free', label: 'Хватит бесплатного' }, { id: 'yes', label: 'Да, готов(а) оплатить при необходимости' }, { id: 'unknown', label: 'Не знаю, объясните' }] },
+    { id: 'heard_from', s: 5, type: 'one', other: true, optional: true, short: 'Откуда узнали', label: 'Откуда вы о нас узнали?',
+      opts: [{ id: 'tg', label: 'Телеграм-канал' }, { id: 'vk', label: 'ВК' }, { id: 'max', label: 'MAX' }, { id: 'friends', label: 'Знакомые' }, { id: 'search', label: 'Поиск' }, DKO] },
+    { id: 'extra_wishes', s: 5, type: 'multi', other: true, optional: true, short: 'Хотелось бы ещё', label: 'Что ещё хотелось бы?',
+      hint: 'Всё это — отдельная работа, обсудим при разговоре.',
+      opts: [{ id: 'map', label: 'Карта мест' }, { id: 'print', label: 'Печать плакатом' }, { id: 'dedupe', label: 'Поиск двойников в дереве' }, DKO] },
+    { id: 'wishes_text', s: 5, type: 'text', optional: true, short: 'Пожелания', label: 'Хотите что-то добавить?',
+      hint: 'Своими словами. Не пишите имена, фамилии, телефоны, почту и ссылки на страницы людей. Только суть.' }
+  ];
+
+  // Подтверждения на экране «Проверьте план»
+  var ACKS = [
+    { id: 'ack_limits', type: 'check', wrap: 'cl-ack-limits-wrap', optional: true, label: 'Прочитал(а), что сайт не делает.' },
+    { id: 'ack_keeper', type: 'check', wrap: 'cl-ack-keeper-wrap', optional: true, label: 'Понимаю, что за содержимое сайта отвечает хранитель, а не студия.' },
+    { id: 'ack_notice', type: 'check', wrap: 'cl-ack-notice-wrap', required: true, label: 'Я понимаю, что имена, телефоны, почту и даты рождения людей здесь вписывать не нужно, и оставлю контакт только в Telegram.' }
+  ];
+
+  var FREE_NOTE = 'Не пишите имена, фамилии, телефоны, почту и ссылки на страницы людей. Только суть.';
+
+  /* ── Состояние ───────────────────────────────────────────── */
+  var A = {};            // ответы по id вопроса
+  var O = {};            // поля «другое» по id вопроса
+  var step = 0;          // 0..5 — шаги, 6 — проверка, 7 — спасибо
+  var REVIEW = 6, THANKS = 7;
+  var sent = false;
+  var openedAt = Date.now();
+  var order = makeOrderId();
+  var src = (function () {
+    try {
+      var s = new URLSearchParams(location.search).get('src');
+      return ['dm', 'landing', 'demo', 'post'].indexOf(s) >= 0 ? s : 'direct';
+    } catch (e) { return 'direct'; }
+  })();
+
+  var byId = {};
+  Q.forEach(function (q) { byId[q.id] = q; });
+  ACKS.forEach(function (a) { byId[a.id] = a; });
+
+  function toArr(v) { return v === undefined || v === null || v === '' ? [] : (Array.isArray(v) ? v : [v]); }
+  function is(id, val) { var v = A[id]; return Array.isArray(v) ? v.indexOf(val) >= 0 : v === val; }
+  function anyOf(id, vals) { return vals.some(function (x) { return is(id, x); }); }
+  function visible(q) { return !q.showIf || q.showIf(); }
+
+  /* ── Номер заявки: случайный, не по порядку ──────────────── */
+  function makeOrderId() {
+    var abc = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    var out = '';
+    try {
+      var a = new Uint8Array(8);
+      crypto.getRandomValues(a);
+      for (var i = 0; i < 8; i++) out += abc.charAt(a[i] % abc.length);
+    } catch (e) {
+      for (var j = 0; j < 8; j++) out += abc.charAt(Math.floor(Math.random() * abc.length));
+    }
+    return out.slice(0, 4) + '-' + out.slice(4);
+  }
+
+  /* ── Защита от ввода имён и контактов ────────────────────── */
+  function pdReason(s) {
+    s = String(s || '');
+    if (!s) return '';
+    if (/@/.test(s)) return 'Похоже на почту или ник с «@».';
+    if (/(^|[^\d])(\+\s*7|8[\s\-(]*9)/.test(s) || /(?:\d[\s\-().]*){7,}/.test(s)) return 'Похоже на номер телефона.';
+    if (/https?:|www\.|t\.me|vk\.com|\b[\w-]+\.(ru|com|рф|su|org|net|app|me)\b/i.test(s)) return 'Похоже на ссылку.';
+    if (/(^|[^А-Яа-яЁё])[А-ЯЁ][а-яё]{2,}\s+[А-ЯЁ][а-яё]{2,}(?![А-Яа-яЁё])/.test(s) || /(^|[^A-Za-z])[A-Z][a-z]{2,}\s+[A-Z][a-z]{2,}(?![A-Za-z])/.test(s)) return 'Похоже на имя.';
+    return '';
+  }
+
+  /* ── Построение страницы ─────────────────────────────────── */
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text) e.textContent = text;
+    return e;
+  }
+
+  var stepsRoot = document.getElementById('cl-steps');
+  var qNodes = {};       // id -> {box, inputs, other, warn}
+
+  function chip(kind, name, id, value, text) {
+    var lab = el('label', 'chip ' + kind);
+    var inp = document.createElement('input');
+    inp.type = kind === 'one' ? 'radio' : 'checkbox';
+    inp.name = name;
+    inp.id = id;
+    inp.value = value;
+    lab.appendChild(inp);
+    lab.appendChild(el('span', '', text));
+    return { lab: lab, inp: inp };
+  }
+
+  function otherField(q) {
+    var wrap = el('div', 'cl-other');
+    wrap.hidden = true;
+    var l = el('label', '', 'Если хотите, уточните своими словами');
+    l.setAttribute('for', 'o-' + q.id);
+    var inp = document.createElement('input');
+    inp.type = 'text';
+    inp.id = 'o-' + q.id;
+    inp.className = 'cl-input';
+    inp.maxLength = MAX_FIELD;
+    inp.setAttribute('data-other', q.id);
+    inp.setAttribute('aria-describedby', 'oh-' + q.id);
+    var h = el('p', 'cl-hint', FREE_NOTE + ' До ' + MAX_FIELD + ' знаков.');
+    h.id = 'oh-' + q.id;
+    var warn = el('p', 'cl-warn');
+    warn.hidden = true;
+    warn.setAttribute('role', 'alert');
+    wrap.appendChild(l); wrap.appendChild(inp); wrap.appendChild(h); wrap.appendChild(warn);
+    return { wrap: wrap, inp: inp, warn: warn };
+  }
+
+  STEPS.forEach(function (s, si) {
+    var sec = el('section', 'cl-step');
+    sec.setAttribute('data-step', si);
+    sec.hidden = true;
+    var num = el('span', 'cl-step-num', 'ШАГ ' + (si + 1) + ' ИЗ ' + STEPS.length);
+    var h2 = el('h2', '', s.t);
+    h2.tabIndex = -1;
+    sec.appendChild(num);
+    sec.appendChild(h2);
+    sec.appendChild(el('p', 'cl-why', s.why));
+    sec.__h = h2;
+
+    // заметка о данных — над первым вопросом первого шага
+    if (si === 0) {
+      var note = el('div', 'cl-privacy');
+      var p1 = el('p');
+      p1.appendChild(el('strong', '', 'О данных. '));
+      p1.appendChild(document.createTextNode('Эта анкета не собирает имён, телефонов, почтовых адресов и дат рождения. Не пишите их ни здесь, ни в свободных полях. Ответы сохраняются без привязки к вам, под номером заявки. Связаться с вами лично мы будем в Telegram, в чате с @VlV_7777: пришлите туда номер заявки, который покажет страница после отправки.'));
+      var p2 = el('p', '', 'Страница и ответы хранятся на серверах за пределами России (Vercel и Google). Поэтому персональные данные сюда и не нужны. Ответы на вопросы без имён используются только для оценки работы и связи с вами по заявке. Хранятся до завершения работы или до вашей просьбы удалить, но не дольше 12 месяцев с даты заявки.');
+      var p3 = el('p', '', 'Оператор страницы: Лебедев Владимир Викторович, самозанятый, Красноярск. Вопросы и просьба удалить заявку — в Telegram @VlV_7777 с номером заявки.');
+      note.appendChild(p1); note.appendChild(p2); note.appendChild(p3);
+      sec.appendChild(note);
+    }
+
+    Q.filter(function (q) { return q.s === si; }).forEach(function (q) {
+      var box = el('fieldset', 'cl-q');
+      box.id = 'q-' + q.id;
+      var node = { box: box, inputs: [] };
+      var describedBy = '';
+
+      if (q.type === 'check') {
+        var c = chip('check', q.id, 'f-' + q.id, '1', q.label);
+        var legend = el('legend', 'cl-ask');
+        legend.style.cssText = 'position:absolute;left:-9999px';
+        legend.textContent = q.label;
+        box.appendChild(legend);
+        box.appendChild(c.lab);
+        if (q.hint) { var ph = el('p', 'cl-hint', q.hint); box.appendChild(ph); }
+        node.inputs.push(c);
+      } else {
+        var lg = el('legend', 'cl-ask', q.label);
+        if (q.optional) lg.appendChild(el('span', 'cl-opt', ' — можно пропустить'));
+        box.appendChild(lg);
+        if (q.hint) {
+          var hp = el('p', 'cl-hint', q.hint);
+          hp.id = 'h-' + q.id;
+          box.appendChild(hp);
+          describedBy = hp.id;
+        }
+        if (q.link) {
+          var lp = el('p', 'cl-hint');
+          var a = el('a', '', q.link[0]);
+          a.href = q.link[1]; a.target = '_blank'; a.rel = 'noopener';
+          lp.appendChild(a);
+          box.appendChild(lp);
+        }
+        if (describedBy) box.setAttribute('aria-describedby', describedBy);
+
+        if (q.type === 'one' || q.type === 'multi') {
+          var chips = el('div', 'cl-chips');
+          q.opts.forEach(function (o) {
+            var cc = chip(q.type, q.id, 'f-' + q.id + '-' + o.id, o.id, o.label);
+            chips.appendChild(cc.lab);
+            node.inputs.push(cc);
+          });
+          box.appendChild(chips);
+          if (q.other) {
+            var of = otherField(q);
+            box.appendChild(of.wrap);
+            node.other = of;
+          }
+          if (q.id === 'audience') {
+            var stop = el('p', 'cl-stop');
+            stop.id = 'cl-org';
+            stop.hidden = true;
+            stop.appendChild(document.createTextNode('Спасибо за интерес! Сейчас мы делаем только закрытые сайты для семьи, для личного использования. Если у вас другая задача, напишите нам в '));
+            var ta = el('a', '', 'Telegram @VlV_7777');
+            ta.href = TG_URL; ta.target = '_blank'; ta.rel = 'noopener';
+            stop.appendChild(ta);
+            stop.appendChild(document.createTextNode(': обсудим, возможно ли это.'));
+            box.appendChild(stop);
+          }
+        } else if (q.type === 'text') {
+          var f = el('div', 'cl-field');
+          var ti = document.createElement('textarea');
+          ti.id = 't-' + q.id;
+          ti.className = 'cl-input';
+          ti.maxLength = MAX_FIELD;
+          ti.setAttribute('data-text', q.id);
+          ti.setAttribute('aria-label', q.label);
+          if (describedBy) ti.setAttribute('aria-describedby', describedBy);
+          var cnt = el('p', 'cl-count', '0 / ' + MAX_FIELD);
+          var w = el('p', 'cl-warn');
+          w.hidden = true; w.setAttribute('role', 'alert');
+          f.appendChild(ti); f.appendChild(cnt); f.appendChild(w);
+          box.appendChild(f);
+          node.text = { inp: ti, count: cnt, warn: w };
+        } else if (q.type === 'date') {
+          var f2 = el('div', 'cl-field');
+          var di = document.createElement('input');
+          di.type = 'date';
+          di.id = 'd-' + q.id;
+          di.className = 'cl-input';
+          di.setAttribute('data-date', q.id);
+          di.setAttribute('aria-label', q.label);
+          f2.appendChild(di);
+          box.appendChild(f2);
+          node.date = di;
+        }
+      }
+      sec.appendChild(box);
+      qNodes[q.id] = node;
+    });
+    stepsRoot.appendChild(sec);
+  });
+
+  // галочки подтверждения на экране проверки
+  var ackNodes = {};
+  ACKS.forEach(function (a) {
+    var c = chip('check', a.id, 'f-' + a.id, '1', a.label);
+    c.lab.style.marginTop = '14px';
+    document.getElementById(a.wrap).appendChild(c.lab);
+    ackNodes[a.id] = c;
+  });
+
+  /* ── Черновик в браузере: по id вопроса ──────────────────── */
+  function saveDraft() {
+    if (sent) return;
+    try {
+      localStorage.setItem(DRAFT_KEY, JSON.stringify({ v: 1, step: step > REVIEW ? REVIEW : step, a: A, o: O, order: order, ts: Date.now() }));
+    } catch (e) { /* без хранилища страница работает как обычно */ }
+  }
+  function clearDraft() { try { localStorage.removeItem(DRAFT_KEY); } catch (e) {} }
+  function loadDraft() {
+    try {
+      var raw = localStorage.getItem(DRAFT_KEY);
+      if (!raw) return false;
+      var d = JSON.parse(raw);
+      if (!d || d.v !== 1 || typeof d.a !== 'object') return false;
+      var had = false;
+      Object.keys(d.a).forEach(function (k) {
+        if (byId[k]) { A[k] = d.a[k]; had = true; }
+      });
+      Object.keys(d.o || {}).forEach(function (k) { if (byId[k]) O[k] = String(d.o[k]).slice(0, MAX_FIELD); });
+      if (typeof d.order === 'string' && /^[A-Z0-9-]{6,20}$/.test(d.order)) order = d.order;
+      step = Math.min(Math.max(Number(d.step) || 0, 0), REVIEW);
+      return had;
+    } catch (e) { return false; }
+  }
+
+  function touch() { saveDraft(); }
+
+  /* ── Отрисовка состояния ─────────────────────────────────── */
+  function syncInputs() {
+    Q.forEach(function (q) {
+      var n = qNodes[q.id];
+      if (!n) return;
+      if (q.type === 'check') {
+        n.inputs[0].inp.checked = !!A[q.id];
+      } else if (q.type === 'one' || q.type === 'multi') {
+        var cur = toArr(A[q.id]);
+        n.inputs.forEach(function (c) { c.inp.checked = cur.indexOf(c.inp.value) >= 0; });
+        if (n.other) n.other.inp.value = O[q.id] || '';
+      } else if (q.type === 'text') {
+        n.text.inp.value = A[q.id] || '';
+        n.text.count.textContent = (A[q.id] || '').length + ' / ' + MAX_FIELD;
+      } else if (q.type === 'date') {
+        n.date.value = A[q.id] || '';
+      }
+    });
+    ACKS.forEach(function (a) { ackNodes[a.id].inp.checked = !!A[a.id]; });
+  }
+
+  function checkField(inp, warn) {
+    var r = pdReason(inp.value);
+    if (r) {
+      warn.textContent = r + ' Имена и контакты здесь не нужны: уберите их, пожалуйста.';
+      warn.hidden = false;
+      inp.setAttribute('aria-invalid', 'true');
+    } else {
+      warn.hidden = true;
+      inp.removeAttribute('aria-invalid');
+    }
+    return !!r;
+  }
+
+  function badNow(onlyStep) {
+    var bad = [];
+    Q.forEach(function (q) {
+      if (onlyStep !== undefined && q.s !== onlyStep) return;
+      var n = qNodes[q.id];
+      if (!n || !visible(q)) return;
+      if (n.other && is(q.id, 'unknown') && O[q.id] && pdReason(O[q.id])) bad.push(q.id);
+      if (n.text && pdReason(A[q.id])) bad.push(q.id);
+    });
+    return bad;
+  }
+
+  function refresh() {
+    // условные вопросы
+    Q.forEach(function (q) {
+      var n = qNodes[q.id];
+      n.box.hidden = !visible(q);
+      if (n.other) {
+        var show = q.other && toArr(A[q.id]).indexOf('unknown') >= 0;
+        n.other.wrap.hidden = !show;
+      }
+      n.inputs.forEach(function (c) { c.lab.classList.toggle('is-on', c.inp.checked); });
+    });
+    ACKS.forEach(function (a) { ackNodes[a.id].lab.classList.toggle('is-on', ackNodes[a.id].inp.checked); });
+
+    var org = is('audience', 'org');
+    document.getElementById('cl-org').hidden = !org;
+
+    // шаги
+    var secs = stepsRoot.children;
+    for (var i = 0; i < secs.length; i++) secs[i].hidden = step !== i;
+    document.getElementById('cl-review').hidden = step !== REVIEW;
+    document.getElementById('cl-thanks').hidden = step !== THANKS;
+    document.getElementById('cl-head').hidden = step !== 0;
+
+    // полоса прогресса
+    var info = document.getElementById('cl-stepinfo');
+    var fill = document.getElementById('cl-barfill');
+    var prog = document.getElementById('cl-progress');
+    prog.hidden = step === THANKS;
+    if (step < REVIEW) {
+      fill.style.width = Math.round((step / STEPS.length) * 100) + '%';
+      info.innerHTML = '';
+      var b = el('b', '', 'Шаг ' + (step + 1) + ' из ' + STEPS.length);
+      info.appendChild(b);
+      info.appendChild(document.createTextNode(' · ' + STEPS[step].t + ' · осталось около ' + (STEPS.length + 1 - step) + ' мин'));
+    } else if (step === REVIEW) {
+      fill.style.width = '100%';
+      info.textContent = 'Все шаги пройдены. Осталось проверить и отправить.';
+    }
+
+    // нижняя панель
+    var nav = document.getElementById('cl-nav');
+    nav.hidden = step === THANKS;
+    var back = document.getElementById('cl-back');
+    var next = document.getElementById('cl-next');
+    back.hidden = step === 0;
+    next.hidden = step === REVIEW;
+    next.textContent = step === STEPS.length - 1 ? 'Проверить план' : 'Дальше';
+    next.disabled = org && step === 0;
+    hideNavMsg();
+    if (next.disabled) showNavMsg('Для организаций эта анкета не подходит. Выберите другой ответ или напишите нам в Telegram.');
+
+    document.getElementById('cl-foot-reset-wrap').hidden = step === THANKS;
+
+    if (step === REVIEW) renderReview();
+  }
+
+  var navMsg = document.getElementById('cl-navmsg');
+  function showNavMsg(t) { navMsg.textContent = t; navMsg.hidden = false; }
+  function hideNavMsg() { navMsg.hidden = true; navMsg.textContent = ''; }
+
+  /* ── Подписи ответов ─────────────────────────────────────── */
+  function optLabel(q, id) {
+    for (var i = 0; i < (q.opts || []).length; i++) if (q.opts[i].id === id) return q.opts[i].label;
+    return id;
+  }
+  function answerText(q) {
+    var v = A[q.id];
+    if (q.type === 'check') return v ? 'да' : '';
+    if (q.type === 'text' || q.type === 'date') return v ? String(v) : '';
+    var ids = toArr(v);
+    if (!ids.length) return '';
+    var t = ids.map(function (i) { return optLabel(q, i); }).join('; ');
+    if (O[q.id] && ids.indexOf('unknown') >= 0) t += ' (' + O[q.id] + ')';
+    return t;
+  }
+  function lab(id) { return answerText(byId[id]); }
+
+  /* ── Экран «Проверьте план» ──────────────────────────────── */
+  function row(ul, key, val, gotoStep) {
+    var li = el('li');
+    var left = el('div');
+    left.appendChild(el('span', 'k', key));
+    left.appendChild(el('span', val ? 'v' : 'v none', val || 'Не указано, уточним при разговоре'));
+    li.appendChild(left);
+    if (gotoStep !== undefined) {
+      var b = el('button', 'cl-link small', 'изменить');
+      b.type = 'button';
+      b.setAttribute('data-goto', gotoStep);
+      b.setAttribute('aria-label', 'Изменить: ' + key);
+      li.appendChild(b);
+    }
+    ul.appendChild(li);
+  }
+
+  function ruDate(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || ''));
+    if (!m) return String(iso || '');
+    var mon = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    return parseInt(m[3], 10) + ' ' + mon[parseInt(m[2], 10) - 1] + ' ' + m[1];
+  }
+
+  function siteRows(ul, withEdit) {
+    function r(q, text) { row(ul, byId[q].short, text !== undefined ? text : lab(q), withEdit ? byId[q].s : undefined); }
+    r('tree_source');
+    r('tree_size');
+    r('users_count');
+    r('site_name_kind');
+    r('domain_type');
+    r('look');
+    var nt = lab('notices');
+    if (is('notices', 'yes')) { var ch = lab('notify_channels'); nt = 'Да' + (ch ? ': ' + ch : ''); }
+    row(ul, 'Напоминания', nt, withEdit ? 4 : undefined);
+    r('deadline', lab('deadline') ? lab('deadline') + (A.deadline_date ? ' (' + ruDate(A.deadline_date) + ')' : '') : '');
+    r('support');
+  }
+
+  function planSteps() {
+    var s = [
+      'Согласуем с вами срок и условия и закрепим их в договоре.',
+      'Создадим для вас закрытое хранилище данных и сайт на ваше имя.',
+      is('ged_status', 'none') || anyOf('tree_source', ['paper', 'memory', 'none'])
+        ? 'Поможем собрать дерево в одном месте и перенесём его на сайт, проверив людей, связи и даты.'
+        : 'Перенесём дерево из вашего файла и проверим людей, связи и даты.',
+      'Заведём первый вход для хранителя и проверим, что права у него полные.',
+      'Подготовим приглашения для родных и готовые сообщения к ним.',
+      'Покажем хранителю, как всё устроено и где скачать копию дерева, и дадим короткую памятку: о чём предупредить родных и как убрать карточку по просьбе человека.',
+      'Вместе с вами проверим готовый сайт и передадим его вам.'
+    ];
+    if (is('notices', 'yes')) {
+      s.push('Включим ежедневную рассылку напоминаний.');
+      if (is('notify_channels', 'mail')) s.push('Поможем завести отдельный почтовый ящик для писем и проверим, что письма доходят.');
+      if (is('notify_channels', 'tg')) s.push('Настроим Telegram-бота для напоминаний (ориентир: около получаса).');
+      if (is('notify_channels', 'max')) s.push('Настроим бота в MAX (проверка мессенджером может занять до двух суток).');
+    }
+    if (is('domain_type', 'own')) s.push('Поможем выбрать и подключить свой домен, он оформляется на вас.');
+    if (is('look', 'colors')) s.push('Поменяем название и цвета сайта.');
+    if (is('typing_needed', 'help')) s.push('Внесение людей в дерево — отдельная работа: условия назовём после знакомства с материалом.');
+    if (A.photos_count && !anyOf('photos_count', ['none', 'unknown'])) s.push('Перенесём фотографии и отметим на них людей вручную.');
+    return s;
+  }
+
+  function needList() {
+    var n = [];
+    if (anyOf('ged_status', ['have', 'can', 'help'])) n.push('Файл дерева (.ged): скачать его из сервиса. Если не получится, подскажем как. Передадим файл тем способом, который выберете вы.');
+    else if (anyOf('tree_source', ['paper', 'memory', 'none', 'file'])) n.push('Собрать материалы по дереву (записи, файлы) или решить, кто будет вносить людей.');
+    if (is('keeper_who', 'help')) n.push('Решить, кто будет хранителем дерева.');
+    if (is('notices', 'yes') && is('notify_channels', 'mail')) n.push('Отдельный почтовый ящик для рассылки: если его нет, поможем завести.');
+    n.push(is('turnkey', 'turnkey') ? 'Согласиться на каждом шаге настройки: все учётные записи оформляются на ваше имя.' : 'Завести учётные записи для сайта на своё имя: подскажем по шагам.');
+    if (is('domain_type', 'own') || is('hosting_pay', 'yes')) n.push('Оплачивать продление домена и, если понадобится, платный тариф хостинга.');
+    n.push('Выбрать время для созвона на 15 минут.');
+    n.push('Написать нам в Telegram и назвать номер заявки.');
+    return n;
+  }
+
+  function fillList(id, items) {
+    var ul = document.getElementById(id);
+    ul.innerHTML = '';
+    items.forEach(function (t) { ul.appendChild(el('li', '', t)); });
+  }
+
+  function renderReview() {
+    var rows = document.getElementById('cl-rows');
+    rows.innerHTML = '';
+    siteRows(rows, true);
+    fillList('cl-plan', planSteps());
+    fillList('cl-need', needList());
+    var tg = document.getElementById('cl-tg-review');
+    tg.href = tgLink();
+    document.getElementById('cl-send').hidden = !SCRIPT_URL;
+  }
+
+  function tgLink() { return TG_URL + '?text=' + encodeURIComponent('Здравствуйте! Заявка № ' + order); }
+
+  /* ── Сбор данных ─────────────────────────────────────────── */
+  function clip(s, n) { return String(s || '').replace(/\s+/g, ' ').trim().slice(0, n || MAX_FIELD); }
+
+  function collect() {
+    var out = [];
+    Q.forEach(function (q) {
+      if (!visible(q)) return;
+      var l = answerText(q);
+      if (!l) return;
+      var item = { k: q.id, l: clip(l, 400) };
+      if (q.type === 'one' || q.type === 'multi') {
+        item.v = toArr(A[q.id]);
+        if (q.other && O[q.id] && item.v.indexOf('unknown') >= 0) item.o = clip(O[q.id]);
+        item.l = item.v.map(function (i) { return optLabel(q, i); }).join('; ');
+      } else if (q.type === 'check') {
+        item.v = ['yes'];
+      } else {
+        item.v = [];
+        item.l = clip(l);
+      }
+      out.push(item);
+    });
+    return out;
+  }
+
+  function letter() {
+    var lines = ['ЗАЯВКА НА СЕМЕЙНЫЙ САЙТ', 'Номер заявки: ' + order, 'Записано ' + new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }), ''];
+    Q.forEach(function (q) {
+      if (!visible(q)) return;
+      var t = answerText(q);
+      if (t) lines.push(q.short + ': ' + t);
+    });
+    lines.push('');
+    lines.push('План (ориентир):');
+    planSteps().forEach(function (s, i) { lines.push((i + 1) + '. ' + s); });
+    return lines.join('\n');
+  }
+
+  function hasAnswers() { return collect().length > 0; }
+
+  /* ── Проверки перед отправкой и копированием ─────────────── */
+  function gate() {
+    if (is('audience', 'org')) return 'Для организаций эта анкета не подходит. Напишите нам в Telegram.';
+    if (badNow().length) { return 'В некоторых полях есть имена или контакты. Уберите их, пожалуйста: они здесь не нужны.'; }
+    if (!A.ack_notice) return 'Отметьте галочку «Я понимаю, что имена, телефоны, почту…», она нужна для отправки.';
+    if (!hasAnswers()) return 'Пока нечего отправлять: ответьте хотя бы на один вопрос.';
+    return '';
+  }
+
+  var said = document.getElementById('cl-said');
+  var said2 = document.getElementById('cl-said2');
+  function say(text, cls, which) {
+    var t = which || said;
+    t.textContent = text;
+    t.className = 'cl-said' + (cls ? ' ' + cls : '');
+  }
+
+  var fallback = document.getElementById('cl-fallback');
+  var fallback2 = document.getElementById('cl-fallback2');
+  function copyText(text, target) {
+    var box = target === said2 ? fallback2 : fallback;
+    box.style.display = 'none';
+    function manual() {
+      box.value = text;
+      box.style.display = 'block';
+      box.focus();
+      box.select();
+      say('Браузер не дал скопировать сам. Текст выделен ниже: скопируйте его вручную и вставьте в Telegram.', 'bad', target);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        say('Текст скопирован. Вставьте его в сообщение нам в Telegram вместе с номером заявки.', 'ok', target);
+      }, manual);
+    } else { manual(); }
+  }
+
+  /* ── Отправка ────────────────────────────────────────────── */
+  var sending = false;
+  function doSend() {
+    if (!SCRIPT_URL || sending) return;
+    var g = gate();
+    if (g) { say(g, 'bad'); return; }
+    var elapsed = Math.round((Date.now() - openedAt) / 1000);
+    if (elapsed < MIN_SECONDS) { say('Подождите пару секунд и нажмите ещё раз.', 'bad'); return; }
+
+    var body = JSON.stringify({
+      token: TOKEN,
+      order: order,
+      ver: VERSION,
+      src: src,
+      hp: document.getElementById('cl-trap').value,
+      elapsed: elapsed,
+      ack: true,
+      a: collect(),
+      acks: { ack_limits: !!A.ack_limits, ack_keeper: !!A.ack_keeper }
+    });
+
+    sending = true;
+    var btn = document.getElementById('cl-send');
+    btn.disabled = true;
+    say('Отправляем…');
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: body
+    }).then(function () {
+      sending = false;
+      btn.disabled = false;
+      sent = true;
+      clearDraft();           // анкета не должна оставаться на чужом компьютере
+      showThanks();
+    }).catch(function () {
+      sending = false;
+      btn.disabled = false;
+      say('Не получилось отправить: возможно, нет связи. Ничего не потеряно. Нажмите ещё раз или скопируйте текст заявки и пришлите его нам в Telegram.', 'bad');
+    });
+  }
+
+  function showThanks() {
+    document.getElementById('cl-order-big').textContent = order;
+    document.getElementById('cl-tg-thanks').href = tgLink();
+    var sum = document.getElementById('cl-sum');
+    sum.innerHTML = '';
+    siteRows(sum, false);
+    fillList('cl-need2', needList());
+    go(THANKS);
+  }
+
+  /* ── Навигация ───────────────────────────────────────────── */
+  function go(n) {
+    step = n;
+    document.getElementById('cl-banner').hidden = true;
+    refresh();
+    saveDraft();
+    window.scrollTo(0, 0);
+    var h = null;
+    if (n < STEPS.length) h = stepsRoot.children[n].__h;
+    else if (n === REVIEW) h = document.getElementById('cl-review-h');
+    else h = document.getElementById('cl-thanks-h');
+    if (h) { try { h.focus({ preventScroll: true }); } catch (e) { h.focus(); } }
+  }
+
+  document.getElementById('cl-next').addEventListener('click', function () {
+    if (is('audience', 'org') && step === 0) return;
+    var bad = badNow(step);
+    if (bad.length) {
+      showNavMsg('В отмеченных полях есть имена или контакты. Уберите их, пожалуйста, и нажмите «Дальше» ещё раз.');
+      var n = qNodes[bad[0]];
+      var f = n.text ? n.text.inp : n.other.inp;
+      f.focus();
+      return;
+    }
+    go(step + 1);
+  });
+  document.getElementById('cl-back').addEventListener('click', function () { if (step > 0) go(step - 1); });
+
+  document.getElementById('cl-form').addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-goto]') : null;
+    if (t) go(Number(t.getAttribute('data-goto')));
+  });
+
+  /* ── События полей ───────────────────────────────────────── */
+  var form = document.getElementById('cl-form');
+  form.addEventListener('submit', function (e) { e.preventDefault(); });
+
+  form.addEventListener('change', function (e) {
+    var inp = e.target;
+    if (!inp || !inp.name || !byId[inp.name]) return;
+    var q = byId[inp.name];
+    if (q.type === 'one') {
+      A[q.id] = inp.value;
+    } else if (q.type === 'multi') {
+      var cur = toArr(A[q.id]);
+      if (inp.checked) {
+        if (inp.value === 'unknown') cur = ['unknown'];
+        else cur = cur.filter(function (x) { return x !== 'unknown'; }).concat([inp.value]);
+      } else {
+        cur = cur.filter(function (x) { return x !== inp.value; });
+      }
+      A[q.id] = cur;
+      qNodes[q.id].inputs.forEach(function (c) { c.inp.checked = cur.indexOf(c.inp.value) >= 0; });
+    } else if (q.type === 'check') {
+      A[q.id] = inp.checked;
+    }
+    touch();
+    refresh();
+  });
+
+  form.addEventListener('input', function (e) {
+    var t = e.target;
+    var id;
+    if ((id = t.getAttribute && t.getAttribute('data-other'))) {
+      O[id] = t.value.slice(0, MAX_FIELD);
+      checkField(t, qNodes[id].other.warn);
+      hideNavMsg();
+    } else if ((id = t.getAttribute && t.getAttribute('data-text'))) {
+      A[id] = t.value.slice(0, MAX_FIELD);
+      qNodes[id].text.count.textContent = t.value.length + ' / ' + MAX_FIELD;
+      checkField(t, qNodes[id].text.warn);
+      hideNavMsg();
+    } else if ((id = t.getAttribute && t.getAttribute('data-date'))) {
+      A[id] = t.value;
+    } else { return; }
+    touch();
+  });
+
+  /* ── Кнопки экрана проверки и «Спасибо» ──────────────────── */
+  document.getElementById('cl-send').addEventListener('click', doSend);
+  function copyClick(target) {
+    return function () {
+      var g = gate();
+      if (g) { say(g, 'bad', target); return; }
+      copyText(letter(), target);
+    };
+  }
+  document.getElementById('cl-copy').addEventListener('click', copyClick(said));
+  document.getElementById('cl-copy2').addEventListener('click', function () {
+    // на «Спасибо» данные уже ушли, проверки не нужны
+    copyText(letter(), said2);
+  });
+
+  /* ── Начать заново (с подтверждением) ────────────────────── */
+  var confirmBox = document.getElementById('cl-confirm');
+  function askReset() {
+    confirmBox.hidden = false;
+    confirmBox.scrollIntoView({ block: 'center' });
+    document.getElementById('cl-confirm-no').focus();
+  }
+  function doReset() {
+    A = {}; O = {}; sent = false; order = makeOrderId(); openedAt = Date.now();
+    clearDraft();
+    confirmBox.hidden = true;
+    document.getElementById('cl-banner').hidden = true;
+    fallback.style.display = 'none'; fallback.value = '';
+    fallback2.style.display = 'none'; fallback2.value = '';
+    say(''); say('', '', said2);
+    syncInputs();
+    Q.forEach(function (q) {
+      var n = qNodes[q.id];
+      if (n.other) n.other.warn.hidden = true;
+      if (n.text) n.text.warn.hidden = true;
+    });
+    go(0);
+  }
+  ['cl-foot-reset', 'cl-banner-reset', 'cl-reset2'].forEach(function (id) {
+    document.getElementById(id).addEventListener('click', askReset);
+  });
+  document.getElementById('cl-confirm-no').addEventListener('click', function () { confirmBox.hidden = true; });
+  document.getElementById('cl-confirm-yes').addEventListener('click', doReset);
+
+  /* ── Старт ───────────────────────────────────────────────── */
+  var restored = loadDraft();
+  syncInputs();
+  if (restored) {
+    var bt = document.getElementById('cl-banner-text');
+    var shown = step >= REVIEW ? 'на проверке плана' : 'на шаге ' + (step + 1);
+    bt.textContent = 'Мы восстановили ваши ответы с прошлого раза. Вы остановились ' + shown + '. Черновик хранится только на этом устройстве.';
+    document.getElementById('cl-banner').hidden = false;
+  }
+  // пустой отправляющей кнопки быть не должно: без SCRIPT_URL работают копирование и Telegram
+  document.getElementById('cl-send').hidden = !SCRIPT_URL;
+  refresh();
+  Q.forEach(function (q) {
+    var n = qNodes[q.id];
+    if (n.other && O[q.id]) checkField(n.other.inp, n.other.warn);
+    if (n.text && A[q.id]) checkField(n.text.inp, n.text.warn);
+  });
+})();
+</script>
+</body>
+</html>
