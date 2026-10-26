@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Анкета семейного сайта — ALTERA</title>
-  <meta name="description" content="Короткая анкета перед созданием закрытого семейного сайта-древа: 6 шагов, 5–7 минут.">
+  <title data-en="Family site form — ALTERA">Анкета семейного сайта — ALTERA</title>
+  <meta name="description" content="Короткая анкета перед созданием закрытого семейного сайта-древа: 6 шагов, 5–7 минут." data-en="A short form before a private family-tree site: 6 steps, 5–7 minutes.">
   <meta name="robots" content="noindex,nofollow">
   <!-- До нажатия «Отправить» страница не обращается ни к каким чужим адресам:
        шрифты лежат рядом (fonts/), аналитики и сторонних скриптов нет. -->
@@ -42,6 +42,7 @@
     .cl-head h1 em{font-style:normal;color:var(--gold)}
     .cl-head .lead{margin:0;color:var(--hint)}
     .kicker{font-size:12px}
+    .kicker span.cl-kicker-text{display:inline;width:auto;height:auto;margin:0;background:none;box-shadow:none;vertical-align:baseline}
 
     .cl-banner{margin-top:18px;padding:12px 16px;border:1px solid var(--gold-border);border-radius:8px;background:var(--gold-dim);font-size:15px;line-height:1.6;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
     .cl-link{background:none;border:0;padding:0;min-height:44px;color:var(--gold-bright);font:inherit;font-size:15px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
@@ -134,6 +135,7 @@
     .cl-confirm p{margin:0 0 12px;font-size:16px;line-height:1.6}
     .cl-foot{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);color:var(--hint);font-size:14px;line-height:1.8}
     .cl-foot a{color:var(--text);text-decoration:underline;text-underline-offset:3px}
+    .cl-top .lang-switch{margin-left:16px;flex:none}
     @media(max-width:600px){
       .cl-actions{flex-direction:column}
       .cl-actions .cl-btn{width:100%}
@@ -146,8 +148,11 @@
 <body>
   <div class="noise" aria-hidden="true"></div>
   <header class="cl-top">
-    <a class="brand" href="/" aria-label="ALTERA — на главную"><span class="brand-mark" aria-hidden="true"><i></i></span><span>ALTERA</span></a>
-    <span class="tag">Анкета семейного сайта</span>
+    <a class="brand" href="/" aria-label="ALTERA — на главную" data-en-aria="ALTERA — home"><span class="brand-mark" aria-hidden="true"><i></i></span><span>ALTERA</span></a>
+    <span class="tag" data-en="Family site form">Анкета семейного сайта</span>
+    <div class="lang-switch" role="group" aria-label="Язык / Language" data-en-aria="Language / Язык">
+      <button type="button" data-lang="ru" class="is-active" aria-pressed="true">RU</button><button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
   </header>
 
   <main class="cl-page">
@@ -157,16 +162,16 @@
     </div>
 
     <div class="cl-head" id="cl-head">
-      <p class="kicker"><span></span> СЕМЕЙНЫЙ САЙТ</p>
-      <h1>Расскажите о <em>вашем древе</em></h1>
-      <p class="lead">Шесть коротких шагов, 5–7 минут. Почти везде достаточно нажать кнопку. Не знаете ответа — выберите «Не знаю», уточним при разговоре. Ответы сохраняются на вашем устройстве сами.</p>
+      <p class="kicker"><span></span> <span class="cl-kicker-text" data-en="FAMILY SITE">СЕМЕЙНЫЙ САЙТ</span></p>
+      <h1 data-en="Tell us about <em>your tree</em>">Расскажите о <em>вашем древе</em></h1>
+      <p class="lead" data-en="Six short steps, 5–7 minutes. Almost everywhere a button is enough. If you don't know, choose “I don't know” and we will clarify when we talk. Answers save themselves on your device.">Шесть коротких шагов, 5–7 минут. Почти везде достаточно нажать кнопку. Не знаете ответа — выберите «Не знаю», уточним при разговоре. Ответы сохраняются на вашем устройстве сами.</p>
     </div>
 
-    <noscript><p class="cl-stop">Для анкеты нужен включённый JavaScript. Или просто напишите нам в <a href="https://t.me/VlV_7777">Telegram @VlV_7777</a>.</p></noscript>
+    <noscript><p class="cl-stop" data-en="The form needs JavaScript turned on. Or just write to us in <a href=&quot;https://t.me/VlV_7777&quot;>Telegram @VlV_7777</a>.">Для анкеты нужен включённый JavaScript. Или просто напишите нам в <a href="https://t.me/VlV_7777">Telegram @VlV_7777</a>.</p></noscript>
 
     <div class="cl-banner" id="cl-banner" hidden>
       <span id="cl-banner-text"></span>
-      <button type="button" class="cl-link" id="cl-banner-reset">Начать заново</button>
+      <button type="button" class="cl-link" id="cl-banner-reset" data-en="Start over">Начать заново</button>
     </div>
 
     <form id="cl-form" autocomplete="off" novalidate>
@@ -175,27 +180,27 @@
       <!-- Экран «Проверьте план» -->
       <section id="cl-review" hidden>
         <div class="cl-step">
-          <span class="cl-step-num">ПОСЛЕДНИЙ ЭКРАН</span>
-          <h2 tabindex="-1" id="cl-review-h">Проверьте план</h2>
-          <p class="cl-why">Так мы поняли вашу задачу. Всё можно поправить: нажмите «изменить» у нужной строки.</p>
+          <span class="cl-step-num" data-en="LAST SCREEN">ПОСЛЕДНИЙ ЭКРАН</span>
+          <h2 tabindex="-1" id="cl-review-h" data-en="Check the plan">Проверьте план</h2>
+          <p class="cl-why" data-en="This is how we understood your task. Everything can be changed: press “edit” on the row.">Так мы поняли вашу задачу. Всё можно поправить: нажмите «изменить» у нужной строки.</p>
         </div>
-        <div class="cl-card"><h3>Ваш сайт</h3><ul class="cl-rows" id="cl-rows"></ul></div>
-        <div class="cl-card"><h3>Что мы сделаем</h3><ol class="cl-list" id="cl-plan"></ol>
-          <p class="cl-note">Сроки и условия называем после разговора и фиксируем в договоре. Всё, что указано на этой странице, — ориентиры.</p></div>
-        <div class="cl-card"><h3>Что нужно от вас</h3><ul class="cl-list" id="cl-need"></ul></div>
+        <div class="cl-card"><h3 data-en="Your site">Ваш сайт</h3><ul class="cl-rows" id="cl-rows"></ul></div>
+        <div class="cl-card"><h3 data-en="What we will do">Что мы сделаем</h3><ol class="cl-list" id="cl-plan"></ol>
+          <p class="cl-note" data-en="We name the timing and the terms after we talk, and fix them in a contract. Everything on this page is a guide.">Сроки и условия называем после разговора и фиксируем в договоре. Всё, что указано на этой странице, — ориентиры.</p></div>
+        <div class="cl-card"><h3 data-en="What we need from you">Что нужно от вас</h3><ul class="cl-list" id="cl-need"></ul></div>
 
         <details class="cl-limits" id="cl-limits">
-          <summary>Что сайт не делает</summary>
+          <summary data-en="What the site does not do">Что сайт не делает</summary>
           <div class="in">
             <ul class="cl-list">
-              <li>Не ищет предков сам: в нём нет архивов, ДНК-анализа и совпадений с чужими деревьями. Всё, что в дереве, вносит семья.</li>
-              <li>Нет распознавания лиц: людей на фотографиях отмечают вручную.</li>
-              <li>Не проверяет законность внесённых сведений и согласие родных. За содержимое сайта отвечает хранитель.</li>
-              <li>Хостинг и база данных находятся не в России (сервисы Vercel и Supabase). Их доступность и условия определяют сами сервисы.</li>
-              <li>Абсолютной защиты не бывает: безопасность зависит и от паролей родных. Мы не отвечаем за доступ, который родственник отдал другим.</li>
-              <li>Резервную копию делает хранитель кнопкой «Скачать .ged». У студии копий нет.</li>
-              <li>Это сайт, а не приложение из магазина. На телефоне он открывается и выглядит как приложение.</li>
-              <li>Карта мест, печать плакатом, набор дерева с бумаги и перенос фотографий — отдельная работа.</li>
+              <li data-en="It does not search for ancestors by itself: there are no archives, no DNA analysis and no matches with other people's trees. Everything in the tree is entered by the family.">Не ищет предков сам: в нём нет архивов, ДНК-анализа и совпадений с чужими деревьями. Всё, что в дереве, вносит семья.</li>
+              <li data-en="There is no face recognition: people in photographs are marked by hand.">Нет распознавания лиц: людей на фотографиях отмечают вручную.</li>
+              <li data-en="It does not check whether the entered information is lawful or whether relatives agreed. The keeper is responsible for what is on the site.">Не проверяет законность внесённых сведений и согласие родных. За содержимое сайта отвечает хранитель.</li>
+              <li data-en="The hosting and the database are not in Russia (Vercel and Supabase). Those services set their own availability and terms.">Хостинг и база данных находятся не в России (сервисы Vercel и Supabase). Их доступность и условия определяют сами сервисы.</li>
+              <li data-en="There is no absolute protection: safety also depends on relatives' passwords. We are not responsible for access a relative gave to someone else.">Абсолютной защиты не бывает: безопасность зависит и от паролей родных. Мы не отвечаем за доступ, который родственник отдал другим.</li>
+              <li data-en="The keeper makes the backup with the “Download .ged” button. The studio keeps no copies.">Резервную копию делает хранитель кнопкой «Скачать .ged». У студии копий нет.</li>
+              <li data-en="It is a site, not an app from a store. On a phone it opens and looks like an app.">Это сайт, а не приложение из магазина. На телефоне он открывается и выглядит как приложение.</li>
+              <li data-en="A map of places, poster printing, typing the tree from paper and moving photographs are separate work.">Карта мест, печать плакатом, набор дерева с бумаги и перенос фотографий — отдельная работа.</li>
             </ul>
           </div>
         </details>
@@ -204,44 +209,44 @@
 
         <div class="cl-sendbox">
           <div class="chip-wrap" id="cl-ack-notice-wrap"></div>
-          <p class="cl-note" style="margin-top:10px">Подробнее о данных — в заметке на первом шаге: имена и контакты в анкету не вписываются. <a href="../privacy.html">Политика и cookie</a>.</p>
+          <p class="cl-note" style="margin-top:10px" data-en="More about data is in the note on the first step: names and contacts do not go in the form. <a href=&quot;../privacy.html&quot;>Privacy and cookies</a>.">Подробнее о данных — в заметке на первом шаге: имена и контакты в анкету не вписываются. <a href="../privacy.html">Политика и cookie</a>.</p>
           <div class="cl-actions">
-            <button type="button" class="cl-btn main big" id="cl-send" hidden>Отправить заявку →</button>
-            <button type="button" class="cl-btn big" id="cl-copy">Скопировать текст заявки</button>
-            <a class="cl-btn main big" id="cl-tg-review" target="_blank" rel="noopener">Написать в Telegram</a>
+            <button type="button" class="cl-btn main big" id="cl-send" hidden data-en="Send the request →">Отправить заявку →</button>
+            <button type="button" class="cl-btn big" id="cl-copy" data-en="Copy the request text">Скопировать текст заявки</button>
+            <a class="cl-btn main big" id="cl-tg-review" target="_blank" rel="noopener" data-en="Write in Telegram">Написать в Telegram</a>
           </div>
           <p class="cl-said" id="cl-said" role="status" aria-live="polite"></p>
-          <textarea id="cl-fallback" class="cl-input" readonly aria-label="Текст заявки для копирования"></textarea>
+          <textarea id="cl-fallback" class="cl-input" readonly aria-label="Текст заявки для копирования" data-en-aria="Request text to copy"></textarea>
         </div>
       </section>
 
       <!-- Экран «Спасибо» -->
       <section id="cl-thanks" class="cl-thanks" hidden>
         <div class="cl-step">
-          <span class="cl-step-num">ГОТОВО</span>
-          <h2 tabindex="-1" id="cl-thanks-h">Заявка отправлена. Спасибо!</h2>
-          <p class="cl-why">Номер вашей заявки:</p>
+          <span class="cl-step-num" data-en="DONE">ГОТОВО</span>
+          <h2 tabindex="-1" id="cl-thanks-h" data-en="Request sent. Thank you!">Заявка отправлена. Спасибо!</h2>
+          <p class="cl-why" data-en="Your request number:">Номер вашей заявки:</p>
           <div class="cl-order" id="cl-order-big"></div>
-          <p class="cl-reply">Напишите нам в Telegram и назовите этот номер: так мы поймём, чья это заявка. Ответим в течение 3 рабочих дней.</p>
-          <div class="cl-actions"><a class="cl-btn main big" id="cl-tg-thanks" target="_blank" rel="noopener">Написать в Telegram</a></div>
+          <p class="cl-reply" data-en="Write to us in Telegram and name this number: that is how we know whose request it is. We reply within 3 business days.">Напишите нам в Telegram и назовите этот номер: так мы поймём, чья это заявка. Ответим в течение 3 рабочих дней.</p>
+          <div class="cl-actions"><a class="cl-btn main big" id="cl-tg-thanks" target="_blank" rel="noopener" data-en="Write in Telegram">Написать в Telegram</a></div>
         </div>
-        <div class="cl-card"><h3>Вот что вы рассказали</h3><ul class="cl-rows" id="cl-sum"></ul></div>
-        <div class="cl-card"><h3>Что дальше</h3>
+        <div class="cl-card"><h3 data-en="Here is what you told us">Вот что вы рассказали</h3><ul class="cl-rows" id="cl-sum"></ul></div>
+        <div class="cl-card"><h3 data-en="What happens next">Что дальше</h3>
           <ol class="cl-list">
-            <li>Вы пишете нам в Telegram и называете номер заявки.</li>
-            <li>Мы читаем ответы и в течение 3 рабочих дней пишем вам вариант и ориентир по срокам.</li>
-            <li>Созвон на 15 минут: уточним детали. Условия фиксируем в договоре.</li>
+            <li data-en="You write to us in Telegram and name the request number.">Вы пишете нам в Telegram и называете номер заявки.</li>
+            <li data-en="We read the answers and within 3 business days write you a proposal and a guide on timing.">Мы читаем ответы и в течение 3 рабочих дней пишем вам вариант и ориентир по срокам.</li>
+            <li data-en="A 15-minute call: we clarify the details. The terms are fixed in a contract.">Созвон на 15 минут: уточним детали. Условия фиксируем в договоре.</li>
           </ol>
-          <p class="cl-note">Заявка ни к чему вас не обязывает.</p></div>
-        <div class="cl-card"><h3>Что нужно от вас дальше</h3><ul class="cl-list" id="cl-need2"></ul></div>
-        <div class="cl-card"><h3>Пока ждёте</h3>
-          <p class="cl-note" style="margin-top:0">Посмотрите, как выглядит такой сайт: <a href="https://altera-tau.vercel.app/demo/rod.html" target="_blank" rel="noopener">пример «РОД»</a>.</p>
+          <p class="cl-note" data-en="The request does not oblige you to anything.">Заявка ни к чему вас не обязывает.</p></div>
+        <div class="cl-card"><h3 data-en="What we need from you next">Что нужно от вас дальше</h3><ul class="cl-list" id="cl-need2"></ul></div>
+        <div class="cl-card"><h3 data-en="While you wait">Пока ждёте</h3>
+          <p class="cl-note" style="margin-top:0" data-en="See what such a site looks like: <a href=&quot;https://altera-tau.vercel.app/demo/rod.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>the KIN example</a>.">Посмотрите, как выглядит такой сайт: <a href="https://altera-tau.vercel.app/demo/rod.html" target="_blank" rel="noopener">пример «РОД»</a>.</p>
           <div class="cl-actions">
-            <button type="button" class="cl-btn" id="cl-copy2">Скопировать текст заявки</button>
-            <button type="button" class="cl-btn" id="cl-reset2">Начать заново</button>
+            <button type="button" class="cl-btn" id="cl-copy2" data-en="Copy the request text">Скопировать текст заявки</button>
+            <button type="button" class="cl-btn" id="cl-reset2" data-en="Start over">Начать заново</button>
           </div>
           <p class="cl-said" id="cl-said2" role="status" aria-live="polite"></p>
-          <textarea id="cl-fallback2" class="cl-input" readonly aria-label="Текст заявки для копирования" style="display:none;min-height:160px"></textarea>
+          <textarea id="cl-fallback2" class="cl-input" readonly aria-label="Текст заявки для копирования" data-en-aria="Request text to copy" style="display:none;min-height:160px"></textarea>
         </div>
       </section>
 
@@ -250,21 +255,21 @@
     </form>
 
     <div class="cl-confirm" id="cl-confirm" hidden role="alertdialog" aria-labelledby="cl-confirm-t">
-      <p id="cl-confirm-t">Точно начать заново? Все ответы на этом устройстве будут стёрты.</p>
+      <p id="cl-confirm-t" data-en="Start over for certain? Every answer on this device will be erased.">Точно начать заново? Все ответы на этом устройстве будут стёрты.</p>
       <div class="cl-actions" style="margin-top:0">
-        <button type="button" class="cl-btn" id="cl-confirm-no">Нет, оставить</button>
-        <button type="button" class="cl-btn main" id="cl-confirm-yes">Да, стереть</button>
+        <button type="button" class="cl-btn" id="cl-confirm-no" data-en="No, keep them">Нет, оставить</button>
+        <button type="button" class="cl-btn main" id="cl-confirm-yes" data-en="Yes, erase">Да, стереть</button>
       </div>
     </div>
 
-    <p class="cl-foot">ALTERA · Красноярск · Страница закрыта от поисковиков и открывается только по ссылке. Пока вы ничего не отправили, ответы остаются только на вашем устройстве. Сроки и стоимость называем после разговора и закрепляем в договоре; указанное на странице — ориентиры.
-      <span id="cl-foot-reset-wrap"><br><button type="button" class="cl-link small" id="cl-foot-reset">Начать заново</button></span></p>
+    <p class="cl-foot"><span data-en="ALTERA · Krasnoyarsk · This page is closed to search engines and opens only by link. Until you send anything, the answers stay only on your device. We name the timing and the price after we talk and fix them in a contract; what is on the page is a guide.">ALTERA · Красноярск · Страница закрыта от поисковиков и открывается только по ссылке. Пока вы ничего не отправили, ответы остаются только на вашем устройстве. Сроки и стоимость называем после разговора и закрепляем в договоре; указанное на странице — ориентиры.</span>
+      <span id="cl-foot-reset-wrap"><br><button type="button" class="cl-link small" id="cl-foot-reset" data-en="Start over">Начать заново</button></span></p>
   </main>
 
   <div class="cl-nav" id="cl-nav">
     <p class="cl-navmsg" id="cl-navmsg" role="alert" hidden></p>
     <div class="in">
-      <button type="button" class="cl-btn" id="cl-back">Назад</button>
+      <button type="button" class="cl-btn" id="cl-back" data-en="Back">Назад</button>
       <button type="button" class="cl-btn main" id="cl-next">Дальше</button>
     </div>
   </div>
@@ -272,6 +277,11 @@
 <script>
 (function () {
   'use strict';
+
+  function enOn() {
+    try { return localStorage.getItem('altera-lang') === 'en'; } catch (e) { return false; }
+  }
+  function tr(ru, en) { return enOn() && en ? en : ru; }
 
   /* ── Настройки ───────────────────────────────────────────────
      SCRIPT_URL — адрес веб-приложения Google Apps Script. Пока пусто:
@@ -290,124 +300,133 @@
      Ответы хранятся по id вопроса (не по порядку): новые вопросы
      не ломают чужие черновики. type: one | multi | check | text | date.
      other: true — при выборе «Не знаю / другое» появляется поле до 200 знаков. */
-  var DK = { id: 'unknown', label: 'Не знаю' };
-  var DKO = { id: 'unknown', label: 'Не знаю / другое' };
-  var YN = [{ id: 'yes', label: 'Да' }, { id: 'no', label: 'Нет' }, DK];
+  var DK = { id: 'unknown', label: 'Не знаю', en: "I don't know" };
+  var DKO = { id: 'unknown', label: 'Не знаю / другое', en: "I don't know / other" };
+  var YN = [{ id: 'yes', label: 'Да', en: 'Yes' }, { id: 'no', label: 'Нет', en: 'No' }, DK];
 
   var STEPS = [
-    { t: 'Знакомство', why: 'Хранитель — человек, который ведёт дерево на сайте и зовёт родных.' },
-    { t: 'Ваше дерево', why: 'Это самое важное для оценки работы. Достаточно примерных ответов.' },
-    { t: 'Родные и закрытость', why: 'Сайт закрытый: войти можно только по приглашению хранителя, поисковики его не показывают.' },
-    { t: 'Название и адрес', why: 'Само название и адрес назовёте в Telegram. Здесь выбираем только вариант.' },
-    { t: 'Напоминания', why: 'Письма и сообщения о днях рождения, годовщинах и днях памяти.' },
-    { t: 'Сроки и условия', why: 'Последний шаг. Окончательные сроки и условия обсудим при разговоре.' }
+    { t: 'Знакомство', tEn: 'Introduction', why: 'Хранитель — человек, который ведёт дерево на сайте и зовёт родных.', whyEn: 'The keeper is the person who runs the tree on the site and invites relatives.' },
+    { t: 'Ваше дерево', tEn: 'Your tree', why: 'Это самое важное для оценки работы. Достаточно примерных ответов.', whyEn: 'This is what matters most for estimating the work. Approximate answers are enough.' },
+    { t: 'Родные и закрытость', tEn: 'Relatives and privacy', why: 'Сайт закрытый: войти можно только по приглашению хранителя, поисковики его не показывают.', whyEn: 'The site is private: you can enter only by the keeper\'s invitation, and search engines do not show it.' },
+    { t: 'Название и адрес', tEn: 'Name and address', why: 'Само название и адрес назовёте в Telegram. Здесь выбираем только вариант.', whyEn: 'You will name the actual title and address in Telegram. Here we only choose the kind.' },
+    { t: 'Напоминания', tEn: 'Reminders', why: 'Письма и сообщения о днях рождения, годовщинах и днях памяти.', whyEn: 'Letters and messages about birthdays, anniversaries and memorial days.' },
+    { t: 'Сроки и условия', tEn: 'Timing and terms', why: 'Последний шаг. Окончательные сроки и условия обсудим при разговоре.', whyEn: 'The last step. We will settle the final timing and terms when we talk.' }
   ];
 
   var Q = [
-    // шаг 1
-    { id: 'audience', s: 0, type: 'one', short: 'Для кого', label: 'Для кого вы заказываете сайт?',
+    { id: 'audience', s: 0, type: 'one', short: 'Для кого', shortEn: 'For whom', label: 'Для кого вы заказываете сайт?', en: 'Who are you ordering the site for?',
       hint: 'Мы делаем закрытые сайты для семьи. Для организаций, музеев и публикаций эта анкета не подходит.',
-      opts: [{ id: 'self', label: 'Для себя' }, { id: 'family', label: 'Для семьи, решаем вместе' }, { id: 'gift', label: 'Подарок родным' }, { id: 'org', label: 'Для организации или публикации' }] },
-    { id: 'keeper_who', s: 0, type: 'one', short: 'Хранитель', label: 'Кто будет хранителем дерева?',
+      hintEn: 'We make private sites for a family. This form is not for organisations, museums or publications.',
+      opts: [{ id: 'self', label: 'Для себя', en: 'For myself' }, { id: 'family', label: 'Для семьи, решаем вместе', en: 'For the family, we decide together' }, { id: 'gift', label: 'Подарок родным', en: 'A gift for relatives' }, { id: 'org', label: 'Для организации или публикации', en: 'For an organisation or a publication' }] },
+    { id: 'keeper_who', s: 0, type: 'one', short: 'Хранитель', shortEn: 'Keeper', label: 'Кто будет хранителем дерева?', en: 'Who will be the keeper of the tree?',
       hint: 'Хранитель создаёт первый вход и зовёт родных. Имя и почту обсудим в Telegram, здесь их не пишите.',
-      opts: [{ id: 'me', label: 'Я сам(а)' }, { id: 'other', label: 'Другой человек из семьи' }, { id: 'help', label: 'Нужна помощь, чтобы решить' }] },
+      hintEn: 'The keeper creates the first login and invites relatives. We will discuss the name and email in Telegram — do not write them here.',
+      opts: [{ id: 'me', label: 'Я сам(а)', en: 'I will' }, { id: 'other', label: 'Другой человек из семьи', en: 'Another person in the family' }, { id: 'help', label: 'Нужна помощь, чтобы решить', en: 'I need help deciding' }] },
 
-    // шаг 2
-    { id: 'tree_source', s: 1, type: 'one', other: true, short: 'Где ведётся дерево', label: 'Где сейчас ведётся ваше дерево?',
+    { id: 'tree_source', s: 1, type: 'one', other: true, short: 'Где ведётся дерево', shortEn: 'Where the tree is kept', label: 'Где сейчас ведётся ваше дерево?', en: 'Where is your tree kept now?',
       hint: 'Сервис в интернете — это MyHeritage, Ancestry, «Древо жизни», FamilySpace, Geni.',
-      opts: [{ id: 'service', label: 'В сервисе в интернете' }, { id: 'file', label: 'В файле: Word, Excel' }, { id: 'paper', label: 'На бумаге, в тетради' }, { id: 'memory', label: 'Только в памяти' }, { id: 'none', label: 'Дерева ещё нет' }, DKO] },
-    { id: 'tree_service', s: 1, type: 'multi', other: true, optional: true, short: 'Какой сервис', label: 'В каком именно сервисе?',
+      hintEn: 'An online service means MyHeritage, Ancestry, Drevo Zhizni, FamilySpace, Geni.',
+      opts: [{ id: 'service', label: 'В сервисе в интернете', en: 'In an online service' }, { id: 'file', label: 'В файле: Word, Excel', en: 'In a file: Word, Excel' }, { id: 'paper', label: 'На бумаге, в тетради', en: 'On paper, in a notebook' }, { id: 'memory', label: 'Только в памяти', en: 'Only in memory' }, { id: 'none', label: 'Дерева ещё нет', en: 'There is no tree yet' }, DKO] },
+    { id: 'tree_service', s: 1, type: 'multi', other: true, optional: true, short: 'Какой сервис', shortEn: 'Which service', label: 'В каком именно сервисе?', en: 'In which service exactly?',
       showIf: function () { return is('tree_source', 'service'); },
-      opts: [{ id: 'myheritage', label: 'MyHeritage' }, { id: 'ancestry', label: 'Ancestry' }, { id: 'drevo', label: 'Древо жизни' }, { id: 'familyspace', label: 'FamilySpace' }, { id: 'geni', label: 'Geni' }, DKO] },
-    { id: 'ged_status', s: 1, type: 'one', short: 'Файл .ged', label: 'Есть ли у вас файл дерева (.ged) или можете ли вы его скачать?',
+      opts: [{ id: 'myheritage', label: 'MyHeritage', en: 'MyHeritage' }, { id: 'ancestry', label: 'Ancestry', en: 'Ancestry' }, { id: 'drevo', label: 'Древо жизни', en: 'Drevo Zhizni' }, { id: 'familyspace', label: 'FamilySpace', en: 'FamilySpace' }, { id: 'geni', label: 'Geni', en: 'Geni' }, DKO] },
+    { id: 'ged_status', s: 1, type: 'one', short: 'Файл .ged', shortEn: '.ged file', label: 'Есть ли у вас файл дерева (.ged) или можете ли вы его скачать?', en: 'Do you have a tree file (.ged), or can you download one?',
       hint: '.ged — файл, в который сервис выгружает дерево; обычно кнопка «Экспорт» или «Скачать». Сам файл сюда не прикладывайте и не присылайте в первом сообщении: в нём имена всех родных. Как его передать, договоримся отдельно.',
+      hintEn: '.ged is the file a service exports the tree into; usually an Export or Download button. Do not attach the file here or send it in the first message: it contains every relative\'s name. We will agree separately how to hand it over.',
       showIf: function () { return is('tree_source', 'service') || is('tree_source', 'unknown') || !A.tree_source; },
-      opts: [{ id: 'have', label: 'Файл .ged уже есть' }, { id: 'can', label: 'Могу скачать сам(а)' }, { id: 'help', label: 'Не знаю как, нужна помощь' }, { id: 'none', label: 'Файла не будет' }, DK] },
-    { id: 'tree_size', s: 1, type: 'one', short: 'Людей в дереве', label: 'Сколько человек в дереве?',
-      hint: 'Примерно, порядок цифры.',
-      opts: [{ id: 'u100', label: 'До 100' }, { id: 'u300', label: '100–300' }, { id: 'u1000', label: '300–1000' }, { id: 'o1000', label: 'Больше 1000' }, DK] },
-    { id: 'photos_count', s: 1, type: 'one', short: 'Фотографий', label: 'Сколько фотографий нужно перенести?',
-      hint: 'Фотографии в файл .ged не входят. Кто на них — не пишите.',
-      opts: [{ id: 'none', label: 'Нет' }, { id: 'u100', label: 'До 100' }, { id: 'u1000', label: '100–1000' }, { id: 'o1000', label: 'Больше 1000' }, DK] },
-    { id: 'typing_needed', s: 1, type: 'one', short: 'Кто вносит людей', label: 'Кто будет вносить людей в дерево?',
+      opts: [{ id: 'have', label: 'Файл .ged уже есть', en: 'I already have a .ged file' }, { id: 'can', label: 'Могу скачать сам(а)', en: 'I can download it myself' }, { id: 'help', label: 'Не знаю как, нужна помощь', en: "I don't know how, I need help" }, { id: 'none', label: 'Файла не будет', en: 'There will be no file' }, DK] },
+    { id: 'tree_size', s: 1, type: 'one', short: 'Людей в дереве', shortEn: 'People in the tree', label: 'Сколько человек в дереве?', en: 'How many people are in the tree?',
+      hint: 'Примерно, порядок цифры.', hintEn: 'Roughly, the order of magnitude.',
+      opts: [{ id: 'u100', label: 'До 100', en: 'Up to 100' }, { id: 'u300', label: '100–300', en: '100–300' }, { id: 'u1000', label: '300–1000', en: '300–1000' }, { id: 'o1000', label: 'Больше 1000', en: 'More than 1000' }, DK] },
+    { id: 'photos_count', s: 1, type: 'one', short: 'Фотографий', shortEn: 'Photographs', label: 'Сколько фотографий нужно перенести?', en: 'How many photographs need to be moved?',
+      hint: 'Фотографии в файл .ged не входят. Кто на них — не пишите.', hintEn: 'Photographs are not inside a .ged file. Do not write who is in them.',
+      opts: [{ id: 'none', label: 'Нет', en: 'None' }, { id: 'u100', label: 'До 100', en: 'Up to 100' }, { id: 'u1000', label: '100–1000', en: '100–1000' }, { id: 'o1000', label: 'Больше 1000', en: 'More than 1000' }, DK] },
+    { id: 'typing_needed', s: 1, type: 'one', short: 'Кто вносит людей', shortEn: 'Who enters people', label: 'Кто будет вносить людей в дерево?', en: 'Who will enter people into the tree?',
       hint: 'Помощь с набором — отдельная работа. Условия обсудим после знакомства с материалом.',
+      hintEn: 'Help with typing is separate work. We will discuss the terms after we see the material.',
       showIf: function () { return anyOf('tree_source', ['file', 'paper', 'memory', 'none']); },
-      opts: [{ id: 'self', label: 'Внесу(ём) сами' }, { id: 'help', label: 'Нужна помощь с набором' }, { id: 'unknown', label: 'Пока не решили / не знаю' }] },
+      opts: [{ id: 'self', label: 'Внесу(ём) сами', en: 'We will enter them ourselves' }, { id: 'help', label: 'Нужна помощь с набором', en: 'We need help with typing' }, { id: 'unknown', label: 'Пока не решили / не знаю', en: "Not decided yet / I don't know" }] },
 
-    // шаг 3
-    { id: 'users_count', s: 2, type: 'one', short: 'Родных на сайте', label: 'Сколько родных будут заходить на сайт?',
-      hint: 'Примерно. От этого зависит тариф хостинга.',
-      opts: [{ id: 'u10', label: 'До 10' }, { id: 'u30', label: '10–30' }, { id: 'u100', label: '30–100' }, { id: 'o100', label: 'Больше 100' }, DK] },
-    { id: 'users_abroad', s: 2, type: 'one', short: 'Родные за границей', label: 'Есть ли родные, которые живут за границей?',
-      hint: 'Страны не называйте. Это нужно только для выбора мессенджера.', opts: YN },
-    { id: 'access_roles', s: 2, type: 'one', short: 'Кто правит', label: 'Кто сможет вносить правки?',
+    { id: 'users_count', s: 2, type: 'one', short: 'Родных на сайте', shortEn: 'Relatives on the site', label: 'Сколько родных будут заходить на сайт?', en: 'How many relatives will use the site?',
+      hint: 'Примерно. От этого зависит тариф хостинга.', hintEn: 'Roughly. The hosting plan depends on it.',
+      opts: [{ id: 'u10', label: 'До 10', en: 'Up to 10' }, { id: 'u30', label: '10–30', en: '10–30' }, { id: 'u100', label: '30–100', en: '30–100' }, { id: 'o100', label: 'Больше 100', en: 'More than 100' }, DK] },
+    { id: 'users_abroad', s: 2, type: 'one', short: 'Родные за границей', shortEn: 'Relatives abroad', label: 'Есть ли родные, которые живут за границей?', en: 'Are there relatives who live abroad?',
+      hint: 'Страны не называйте. Это нужно только для выбора мессенджера.', hintEn: 'Do not name countries. This is only for choosing a messenger.', opts: YN },
+    { id: 'access_roles', s: 2, type: 'one', short: 'Кто правит', shortEn: 'Who edits', label: 'Кто сможет вносить правки?', en: 'Who will be able to make edits?',
       hint: 'Есть роль «наблюдатель»: человек видит всё, но ничего не меняет.',
-      opts: [{ id: 'all', label: 'Все могут править' }, { id: 'me', label: 'Правлю я, остальные смотрят' }, { id: 'unknown', label: 'Решим потом' }] },
-    { id: 'objections_exist', s: 2, type: 'one', short: 'Кто-то против', label: 'Может ли кто-то из живых родных быть против, чтобы его данные были на сайте?',
-      hint: 'Живой человек вправе отказаться. Хранитель в таком случае не заводит карточку или заводит её без дат и фото. Имена здесь не нужны.', opts: YN },
-    { id: 'people_separate', s: 2, type: 'check', optional: true, short: 'Люди для отдельного разговора', label: 'Есть люди, о которых мы поговорим отдельно',
-      hint: 'Кого и почему — здесь не пишите. Это разговор хранителя с самими людьми.' },
+      hintEn: 'There is a viewer role: the person sees everything and changes nothing.',
+      opts: [{ id: 'all', label: 'Все могут править', en: 'Everyone can edit' }, { id: 'me', label: 'Правлю я, остальные смотрят', en: 'I edit, the others look' }, { id: 'unknown', label: 'Решим потом', en: 'We will decide later' }] },
+    { id: 'objections_exist', s: 2, type: 'one', short: 'Кто-то против', shortEn: 'Someone objects', label: 'Может ли кто-то из живых родных быть против, чтобы его данные были на сайте?', en: 'Might a living relative object to their data being on the site?',
+      hint: 'Живой человек вправе отказаться. Хранитель в таком случае не заводит карточку или заводит её без дат и фото. Имена здесь не нужны.',
+      hintEn: 'A living person may refuse. The keeper then does not create a card, or creates it without dates and photos. Names are not needed here.', opts: YN },
+    { id: 'people_separate', s: 2, type: 'check', optional: true, short: 'Люди для отдельного разговора', shortEn: 'People for a separate talk', label: 'Есть люди, о которых мы поговорим отдельно', en: 'There are people we will talk about separately',
+      hint: 'Кого и почему — здесь не пишите. Это разговор хранителя с самими людьми.',
+      hintEn: 'Do not write who or why here. That is a conversation between the keeper and those people.' },
 
-    // шаг 4
-    { id: 'site_name_kind', s: 3, type: 'one', short: 'Название сайта', label: 'Как назвать сайт?',
+    { id: 'site_name_kind', s: 3, type: 'one', short: 'Название сайта', shortEn: 'Site name', label: 'Как назвать сайт?', en: 'What should the site be called?',
       hint: 'Одно слово в шапке сайта. Само слово назовёте в Telegram, здесь не пишите.',
-      opts: [{ id: 'surname', label: 'Фамилия рода' }, { id: 'own', label: 'Своё слово' }, { id: 'later', label: 'Решим позже' }] },
-    { id: 'domain_type', s: 3, type: 'one', other: true, short: 'Адрес сайта', label: 'Какой адрес у сайта?',
+      hintEn: 'One word in the site header. You will say the word itself in Telegram — do not write it here.',
+      opts: [{ id: 'surname', label: 'Фамилия рода', en: 'The family surname' }, { id: 'own', label: 'Своё слово', en: 'Our own word' }, { id: 'later', label: 'Решим позже', en: 'We will decide later' }] },
+    { id: 'domain_type', s: 3, type: 'one', other: true, short: 'Адрес сайта', shortEn: 'Site address', label: 'Какой адрес у сайта?', en: 'What address should the site have?',
       hint: 'Домен всегда оформляется на вас, не на студию. Окончательно решим после разговора.',
-      opts: [{ id: 'free', label: 'Бесплатный адрес на Vercel' }, { id: 'own', label: 'Свой домен, например название.ru (платно, оплачивается вами)' }, { id: 'help', label: 'Подскажите, что лучше' }, DKO] },
-    { id: 'look', s: 3, type: 'one', other: true, short: 'Оформление', label: 'Как оформить сайт?',
-      link: ['Посмотреть пример «РОД»', 'https://altera-tau.vercel.app/demo/rod.html'],
-      opts: [{ id: 'rod', label: 'Как в примере «РОД»' }, { id: 'colors', label: 'Свои цвета и название' }, { id: 'talk', label: 'Хочу обсудить' }, DKO] },
-    { id: 'language', s: 3, type: 'one', other: true, short: 'Язык сайта', label: 'На каком языке нужен сайт?',
-      hint: 'Спрашиваем, потому что есть родные за границей.',
+      hintEn: 'The domain is always registered to you, not to the studio. We will decide for certain after we talk.',
+      opts: [{ id: 'free', label: 'Бесплатный адрес на Vercel', en: 'A free address on Vercel' }, { id: 'own', label: 'Свой домен, например название.ru (платно, оплачивается вами)', en: 'Our own domain, for example name.ru (paid, paid by you)' }, { id: 'help', label: 'Подскажите, что лучше', en: 'Suggest what is better' }, DKO] },
+    { id: 'look', s: 3, type: 'one', other: true, short: 'Оформление', shortEn: 'Look', label: 'Как оформить сайт?', en: 'How should the site look?',
+      link: ['Посмотреть пример «РОД»', 'https://altera-tau.vercel.app/demo/rod.html'], linkEn: 'See the KIN example',
+      opts: [{ id: 'rod', label: 'Как в примере «РОД»', en: 'Like the KIN example' }, { id: 'colors', label: 'Свои цвета и название', en: 'Our own colours and name' }, { id: 'talk', label: 'Хочу обсудить', en: 'I want to discuss it' }, DKO] },
+    { id: 'language', s: 3, type: 'one', other: true, short: 'Язык сайта', shortEn: 'Site language', label: 'На каком языке нужен сайт?', en: 'What language should the site be in?',
+      hint: 'Спрашиваем, потому что есть родные за границей.', hintEn: 'We ask because there are relatives abroad.',
       showIf: function () { return is('users_abroad', 'yes') || is('users_abroad', 'unknown'); },
-      opts: [{ id: 'ru', label: 'На русском' }, { id: 'other', label: 'На другом (отдельная оценка)' }, DKO] },
+      opts: [{ id: 'ru', label: 'На русском', en: 'In Russian' }, { id: 'other', label: 'На другом (отдельная оценка)', en: 'In another language (a separate estimate)' }, DKO] },
 
-    // шаг 5
-    { id: 'notices', s: 4, type: 'one', short: 'Напоминания', label: 'Нужны ли напоминания о днях рождения и днях памяти?',
+    { id: 'notices', s: 4, type: 'one', short: 'Напоминания', shortEn: 'Reminders', label: 'Нужны ли напоминания о днях рождения и днях памяти?', en: 'Do you need reminders of birthdays and memorial days?',
       hint: 'Они приходят письмом или сообщением в мессенджер. Без них работа короче.',
-      opts: [{ id: 'yes', label: 'Да' }, { id: 'no', label: 'Нет' }, { id: 'unknown', label: 'Не уверен(а)' }] },
-    { id: 'notify_channels', s: 4, type: 'multi', short: 'Куда присылать', label: 'Куда присылать напоминания?',
+      hintEn: 'They arrive by email or a messenger message. Without them the work is shorter.',
+      opts: [{ id: 'yes', label: 'Да', en: 'Yes' }, { id: 'no', label: 'Нет', en: 'No' }, { id: 'unknown', label: 'Не уверен(а)', en: "I'm not sure" }] },
+    { id: 'notify_channels', s: 4, type: 'multi', short: 'Куда присылать', shortEn: 'Where to send', label: 'Куда присылать напоминания?', en: 'Where should reminders be sent?',
       hint: 'Можно выбрать несколько. Телеграм настраивается быстро (ориентир: около получаса). MAX проверяет сам мессенджер, на это может уйти до двух суток. Для писем понадобится отдельный почтовый ящик, поможем его завести.',
+      hintEn: 'You can choose several. Telegram is set up quickly (a guide: about half an hour). MAX is checked by the messenger itself, which can take up to two days. Email needs a separate mailbox; we will help you open one.',
       showIf: function () { return is('notices', 'yes'); },
-      opts: [{ id: 'mail', label: 'Почта' }, { id: 'tg', label: 'Телеграм' }, { id: 'max', label: 'MAX' }, DK] },
-    { id: 'timezone', s: 4, type: 'one', other: true, short: 'Часовой пояс', label: 'Какой у вас часовой пояс?',
-      hint: 'Время рассылки подберём под ваш пояс.',
+      opts: [{ id: 'mail', label: 'Почта', en: 'Email' }, { id: 'tg', label: 'Телеграм', en: 'Telegram' }, { id: 'max', label: 'MAX', en: 'MAX' }, DK] },
+    { id: 'timezone', s: 4, type: 'one', other: true, short: 'Часовой пояс', shortEn: 'Time zone', label: 'Какой у вас часовой пояс?', en: 'What is your time zone?',
+      hint: 'Время рассылки подберём под ваш пояс.', hintEn: 'We will set the sending time to your zone.',
       showIf: function () { return is('notices', 'yes'); },
-      opts: [{ id: 'msk', label: 'Москва' }, { id: 'krsk', label: 'Красноярск' }, { id: 'other', label: 'Другой' }, DK] },
+      opts: [{ id: 'msk', label: 'Москва', en: 'Moscow' }, { id: 'krsk', label: 'Красноярск', en: 'Krasnoyarsk' }, { id: 'other', label: 'Другой', en: 'Other' }, DK] },
 
-    // шаг 6
-    { id: 'deadline', s: 5, type: 'one', short: 'Срок', label: 'Когда нужен готовый сайт?',
-      hint: 'Сроки называем после разговора, это ориентиры.',
-      opts: [{ id: 'month', label: 'В течение месяца' }, { id: 'date', label: 'К дате: юбилей, встреча семьи' }, { id: 'relaxed', label: 'Без спешки' }, DK] },
-    { id: 'deadline_date', s: 5, type: 'date', optional: true, short: 'Дата', label: 'К какому числу?',
+    { id: 'deadline', s: 5, type: 'one', short: 'Срок', shortEn: 'Timing', label: 'Когда нужен готовый сайт?', en: 'When do you need the finished site?',
+      hint: 'Сроки называем после разговора, это ориентиры.', hintEn: 'We name the timing after we talk; these are guides.',
+      opts: [{ id: 'month', label: 'В течение месяца', en: 'Within a month' }, { id: 'date', label: 'К дате: юбилей, встреча семьи', en: 'By a date: an anniversary, a family gathering' }, { id: 'relaxed', label: 'Без спешки', en: 'No hurry' }, DK] },
+    { id: 'deadline_date', s: 5, type: 'date', optional: true, short: 'Дата', shortEn: 'Date', label: 'К какому числу?', en: 'By what date?',
       showIf: function () { return is('deadline', 'date'); } },
-    { id: 'turnkey', s: 5, type: 'one', short: 'Кто заводит доступы', label: 'Кто будет заводить доступы: почту, адрес сайта, хранилище?',
+    { id: 'turnkey', s: 5, type: 'one', short: 'Кто заводит доступы', shortEn: 'Who opens the accounts', label: 'Кто будет заводить доступы: почту, адрес сайта, хранилище?', en: 'Who will open the accounts: email, the site address, storage?',
       hint: 'Всё оформляется на ваше имя. «Под ключ» значит, что мы ведём вас по шагам и настраиваем вместе с вами.',
-      opts: [{ id: 'self', label: 'Я сам(а), по вашим подсказкам' }, { id: 'turnkey', label: 'Хочу под ключ' }, DK] },
-    { id: 'support', s: 5, type: 'one', other: true, short: 'Поддержка', label: 'Нужна ли помощь после запуска?',
-      hint: 'Условия фиксируем в договоре.',
-      opts: [{ id: 'train', label: 'Только обучение в начале' }, { id: 'ask', label: 'Помощь по просьбе' }, { id: 'perm', label: 'Постоянная поддержка' }, { id: 'none', label: 'Не нужна' }, DKO] },
-    { id: 'hosting_pay', s: 5, type: 'one', short: 'Оплата хостинга', label: 'Готовы ли вы оплачивать хостинг со своего счёта, если понадобится платный тариф?',
+      hintEn: 'Everything is registered in your name. Turnkey means we walk you through the steps and set it up with you.',
+      opts: [{ id: 'self', label: 'Я сам(а), по вашим подсказкам', en: 'I will, following your prompts' }, { id: 'turnkey', label: 'Хочу под ключ', en: 'I want it turnkey' }, DK] },
+    { id: 'support', s: 5, type: 'one', other: true, short: 'Поддержка', shortEn: 'Support', label: 'Нужна ли помощь после запуска?', en: 'Do you need help after launch?',
+      hint: 'Условия фиксируем в договоре.', hintEn: 'The terms are fixed in a contract.',
+      opts: [{ id: 'train', label: 'Только обучение в начале', en: 'Only training at the start' }, { id: 'ask', label: 'Помощь по просьбе', en: 'Help when asked' }, { id: 'perm', label: 'Постоянная поддержка', en: 'Ongoing support' }, { id: 'none', label: 'Не нужна', en: 'Not needed' }, DKO] },
+    { id: 'hosting_pay', s: 5, type: 'one', short: 'Оплата хостинга', shortEn: 'Hosting payment', label: 'Готовы ли вы оплачивать хостинг со своего счёта, если понадобится платный тариф?', en: 'Are you ready to pay for hosting from your own account if a paid plan is needed?',
       hint: 'Хостинг и база оформляются на вас. Бесплатный тариф Vercel (Hobby) не разрешает коммерческое использование: он для личного сайта. Если сайт будет использоваться иначе, нужен платный тариф. Окончательно решим после разговора.',
-      opts: [{ id: 'free', label: 'Хватит бесплатного' }, { id: 'yes', label: 'Да, готов(а) оплатить при необходимости' }, { id: 'unknown', label: 'Не знаю, объясните' }] },
-    { id: 'heard_from', s: 5, type: 'one', other: true, optional: true, short: 'Откуда узнали', label: 'Откуда вы о нас узнали?',
-      opts: [{ id: 'tg', label: 'Телеграм-канал' }, { id: 'vk', label: 'ВК' }, { id: 'max', label: 'MAX' }, { id: 'friends', label: 'Знакомые' }, { id: 'search', label: 'Поиск' }, DKO] },
-    { id: 'extra_wishes', s: 5, type: 'multi', other: true, optional: true, short: 'Хотелось бы ещё', label: 'Что ещё хотелось бы?',
-      hint: 'Всё это — отдельная работа, обсудим при разговоре.',
-      opts: [{ id: 'map', label: 'Карта мест' }, { id: 'print', label: 'Печать плакатом' }, { id: 'dedupe', label: 'Поиск двойников в дереве' }, DKO] },
-    { id: 'wishes_text', s: 5, type: 'text', optional: true, short: 'Пожелания', label: 'Хотите что-то добавить?',
-      hint: 'Своими словами. Не пишите имена, фамилии, телефоны, почту и ссылки на страницы людей. Только суть.' }
+      hintEn: 'The hosting and the database are registered to you. The free Vercel plan (Hobby) does not allow commercial use: it is for a personal site. If the site will be used otherwise, a paid plan is needed. We will decide for certain after we talk.',
+      opts: [{ id: 'free', label: 'Хватит бесплатного', en: 'The free plan is enough' }, { id: 'yes', label: 'Да, готов(а) оплатить при необходимости', en: 'Yes, I am ready to pay if needed' }, { id: 'unknown', label: 'Не знаю, объясните', en: "I don't know, please explain" }] },
+    { id: 'heard_from', s: 5, type: 'one', other: true, optional: true, short: 'Откуда узнали', shortEn: 'How you heard', label: 'Откуда вы о нас узнали?', en: 'How did you hear about us?',
+      opts: [{ id: 'tg', label: 'Телеграм-канал', en: 'A Telegram channel' }, { id: 'vk', label: 'ВК', en: 'VK' }, { id: 'max', label: 'MAX', en: 'MAX' }, { id: 'friends', label: 'Знакомые', en: 'People I know' }, { id: 'search', label: 'Поиск', en: 'Search' }, DKO] },
+    { id: 'extra_wishes', s: 5, type: 'multi', other: true, optional: true, short: 'Хотелось бы ещё', shortEn: 'Also wanted', label: 'Что ещё хотелось бы?', en: 'What else would you like?',
+      hint: 'Всё это — отдельная работа, обсудим при разговоре.', hintEn: 'All of this is separate work; we will discuss it when we talk.',
+      opts: [{ id: 'map', label: 'Карта мест', en: 'A map of places' }, { id: 'print', label: 'Печать плакатом', en: 'Printing as a poster' }, { id: 'dedupe', label: 'Поиск двойников в дереве', en: 'Finding duplicates in the tree' }, DKO] },
+    { id: 'wishes_text', s: 5, type: 'text', optional: true, short: 'Пожелания', shortEn: 'Wishes', label: 'Хотите что-то добавить?', en: 'Want to add anything?',
+      hint: 'Своими словами. Не пишите имена, фамилии, телефоны, почту и ссылки на страницы людей. Только суть.',
+      hintEn: 'In your own words. Do not write names, surnames, phones, emails or links to people\'s pages. The point only.' }
   ];
 
-  // Подтверждения на экране «Проверьте план»
   var ACKS = [
-    { id: 'ack_limits', type: 'check', wrap: 'cl-ack-limits-wrap', optional: true, label: 'Прочитал(а), что сайт не делает.' },
-    { id: 'ack_keeper', type: 'check', wrap: 'cl-ack-keeper-wrap', optional: true, label: 'Понимаю, что за содержимое сайта отвечает хранитель, а не студия.' },
-    { id: 'ack_notice', type: 'check', wrap: 'cl-ack-notice-wrap', required: true, label: 'Я понимаю, что имена, телефоны, почту и даты рождения людей здесь вписывать не нужно, и оставлю контакт только в Telegram.' }
+    { id: 'ack_limits', type: 'check', wrap: 'cl-ack-limits-wrap', optional: true, label: 'Прочитал(а), что сайт не делает.', en: 'I have read what the site does not do.' },
+    { id: 'ack_keeper', type: 'check', wrap: 'cl-ack-keeper-wrap', optional: true, label: 'Понимаю, что за содержимое сайта отвечает хранитель, а не студия.', en: 'I understand that the keeper, not the studio, is responsible for what is on the site.' },
+    { id: 'ack_notice', type: 'check', wrap: 'cl-ack-notice-wrap', required: true, label: 'Я понимаю, что имена, телефоны, почту и даты рождения людей здесь вписывать не нужно, и оставлю контакт только в Telegram.', en: 'I understand that names, phones, emails and birth dates should not be written here, and I will leave contact details only in Telegram.' }
   ];
 
   var FREE_NOTE = 'Не пишите имена, фамилии, телефоны, почту и ссылки на страницы людей. Только суть.';
+  var FREE_NOTE_EN = 'Do not write names, surnames, phones, emails or links to people\'s pages. The point only.';
 
   /* ── Состояние ───────────────────────────────────────────── */
   var A = {};            // ответы по id вопроса
@@ -451,25 +470,26 @@
   function pdReason(s) {
     s = String(s || '');
     if (!s) return '';
-    if (/@/.test(s)) return 'Похоже на почту или ник с «@».';
-    if (/(^|[^\d])(\+\s*7|8[\s\-(]*9)/.test(s) || /(?:\d[\s\-().]*){7,}/.test(s)) return 'Похоже на номер телефона.';
-    if (/https?:|www\.|t\.me|vk\.com|\b[\w-]+\.(ru|com|рф|su|org|net|app|me)\b/i.test(s)) return 'Похоже на ссылку.';
-    if (/(^|[^А-Яа-яЁё])[А-ЯЁ][а-яё]{2,}\s+[А-ЯЁ][а-яё]{2,}(?![А-Яа-яЁё])/.test(s) || /(^|[^A-Za-z])[A-Z][a-z]{2,}\s+[A-Z][a-z]{2,}(?![A-Za-z])/.test(s)) return 'Похоже на имя.';
+    if (/@/.test(s)) return tr('Похоже на почту или ник с «@».', 'This looks like an email or a handle with “@”.');
+    if (/(^|[^\d])(\+\s*7|8[\s\-(]*9)/.test(s) || /(?:\d[\s\-().]*){7,}/.test(s)) return tr('Похоже на номер телефона.', 'This looks like a phone number.');
+    if (/https?:|www\.|t\.me|vk\.com|\b[\w-]+\.(ru|com|рф|su|org|net|app|me)\b/i.test(s)) return tr('Похоже на ссылку.', 'This looks like a link.');
+    if (/(^|[^А-Яа-яЁё])[А-ЯЁ][а-яё]{2,}\s+[А-ЯЁ][а-яё]{2,}(?![А-Яа-яЁё])/.test(s) || /(^|[^A-Za-z])[A-Z][a-z]{2,}\s+[A-Z][a-z]{2,}(?![A-Za-z])/.test(s)) return tr('Похоже на имя.', 'This looks like a name.');
     return '';
   }
 
   /* ── Построение страницы ─────────────────────────────────── */
-  function el(tag, cls, text) {
+  function el(tag, cls, text, en) {
     var e = document.createElement(tag);
     if (cls) e.className = cls;
     if (text) e.textContent = text;
+    if (en) e.setAttribute('data-en', en);
     return e;
   }
 
   var stepsRoot = document.getElementById('cl-steps');
   var qNodes = {};       // id -> {box, inputs, other, warn}
 
-  function chip(kind, name, id, value, text) {
+  function chip(kind, name, id, value, text, en) {
     var lab = el('label', 'chip ' + kind);
     var inp = document.createElement('input');
     inp.type = kind === 'one' ? 'radio' : 'checkbox';
@@ -477,14 +497,14 @@
     inp.id = id;
     inp.value = value;
     lab.appendChild(inp);
-    lab.appendChild(el('span', '', text));
+    lab.appendChild(el('span', '', text, en));
     return { lab: lab, inp: inp };
   }
 
   function otherField(q) {
     var wrap = el('div', 'cl-other');
     wrap.hidden = true;
-    var l = el('label', '', 'Если хотите, уточните своими словами');
+    var l = el('label', '', 'Если хотите, уточните своими словами', 'If you want, add a few words of your own');
     l.setAttribute('for', 'o-' + q.id);
     var inp = document.createElement('input');
     inp.type = 'text';
@@ -493,7 +513,7 @@
     inp.maxLength = MAX_FIELD;
     inp.setAttribute('data-other', q.id);
     inp.setAttribute('aria-describedby', 'oh-' + q.id);
-    var h = el('p', 'cl-hint', FREE_NOTE + ' До ' + MAX_FIELD + ' знаков.');
+    var h = el('p', 'cl-hint', FREE_NOTE + ' До ' + MAX_FIELD + ' знаков.', FREE_NOTE_EN + ' Up to ' + MAX_FIELD + ' characters.');
     h.id = 'oh-' + q.id;
     var warn = el('p', 'cl-warn');
     warn.hidden = true;
@@ -506,24 +526,24 @@
     var sec = el('section', 'cl-step');
     sec.setAttribute('data-step', si);
     sec.hidden = true;
-    var num = el('span', 'cl-step-num', 'ШАГ ' + (si + 1) + ' ИЗ ' + STEPS.length);
-    var h2 = el('h2', '', s.t);
+    var num = el('span', 'cl-step-num', 'ШАГ ' + (si + 1) + ' ИЗ ' + STEPS.length, 'STEP ' + (si + 1) + ' OF ' + STEPS.length);
+    var h2 = el('h2', '', s.t, s.tEn);
     h2.tabIndex = -1;
     sec.appendChild(num);
     sec.appendChild(h2);
-    sec.appendChild(el('p', 'cl-why', s.why));
+    sec.appendChild(el('p', 'cl-why', s.why, s.whyEn));
     sec.__h = h2;
 
     // заметка о данных — над первым вопросом первого шага
     if (si === 0) {
       var note = el('div', 'cl-privacy');
       var p1 = el('p');
-      p1.appendChild(el('strong', '', 'О данных. '));
-      p1.appendChild(document.createTextNode('Эта анкета не собирает имён, телефонов, почтовых адресов и дат рождения. Не пишите их ни здесь, ни в свободных полях. Ответы сохраняются без привязки к вам, под номером заявки. Связаться с вами лично мы будем в Telegram, в чате с @VlV_7777: пришлите туда номер заявки, который покажет страница после отправки.'));
-      var p2 = el('p', '', 'Страница и ответы хранятся на серверах за пределами России (Vercel и Google). Поэтому персональные данные сюда и не нужны. Ответы на вопросы без имён используются только для оценки работы и связи с вами по заявке. Хранятся до завершения работы или до вашей просьбы удалить, но не дольше 12 месяцев с даты заявки.');
-      var p3 = el('p', '', 'Оператор страницы: Лебедев Владимир Викторович, самозанятый, Красноярск. Вопросы и просьба удалить заявку — на 2428433@gmail.com с темой «Персональные данные» и номером заявки, или в Telegram @VlV_7777.');
+      p1.appendChild(el('strong', '', 'О данных. ', 'About data. '));
+      p1.appendChild(el('span', '', 'Эта анкета не собирает имён, телефонов, почтовых адресов и дат рождения. Не пишите их ни здесь, ни в свободных полях. Ответы сохраняются без привязки к вам, под номером заявки. Связаться с вами лично мы будем в Telegram, в чате с @VlV_7777: пришлите туда номер заявки, который покажет страница после отправки.', 'This form does not collect names, phones, email addresses or birth dates. Do not write them here or in the free-text fields. Answers are stored without being tied to you, under a request number. We will contact you personally in Telegram, in the chat with @VlV_7777: send the request number the page shows after you submit.'));
+      var p2 = el('p', '', 'Страница и ответы хранятся на серверах за пределами России (Vercel и Google). Поэтому персональные данные сюда и не нужны. Ответы на вопросы без имён используются только для оценки работы и связи с вами по заявке. Хранятся до завершения работы или до вашей просьбы удалить, но не дольше 12 месяцев с даты заявки.', 'The page and the answers are stored on servers outside Russia (Vercel and Google). That is why personal data is not needed here. Answers without names are used only to estimate the work and to contact you about the request. They are kept until the work is finished or until you ask to delete them, and no longer than 12 months from the request date.');
+      var p3 = el('p', '', 'Оператор страницы: Лебедев Владимир Викторович, самозанятый, Красноярск. Вопросы и просьба удалить заявку — на 2428433@gmail.com с темой «Персональные данные» и номером заявки, или в Telegram @VlV_7777.', 'The operator of this page: Vladimir Viktorovich Lebedev, self-employed, Krasnoyarsk. Questions and a request to delete a submission — to 2428433@gmail.com with the subject «Персональные данные» and the request number, or in Telegram @VlV_7777.');
       var p4 = el('p');
-      var a1 = el('a', '', 'Политика и cookie');
+      var a1 = el('a', '', 'Политика и cookie', 'Privacy and cookies');
       a1.href = '../privacy.html';
       p4.appendChild(a1);
       note.appendChild(p1); note.appendChild(p2); note.appendChild(p3); note.appendChild(p4);
@@ -537,27 +557,27 @@
       var describedBy = '';
 
       if (q.type === 'check') {
-        var c = chip('check', q.id, 'f-' + q.id, '1', q.label);
-        var legend = el('legend', 'cl-ask');
+        var c = chip('check', q.id, 'f-' + q.id, '1', q.label, q.en);
+        var legend = el('legend', 'cl-ask', q.label, q.en);
         legend.style.cssText = 'position:absolute;left:-9999px';
-        legend.textContent = q.label;
         box.appendChild(legend);
         box.appendChild(c.lab);
-        if (q.hint) { var ph = el('p', 'cl-hint', q.hint); box.appendChild(ph); }
+        if (q.hint) { var ph = el('p', 'cl-hint', q.hint, q.hintEn); box.appendChild(ph); }
         node.inputs.push(c);
       } else {
-        var lg = el('legend', 'cl-ask', q.label);
-        if (q.optional) lg.appendChild(el('span', 'cl-opt', ' — можно пропустить'));
+        var lg = el('legend', 'cl-ask');
+        lg.appendChild(el('span', '', q.label, q.en));
+        if (q.optional) lg.appendChild(el('span', 'cl-opt', ' — можно пропустить', ' — you can skip this'));
         box.appendChild(lg);
         if (q.hint) {
-          var hp = el('p', 'cl-hint', q.hint);
+          var hp = el('p', 'cl-hint', q.hint, q.hintEn);
           hp.id = 'h-' + q.id;
           box.appendChild(hp);
           describedBy = hp.id;
         }
         if (q.link) {
           var lp = el('p', 'cl-hint');
-          var a = el('a', '', q.link[0]);
+          var a = el('a', '', q.link[0], q.linkEn);
           a.href = q.link[1]; a.target = '_blank'; a.rel = 'noopener';
           lp.appendChild(a);
           box.appendChild(lp);
@@ -567,7 +587,7 @@
         if (q.type === 'one' || q.type === 'multi') {
           var chips = el('div', 'cl-chips');
           q.opts.forEach(function (o) {
-            var cc = chip(q.type, q.id, 'f-' + q.id + '-' + o.id, o.id, o.label);
+            var cc = chip(q.type, q.id, 'f-' + q.id + '-' + o.id, o.id, o.label, o.en);
             chips.appendChild(cc.lab);
             node.inputs.push(cc);
           });
@@ -581,11 +601,11 @@
             var stop = el('p', 'cl-stop');
             stop.id = 'cl-org';
             stop.hidden = true;
-            stop.appendChild(document.createTextNode('Спасибо за интерес! Сейчас мы делаем только закрытые сайты для семьи, для личного использования. Если у вас другая задача, напишите нам в '));
-            var ta = el('a', '', 'Telegram @VlV_7777');
+            stop.appendChild(el('span', '', 'Спасибо за интерес! Сейчас мы делаем только закрытые сайты для семьи, для личного использования. Если у вас другая задача, напишите нам в ', 'Thank you for the interest! Right now we make only private sites for a family, for personal use. If you have a different task, write to us in '));
+            var ta = el('a', '', 'Telegram @VlV_7777', 'Telegram @VlV_7777');
             ta.href = TG_URL; ta.target = '_blank'; ta.rel = 'noopener';
             stop.appendChild(ta);
-            stop.appendChild(document.createTextNode(': обсудим, возможно ли это.'));
+            stop.appendChild(el('span', '', ': обсудим, возможно ли это.', ': we will discuss whether it is possible.'));
             box.appendChild(stop);
           }
         } else if (q.type === 'text') {
@@ -596,6 +616,7 @@
           ti.maxLength = MAX_FIELD;
           ti.setAttribute('data-text', q.id);
           ti.setAttribute('aria-label', q.label);
+          if (q.en) ti.setAttribute('data-en-aria', q.en);
           if (describedBy) ti.setAttribute('aria-describedby', describedBy);
           var cnt = el('p', 'cl-count', '0 / ' + MAX_FIELD);
           var w = el('p', 'cl-warn');
@@ -611,6 +632,7 @@
           di.className = 'cl-input';
           di.setAttribute('data-date', q.id);
           di.setAttribute('aria-label', q.label);
+          if (q.en) di.setAttribute('data-en-aria', q.en);
           f2.appendChild(di);
           box.appendChild(f2);
           node.date = di;
@@ -625,7 +647,7 @@
   // галочки подтверждения на экране проверки
   var ackNodes = {};
   ACKS.forEach(function (a) {
-    var c = chip('check', a.id, 'f-' + a.id, '1', a.label);
+    var c = chip('check', a.id, 'f-' + a.id, '1', a.label, a.en);
     c.lab.style.marginTop = '14px';
     document.getElementById(a.wrap).appendChild(c.lab);
     ackNodes[a.id] = c;
@@ -682,7 +704,7 @@
   function checkField(inp, warn) {
     var r = pdReason(inp.value);
     if (r) {
-      warn.textContent = r + ' Имена и контакты здесь не нужны: уберите их, пожалуйста.';
+      warn.textContent = r + ' ' + tr('Имена и контакты здесь не нужны: уберите их, пожалуйста.', 'Names and contacts are not needed here: please remove them.');
       warn.hidden = false;
       inp.setAttribute('aria-invalid', 'true');
     } else {
@@ -735,12 +757,12 @@
     if (step < REVIEW) {
       fill.style.width = Math.round((step / STEPS.length) * 100) + '%';
       info.innerHTML = '';
-      var b = el('b', '', 'Шаг ' + (step + 1) + ' из ' + STEPS.length);
+      var b = el('b', '', tr('Шаг ', 'Step ') + (step + 1) + tr(' из ', ' of ') + STEPS.length);
       info.appendChild(b);
-      info.appendChild(document.createTextNode(' · ' + STEPS[step].t + ' · осталось около ' + (STEPS.length + 1 - step) + ' мин'));
+      info.appendChild(document.createTextNode(' · ' + tr(STEPS[step].t, STEPS[step].tEn) + ' · ' + tr('осталось около ', 'about ') + (STEPS.length + 1 - step) + tr(' мин', ' min left')));
     } else if (step === REVIEW) {
       fill.style.width = '100%';
-      info.textContent = 'Все шаги пройдены. Осталось проверить и отправить.';
+      info.textContent = tr('Все шаги пройдены. Осталось проверить и отправить.', 'Every step is done. Check it and send.');
     }
 
     // нижняя панель
@@ -750,10 +772,10 @@
     var next = document.getElementById('cl-next');
     back.hidden = step === 0;
     next.hidden = step === REVIEW;
-    next.textContent = step === STEPS.length - 1 ? 'Проверить план' : 'Дальше';
+    next.textContent = step === STEPS.length - 1 ? tr('Проверить план', 'Check the plan') : tr('Дальше', 'Next');
     next.disabled = org && step === 0;
     hideNavMsg();
-    if (next.disabled) showNavMsg('Для организаций эта анкета не подходит. Выберите другой ответ или напишите нам в Telegram.');
+    if (next.disabled) showNavMsg(tr('Для организаций эта анкета не подходит. Выберите другой ответ или напишите нам в Telegram.', 'This form is not for organisations. Choose another answer or write to us in Telegram.'));
 
     document.getElementById('cl-foot-reset-wrap').hidden = step === THANKS;
 
@@ -766,12 +788,12 @@
 
   /* ── Подписи ответов ─────────────────────────────────────── */
   function optLabel(q, id) {
-    for (var i = 0; i < (q.opts || []).length; i++) if (q.opts[i].id === id) return q.opts[i].label;
+    for (var i = 0; i < (q.opts || []).length; i++) if (q.opts[i].id === id) return tr(q.opts[i].label, q.opts[i].en);
     return id;
   }
   function answerText(q) {
     var v = A[q.id];
-    if (q.type === 'check') return v ? 'да' : '';
+    if (q.type === 'check') return v ? tr('да', 'yes') : '';
     if (q.type === 'text' || q.type === 'date') return v ? String(v) : '';
     var ids = toArr(v);
     if (!ids.length) return '';
@@ -786,13 +808,13 @@
     var li = el('li');
     var left = el('div');
     left.appendChild(el('span', 'k', key));
-    left.appendChild(el('span', val ? 'v' : 'v none', val || 'Не указано, уточним при разговоре'));
+    left.appendChild(el('span', val ? 'v' : 'v none', val || tr('Не указано, уточним при разговоре', "Not specified — we'll clarify when we talk")));
     li.appendChild(left);
     if (gotoStep !== undefined) {
-      var b = el('button', 'cl-link small', 'изменить');
+      var b = el('button', 'cl-link small', tr('изменить', 'edit'));
       b.type = 'button';
       b.setAttribute('data-goto', gotoStep);
-      b.setAttribute('aria-label', 'Изменить: ' + key);
+      b.setAttribute('aria-label', tr('Изменить: ', 'Edit: ') + key);
       li.appendChild(b);
     }
     ul.appendChild(li);
@@ -801,12 +823,14 @@
   function ruDate(iso) {
     var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || ''));
     if (!m) return String(iso || '');
-    var mon = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    var mon = enOn()
+      ? ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+      : ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
     return parseInt(m[3], 10) + ' ' + mon[parseInt(m[2], 10) - 1] + ' ' + m[1];
   }
 
   function siteRows(ul, withEdit) {
-    function r(q, text) { row(ul, byId[q].short, text !== undefined ? text : lab(q), withEdit ? byId[q].s : undefined); }
+    function r(q, text) { row(ul, tr(byId[q].short, byId[q].shortEn), text !== undefined ? text : lab(q), withEdit ? byId[q].s : undefined); }
     r('tree_source');
     r('tree_size');
     r('users_count');
@@ -814,47 +838,47 @@
     r('domain_type');
     r('look');
     var nt = lab('notices');
-    if (is('notices', 'yes')) { var ch = lab('notify_channels'); nt = 'Да' + (ch ? ': ' + ch : ''); }
-    row(ul, 'Напоминания', nt, withEdit ? 4 : undefined);
+    if (is('notices', 'yes')) { var ch = lab('notify_channels'); nt = tr('Да', 'Yes') + (ch ? ': ' + ch : ''); }
+    row(ul, tr('Напоминания', 'Reminders'), nt, withEdit ? 4 : undefined);
     r('deadline', lab('deadline') ? lab('deadline') + (A.deadline_date ? ' (' + ruDate(A.deadline_date) + ')' : '') : '');
     r('support');
   }
 
   function planSteps() {
     var s = [
-      'Согласуем с вами срок и условия и закрепим их в договоре.',
-      'Создадим для вас закрытое хранилище данных и сайт на ваше имя.',
+      tr('Согласуем с вами срок и условия и закрепим их в договоре.', 'We will agree the timing and the terms with you and fix them in a contract.'),
+      tr('Создадим для вас закрытое хранилище данных и сайт на ваше имя.', 'We will create a private data store and a site in your name.'),
       is('ged_status', 'none') || anyOf('tree_source', ['paper', 'memory', 'none'])
-        ? 'Поможем собрать дерево в одном месте и перенесём его на сайт, проверив людей, связи и даты.'
-        : 'Перенесём дерево из вашего файла и проверим людей, связи и даты.',
-      'Заведём первый вход для хранителя и проверим, что права у него полные.',
-      'Подготовим приглашения для родных и готовые сообщения к ним.',
-      'Покажем хранителю, как всё устроено и где скачать копию дерева, и дадим короткую памятку: о чём предупредить родных и как убрать карточку по просьбе человека.',
-      'Вместе с вами проверим готовый сайт и передадим его вам.'
+        ? tr('Поможем собрать дерево в одном месте и перенесём его на сайт, проверив людей, связи и даты.', 'We will help gather the tree in one place and move it onto the site, checking people, links and dates.')
+        : tr('Перенесём дерево из вашего файла и проверим людей, связи и даты.', 'We will move the tree from your file and check people, links and dates.'),
+      tr('Заведём первый вход для хранителя и проверим, что права у него полные.', 'We will create the keeper\'s first login and check that their rights are complete.'),
+      tr('Подготовим приглашения для родных и готовые сообщения к ним.', 'We will prepare invitations for relatives and ready messages to go with them.'),
+      tr('Покажем хранителю, как всё устроено и где скачать копию дерева, и дадим короткую памятку: о чём предупредить родных и как убрать карточку по просьбе человека.', 'We will show the keeper how it works and where to download a copy of the tree, and give a short note: what to tell relatives and how to remove a card if a person asks.'),
+      tr('Вместе с вами проверим готовый сайт и передадим его вам.', 'Together we will check the finished site and hand it over to you.')
     ];
     if (is('notices', 'yes')) {
-      s.push('Включим ежедневную рассылку напоминаний.');
-      if (is('notify_channels', 'mail')) s.push('Поможем завести отдельный почтовый ящик для писем и проверим, что письма доходят.');
-      if (is('notify_channels', 'tg')) s.push('Настроим Telegram-бота для напоминаний (ориентир: около получаса).');
-      if (is('notify_channels', 'max')) s.push('Настроим бота в MAX (проверка мессенджером может занять до двух суток).');
+      s.push(tr('Включим ежедневную рассылку напоминаний.', 'We will turn on a daily reminder mailing.'));
+      if (is('notify_channels', 'mail')) s.push(tr('Поможем завести отдельный почтовый ящик для писем и проверим, что письма доходят.', 'We will help open a separate mailbox for the letters and check that they arrive.'));
+      if (is('notify_channels', 'tg')) s.push(tr('Настроим Telegram-бота для напоминаний (ориентир: около получаса).', 'We will set up a Telegram bot for reminders (a guide: about half an hour).'));
+      if (is('notify_channels', 'max')) s.push(tr('Настроим бота в MAX (проверка мессенджером может занять до двух суток).', 'We will set up a bot in MAX (the messenger\'s check can take up to two days).'));
     }
-    if (is('domain_type', 'own')) s.push('Поможем выбрать и подключить свой домен, он оформляется на вас.');
-    if (is('look', 'colors')) s.push('Поменяем название и цвета сайта.');
-    if (is('typing_needed', 'help')) s.push('Внесение людей в дерево — отдельная работа: условия назовём после знакомства с материалом.');
-    if (A.photos_count && !anyOf('photos_count', ['none', 'unknown'])) s.push('Перенесём фотографии и отметим на них людей вручную.');
+    if (is('domain_type', 'own')) s.push(tr('Поможем выбрать и подключить свой домен, он оформляется на вас.', 'We will help choose and connect your own domain; it is registered to you.'));
+    if (is('look', 'colors')) s.push(tr('Поменяем название и цвета сайта.', 'We will change the site\'s name and colours.'));
+    if (is('typing_needed', 'help')) s.push(tr('Внесение людей в дерево — отдельная работа: условия назовём после знакомства с материалом.', 'Entering people into the tree is separate work: we will name the terms after we see the material.'));
+    if (A.photos_count && !anyOf('photos_count', ['none', 'unknown'])) s.push(tr('Перенесём фотографии и отметим на них людей вручную.', 'We will move the photographs and mark the people in them by hand.'));
     return s;
   }
 
   function needList() {
     var n = [];
-    if (anyOf('ged_status', ['have', 'can', 'help'])) n.push('Файл дерева (.ged): скачать его из сервиса. Если не получится, подскажем как. Передадим файл тем способом, который выберете вы.');
-    else if (anyOf('tree_source', ['paper', 'memory', 'none', 'file'])) n.push('Собрать материалы по дереву (записи, файлы) или решить, кто будет вносить людей.');
-    if (is('keeper_who', 'help')) n.push('Решить, кто будет хранителем дерева.');
-    if (is('notices', 'yes') && is('notify_channels', 'mail')) n.push('Отдельный почтовый ящик для рассылки: если его нет, поможем завести.');
-    n.push(is('turnkey', 'turnkey') ? 'Согласиться на каждом шаге настройки: все учётные записи оформляются на ваше имя.' : 'Завести учётные записи для сайта на своё имя: подскажем по шагам.');
-    if (is('domain_type', 'own') || is('hosting_pay', 'yes')) n.push('Оплачивать продление домена и, если понадобится, платный тариф хостинга.');
-    n.push('Выбрать время для созвона на 15 минут.');
-    n.push('Написать нам в Telegram и назвать номер заявки.');
+    if (anyOf('ged_status', ['have', 'can', 'help'])) n.push(tr('Файл дерева (.ged): скачать его из сервиса. Если не получится, подскажем как. Передадим файл тем способом, который выберете вы.', 'The tree file (.ged): download it from the service. If that does not work, we will show you how. We will hand the file over the way you choose.'));
+    else if (anyOf('tree_source', ['paper', 'memory', 'none', 'file'])) n.push(tr('Собрать материалы по дереву (записи, файлы) или решить, кто будет вносить людей.', 'Gather the tree materials (notes, files) or decide who will enter the people.'));
+    if (is('keeper_who', 'help')) n.push(tr('Решить, кто будет хранителем дерева.', 'Decide who will be the keeper of the tree.'));
+    if (is('notices', 'yes') && is('notify_channels', 'mail')) n.push(tr('Отдельный почтовый ящик для рассылки: если его нет, поможем завести.', 'A separate mailbox for the mailing: if you do not have one, we will help you open it.'));
+    n.push(is('turnkey', 'turnkey') ? tr('Согласиться на каждом шаге настройки: все учётные записи оформляются на ваше имя.', 'Agree at each setup step: every account is registered in your name.') : tr('Завести учётные записи для сайта на своё имя: подскажем по шагам.', 'Open the site accounts in your own name: we will prompt you step by step.'));
+    if (is('domain_type', 'own') || is('hosting_pay', 'yes')) n.push(tr('Оплачивать продление домена и, если понадобится, платный тариф хостинга.', 'Pay to renew the domain and, if needed, a paid hosting plan.'));
+    n.push(tr('Выбрать время для созвона на 15 минут.', 'Choose a time for a 15-minute call.'));
+    n.push(tr('Написать нам в Telegram и назвать номер заявки.', 'Write to us in Telegram and name the request number.'));
     return n;
   }
 
@@ -875,7 +899,7 @@
     document.getElementById('cl-send').hidden = !SCRIPT_URL;
   }
 
-  function tgLink() { return TG_URL + '?text=' + encodeURIComponent('Здравствуйте! Заявка № ' + order); }
+  function tgLink() { return TG_URL + '?text=' + encodeURIComponent(tr('Здравствуйте! Заявка № ', 'Hello! Request no. ') + order); }
 
   /* ── Сбор данных ─────────────────────────────────────────── */
   function clip(s, n) { return String(s || '').replace(/\s+/g, ' ').trim().slice(0, n || MAX_FIELD); }
@@ -903,14 +927,14 @@
   }
 
   function letter() {
-    var lines = ['ЗАЯВКА НА СЕМЕЙНЫЙ САЙТ', 'Номер заявки: ' + order, 'Записано ' + new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }), ''];
+    var lines = [tr('ЗАЯВКА НА СЕМЕЙНЫЙ САЙТ', 'FAMILY SITE REQUEST'), tr('Номер заявки: ', 'Request number: ') + order, tr('Записано ', 'Written ') + new Date().toLocaleDateString(enOn() ? 'en-GB' : 'ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }), ''];
     Q.forEach(function (q) {
       if (!visible(q)) return;
       var t = answerText(q);
-      if (t) lines.push(q.short + ': ' + t);
+      if (t) lines.push(tr(q.short, q.shortEn) + ': ' + t);
     });
     lines.push('');
-    lines.push('План (ориентир):');
+    lines.push(tr('План (ориентир):', 'Plan (a guide):'));
     planSteps().forEach(function (s, i) { lines.push((i + 1) + '. ' + s); });
     return lines.join('\n');
   }
@@ -919,10 +943,10 @@
 
   /* ── Проверки перед отправкой и копированием ─────────────── */
   function gate() {
-    if (is('audience', 'org')) return 'Для организаций эта анкета не подходит. Напишите нам в Telegram.';
-    if (badNow().length) { return 'В некоторых полях есть имена или контакты. Уберите их, пожалуйста: они здесь не нужны.'; }
-    if (!A.ack_notice) return 'Отметьте галочку «Я понимаю, что имена, телефоны, почту…», она нужна для отправки.';
-    if (!hasAnswers()) return 'Пока нечего отправлять: ответьте хотя бы на один вопрос.';
+    if (is('audience', 'org')) return tr('Для организаций эта анкета не подходит. Напишите нам в Telegram.', 'This form is not for organisations. Write to us in Telegram.');
+    if (badNow().length) { return tr('В некоторых полях есть имена или контакты. Уберите их, пожалуйста: они здесь не нужны.', 'Some fields contain names or contacts. Please remove them: they are not needed here.'); }
+    if (!A.ack_notice) return tr('Отметьте галочку «Я понимаю, что имена, телефоны, почту…», она нужна для отправки.', 'Tick “I understand that names, phones, emails…”. It is required to send.');
+    if (!hasAnswers()) return tr('Пока нечего отправлять: ответьте хотя бы на один вопрос.', 'There is nothing to send yet: answer at least one question.');
     return '';
   }
 
@@ -944,11 +968,11 @@
       box.style.display = 'block';
       box.focus();
       box.select();
-      say('Браузер не дал скопировать сам. Текст выделен ниже: скопируйте его вручную и вставьте в Telegram.', 'bad', target);
+      say(tr('Браузер не дал скопировать сам. Текст выделен ниже: скопируйте его вручную и вставьте в Telegram.', 'The browser would not copy it. The text is selected below: copy it by hand and paste it into Telegram.'), 'bad', target);
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(function () {
-        say('Текст скопирован. Вставьте его в сообщение нам в Telegram вместе с номером заявки.', 'ok', target);
+        say(tr('Текст скопирован. Вставьте его в сообщение нам в Telegram вместе с номером заявки.', 'Text copied. Paste it into a Telegram message to us, together with the request number.'), 'ok', target);
       }, manual);
     } else { manual(); }
   }
@@ -960,7 +984,7 @@
     var g = gate();
     if (g) { say(g, 'bad'); return; }
     var elapsed = Math.round((Date.now() - openedAt) / 1000);
-    if (elapsed < MIN_SECONDS) { say('Подождите пару секунд и нажмите ещё раз.', 'bad'); return; }
+    if (elapsed < MIN_SECONDS) { say(tr('Подождите пару секунд и нажмите ещё раз.', 'Wait a couple of seconds and press again.'), 'bad'); return; }
 
     var body = JSON.stringify({
       token: TOKEN,
@@ -977,7 +1001,7 @@
     sending = true;
     var btn = document.getElementById('cl-send');
     btn.disabled = true;
-    say('Отправляем…');
+    say(tr('Отправляем…', 'Sending…'));
 
     fetch(SCRIPT_URL, {
       method: 'POST',
@@ -993,7 +1017,7 @@
     }).catch(function () {
       sending = false;
       btn.disabled = false;
-      say('Не получилось отправить: возможно, нет связи. Ничего не потеряно. Нажмите ещё раз или скопируйте текст заявки и пришлите его нам в Telegram.', 'bad');
+      say(tr('Не получилось отправить: возможно, нет связи. Ничего не потеряно. Нажмите ещё раз или скопируйте текст заявки и пришлите его нам в Telegram.', 'Could not send: there may be no connection. Nothing is lost. Press again, or copy the request text and send it to us in Telegram.'), 'bad');
     });
   }
 
@@ -1025,7 +1049,7 @@
     if (is('audience', 'org') && step === 0) return;
     var bad = badNow(step);
     if (bad.length) {
-      showNavMsg('В отмеченных полях есть имена или контакты. Уберите их, пожалуйста, и нажмите «Дальше» ещё раз.');
+      showNavMsg(tr('В отмеченных полях есть имена или контакты. Уберите их, пожалуйста, и нажмите «Дальше» ещё раз.', 'The marked fields contain names or contacts. Please remove them and press Next again.'));
       var n = qNodes[bad[0]];
       var f = n.text ? n.text.inp : n.other.inp;
       f.focus();
@@ -1129,13 +1153,36 @@
   document.getElementById('cl-confirm-no').addEventListener('click', function () { confirmBox.hidden = true; });
   document.getElementById('cl-confirm-yes').addEventListener('click', doReset);
 
+  function draftBanner() {
+    var where = step >= REVIEW
+      ? tr('на проверке плана', 'on the plan review')
+      : tr('на шаге ', 'on step ') + (step + 1);
+    return tr('Мы восстановили ваши ответы с прошлого раза. Вы остановились ', 'We restored your answers from last time. You stopped ') + where + tr('. Черновик хранится только на этом устройстве.', '. The draft stays only on this device.');
+  }
+
+  document.addEventListener('altera-lang', function () {
+    refresh();
+    if (step === THANKS) {
+      var sum = document.getElementById('cl-sum');
+      sum.innerHTML = '';
+      siteRows(sum, false);
+      fillList('cl-need2', needList());
+    }
+    var banner = document.getElementById('cl-banner');
+    if (banner && !banner.hidden) document.getElementById('cl-banner-text').textContent = draftBanner();
+    Q.forEach(function (q) {
+      var n = qNodes[q.id];
+      if (n.other && !n.other.warn.hidden) checkField(n.other.inp, n.other.warn);
+      if (n.text && !n.text.warn.hidden) checkField(n.text.inp, n.text.warn);
+    });
+  });
+
   /* ── Старт ───────────────────────────────────────────────── */
   var restored = loadDraft();
   syncInputs();
   if (restored) {
     var bt = document.getElementById('cl-banner-text');
-    var shown = step >= REVIEW ? 'на проверке плана' : 'на шаге ' + (step + 1);
-    bt.textContent = 'Мы восстановили ваши ответы с прошлого раза. Вы остановились ' + shown + '. Черновик хранится только на этом устройстве.';
+    bt.textContent = draftBanner();
     document.getElementById('cl-banner').hidden = false;
   }
   // пустой отправляющей кнопки быть не должно: без SCRIPT_URL работают копирование и Telegram
@@ -1149,12 +1196,13 @@
 })();
 </script>
 <div id="cookie-banner" class="cookie-banner cookie-banner--high" data-key="altera-cookie" hidden>
-  <p>Этот сайт использует файлы cookie. <a href="/privacy.html">Подробнее</a></p>
+  <p><span data-en="This site uses cookies.">Этот сайт использует файлы cookie.</span> <a href="/privacy.html" data-en="Learn more">Подробнее</a></p>
   <div class="cookie-banner__row">
-    <button type="button" data-cookie="reject">Отклонить</button>
-    <button type="button" data-cookie="accept">Принять</button>
+    <button type="button" data-cookie="reject" data-en="Reject">Отклонить</button>
+    <button type="button" data-cookie="accept" data-en="Accept">Принять</button>
   </div>
 </div>
+<script src="/lang.js" defer></script>
 <script src="/cookie.js" defer></script>
 </body>
 </html>

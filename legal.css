@@ -1,4 +1,11 @@
 body{margin:0;background:#050507;color:#e8e8ed;font:17px/1.6 Inter,Arial,sans-serif}
+.legal-bar{display:flex;align-items:center;gap:18px;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.08);font-family:"Space Mono",ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.legal-bar a{color:#8a8aa0;text-decoration:none}
+.legal-bar a:hover{color:#ffd95a}
+.lang-switch{margin-left:auto;display:inline-flex;border:1px solid rgba(255,255,255,.15);border-radius:6px;overflow:hidden}
+.lang-switch button{padding:8px 12px;border:0;background:transparent;color:#8a8aa0;font:inherit;letter-spacing:.1em;line-height:1;cursor:pointer}
+.lang-switch button:hover{color:#e8e8ed}
+.lang-switch button.is-active{color:#0a0a0f;background:#daa520}
 main{max-width:42rem;margin:0 auto;padding:32px 20px 64px}
 h1{font-family:Unbounded,Arial,sans-serif;font-size:1.7rem;line-height:1.2;font-weight:700}
 h2{margin:1.6rem 0 .4rem;font-size:1.05rem}

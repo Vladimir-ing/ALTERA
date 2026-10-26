@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ОЖИВЛЕНИЕ ФОТО — живой портрет из снимка · ALTERA</title>
-<meta name="description" content="Оживление фотографий: короткое видео из одного портрета — человек улыбается, моргает, чуть поворачивает голову. Для семьи и памяти, бережно и без китча.">
+<title data-en="PHOTO ANIMATION — a living portrait from a still · ALTERA">ОЖИВЛЕНИЕ ФОТО — живой портрет из снимка · ALTERA</title>
+<meta name="description" content="Оживление фотографий: короткое видео из одного портрета — человек улыбается, моргает, чуть поворачивает голову. Для семьи и памяти, бережно и без китча." data-en="Photo animation: a short video from a single portrait — the person smiles, blinks, slightly turns their head. For family and memory, careful and without kitsch.">
 <meta name="robots" content="index, follow">
 <link rel="icon" href="../favicon.svg">
 <link rel="stylesheet" href="../fonts/faces.css">
 <link rel="stylesheet" href="../cookie.css">
+<script src="../lang.js" defer></script>
 <style>
   /* Палитра лендинга ALTERA — страница держится того же стиля. */
   :root{--bg:#050507;--bg-card:#0c0c10;--gold:#daa520;--gold-bright:#ffd95a;
@@ -54,57 +55,64 @@
          color:var(--muted);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
   footer a{text-decoration:none}
   footer a:hover{color:var(--gold-bright)}
+  .lang-switch{margin-left:auto;display:inline-flex;border:1px solid var(--gold-border);border-radius:6px;overflow:hidden}
+  .lang-switch button{padding:8px 12px;border:0;background:transparent;color:var(--muted);font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.1em;line-height:1;cursor:pointer}
+  .lang-switch button:hover{color:var(--text)}
+  .lang-switch button.is-active{color:#0a0a0f;background:var(--gold)}
 </style>
 </head>
 <body>
 
 <div class="bar">
   <a href="../index.html">← ALTERA</a>
-  <a href="../index.html#projects">Все продукты</a>
+  <a href="../index.html#projects" data-en="All products">Все продукты</a>
+  <div class="lang-switch" role="group" aria-label="Язык / Language" data-en-aria="Language / Язык">
+    <button type="button" data-lang="ru" class="is-active" aria-pressed="true">RU</button><button type="button" data-lang="en" aria-pressed="false">EN</button>
+  </div>
 </div>
 
 <div class="wrap">
-  <p class="kicker">Photo animation · услуга</p>
-  <h1>ОЖИВЛЕНИЕ<br>фото</h1>
-  <p class="lead">
+  <p class="kicker" data-en="Photo animation · a service">Photo animation · услуга</p>
+  <h1 data-en="ANIMATION<br>of a photo">ОЖИВЛЕНИЕ<br>фото</h1>
+  <p class="lead" data-en="A portrait in a photograph comes alive: the person smiles, blinks, slightly turns their head. A short video from a single shot — 10–20 seconds that stay with you. Careful and without kitsch: the movement is calm, and the face stays the face.">
     Портрет на фотографии оживает: человек улыбается, моргает, чуть поворачивает
     голову. Короткое видео из одного снимка — 10–20 секунд, которые пробирают
     до мурашек. Бережно и без китча: движение спокойное, лицо остаётся лицом.
   </p>
 
   <div class="facts">
-    <div class="fact"><b>Из одного кадра</b><span>Достаточно одного портрета — видеосъёмка и студия не нужны.</span></div>
-    <div class="fact"><b>10–20 секунд видео</b><span>Вертикальное или горизонтальное: для мессенджеров, телевизора, экрана.</span></div>
-    <div class="fact"><b>С реставрацией — сильнее</b><span>Сначала чистим снимок, потом оживляем: лицо виднее, движение аккуратнее.</span></div>
-    <div class="fact"><b>Для семьи и памяти</b><span>К юбилею, дню памяти, семейному альбому — деликатная работа с дорогими кадрами.</span></div>
+    <div class="fact"><b data-en="From a single frame">Из одного кадра</b><span data-en="One portrait is enough — no video shoot and no studio.">Достаточно одного портрета — видеосъёмка и студия не нужны.</span></div>
+    <div class="fact"><b data-en="10–20 seconds of video">10–20 секунд видео</b><span data-en="Vertical or horizontal: for messengers, a television, a screen.">Вертикальное или горизонтальное: для мессенджеров, телевизора, экрана.</span></div>
+    <div class="fact"><b data-en="Stronger with restoration">С реставрацией — сильнее</b><span data-en="We clean the shot first, then animate it: the face is clearer, the movement more careful.">Сначала чистим снимок, потом оживляем: лицо виднее, движение аккуратнее.</span></div>
+    <div class="fact"><b data-en="For family and memory">Для семьи и памяти</b><span data-en="For an anniversary, a memorial day, a family album — delicate work with frames that matter.">К юбилею, дню памяти, семейному альбому — деликатная работа с дорогими кадрами.</span></div>
   </div>
 
-  <h2>Как это работает</h2>
+  <h2 data-en="How it works">Как это работает</h2>
   <div class="steps">
     <div class="step">
       <b>1</b>
       <div>
-        <h3>Присылаете портрет</h3>
-        <p>Чем чётче лицо, тем живее результат. Можно вместе с заказом на реставрацию — сначала приведём снимок в порядок.</p>
+        <h3 data-en="You send a portrait">Присылаете портрет</h3>
+        <p data-en="The clearer the face, the more alive the result. It can come with a restoration order — we will put the shot in order first.">Чем чётче лицо, тем живее результат. Можно вместе с заказом на реставрацию — сначала приведём снимок в порядок.</p>
       </div>
     </div>
     <div class="step">
       <b>2</b>
       <div>
-        <h3>Оживляем</h3>
-        <p>Подбираем спокойный характер движения: улыбка, взгляд, лёгкий поворот головы. Без гримас и лишнего.</p>
+        <h3 data-en="We animate it">Оживляем</h3>
+        <p data-en="We choose a calm kind of movement: a smile, a look, a slight turn of the head. No grimaces and nothing extra.">Подбираем спокойный характер движения: улыбка, взгляд, лёгкий поворот головы. Без гримас и лишнего.</p>
       </div>
     </div>
     <div class="step">
       <b>3</b>
       <div>
-        <h3>Получаете видео</h3>
-        <p>Ролик в высоком качестве и оживший кадр отдельно. Правки по движению входят в работу.</p>
+        <h3 data-en="You receive the video">Получаете видео</h3>
+        <p data-en="A high-quality clip, and the animated frame on its own. Revisions of the movement are part of the work.">Ролик в высоком качестве и оживший кадр отдельно. Правки по движению входят в работу.</p>
       </div>
     </div>
   </div>
 
-  <div class="note">
+  <div class="note" data-en="<b>The result depends on the source.</b> A blurred or tiny portrait will come alive less well — we will say so honestly before the work starts. Send the shot in Telegram: we will show an example and name a price for your frame. <br><a class=&quot;cta&quot; href=&quot;https://t.me/VlV_7777&quot; target=&quot;_blank&quot; rel=&quot;noreferrer&quot;>Talk it over in Telegram</a>">
     <b>Результат зависит от исходника.</b> Размытый или мелкий портрет оживёт хуже —
     скажем об этом честно до начала работы. Пришлите снимок в Telegram: покажем
     пример и назовём цену за ваш кадр.
@@ -119,10 +127,10 @@
 
 
 <div id="cookie-banner" class="cookie-banner" data-key="altera-cookie" hidden>
-  <p>Этот сайт использует файлы cookie. <a href="../privacy.html">Подробнее</a></p>
+  <p><span data-en="This site uses cookies.">Этот сайт использует файлы cookie.</span> <a href="../privacy.html" data-en="Learn more">Подробнее</a></p>
   <div class="cookie-banner__row">
-    <button type="button" data-cookie="reject">Отклонить</button>
-    <button type="button" data-cookie="accept">Принять</button>
+    <button type="button" data-cookie="reject" data-en="Reject">Отклонить</button>
+    <button type="button" data-cookie="accept" data-en="Accept">Принять</button>
   </div>
 </div>
 <script src="../cookie.js" defer></script>
