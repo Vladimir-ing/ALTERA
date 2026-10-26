@@ -16,9 +16,8 @@
   <meta name="twitter:image" content="https://altera-tau.vercel.app/assets/og-cover.png">
   <link rel="canonical" href="https://altera-tau.vercel.app/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&family=Unbounded:wght@400;700;800&display=swap">
+  <link rel="stylesheet" href="fonts/faces.css">
+  <link rel="stylesheet" href="cookie.css">
   <link rel="stylesheet" href="style.css">
   <script src="lang.js" defer></script>
 </head>
@@ -112,8 +111,16 @@
 
     <footer id="contact">
       <div class="footer-top"><p class="section-index">03 / CONTACT</p><h2 data-en="Got an idea?<br><span>Let us turn it into a product.</span>">Есть идея?<br><span>Давайте превратим её в продукт.</span></h2><a class="footer-cta" href="https://t.me/VlV_7777" target="_blank" rel="noreferrer" data-en="Message us on Telegram <span>↗</span>">Написать в Telegram <span>↗</span></a></div>
-      <div class="footer-bottom"><a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i></span><span>ALTERA</span></a><div><a href="https://t.me/VlV_7777" target="_blank" rel="noreferrer">Telegram</a><a href="https://wa.me/79138317777" target="_blank" rel="noreferrer">WhatsApp</a></div><p>© 2026 ALTERA<br>AI PRODUCTS &amp; CREATIVE SYSTEMS</p></div>
+      <div class="footer-bottom"><a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i></span><span>ALTERA</span></a><div><a href="https://t.me/VlV_7777" target="_blank" rel="noreferrer">Telegram</a><a href="https://wa.me/79138317777" target="_blank" rel="noreferrer">WhatsApp</a><a href="privacy.html" data-en="Privacy">Политика</a></div><p>© 2026 ALTERA<br>AI PRODUCTS &amp; CREATIVE SYSTEMS</p></div>
     </footer>
   </main>
+  <div id="cookie-banner" class="cookie-banner" data-key="altera-cookie" hidden>
+    <p><span data-en="The language switch is saved in this browser without extra permission. Analytics and ads stay off until you press Accept. There are no such scripts on this page right now.">Язык страницы запоминается в браузере и так. Аналитика и реклама не включаются, пока вы не нажмёте «Принять». Сейчас таких скриптов нет.</span> <a href="privacy.html" data-en="Privacy and cookies">Политика и cookie</a>.</p>
+    <div class="cookie-banner__row">
+      <button type="button" data-cookie="reject" data-en="Reject">Отклонить</button>
+      <button type="button" data-cookie="accept" data-en="Accept">Принять</button>
+    </div>
+  </div>
+  <script src="cookie.js" defer></script>
 </body>
 </html>
