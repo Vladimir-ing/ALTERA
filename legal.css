@@ -1,0 +1,8 @@
+body{margin:0;background:#050507;color:#e8e8ed;font:17px/1.6 Inter,Arial,sans-serif}
+main{max-width:42rem;margin:0 auto;padding:32px 20px 64px}
+h1{font-family:Unbounded,Arial,sans-serif;font-size:1.7rem;line-height:1.2;font-weight:700}
+h2{margin:1.6rem 0 .4rem;font-size:1.05rem}
+p,li{font-weight:400}
+a{color:#ffd95a}
+.meta{color:#8a8aa0}
+.draft{margin:0 0 1.2rem;padding:12px 14px;border:1px dashed rgba(218,165,32,.55);border-radius:8px;background:rgba(218,165,32,.08)}

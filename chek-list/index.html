@@ -8,10 +8,11 @@
   <meta name="robots" content="noindex,nofollow">
   <!-- До нажатия «Отправить» страница не обращается ни к каким чужим адресам:
        шрифты лежат рядом (fonts/), аналитики и сторонних скриптов нет. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com; base-uri 'none'; form-action 'none'">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <!-- Пути абсолютные: страница отдаётся и по /chek-list, и по /chek-list/ -->
   <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/cookie.css">
   <style>
     /* ── Свои шрифты (лицензия SIL OFL), без Google Fonts ── */
     @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(/chek-list/fonts/inter-cyrillic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
@@ -50,7 +51,9 @@
     .cl-privacy{margin:26px 0 0;padding:16px 18px;border:1px dashed var(--gold-border);background:rgba(218,165,32,.04);border-radius:8px;font-size:15px;line-height:1.7;font-weight:300}
     .cl-privacy p{margin:0 0 10px}.cl-privacy p:last-child{margin:0}
     .cl-privacy strong{color:var(--gold-bright);font-weight:600}
-    .cl-privacy a,.cl-hint a,.cl-card a,.cl-stop a{color:var(--gold-bright);text-decoration:underline;text-underline-offset:3px}
+    .cl-privacy a,.cl-hint a,.cl-card a,.cl-stop a,.cl-consent a{color:var(--gold-bright);text-decoration:underline;text-underline-offset:3px}
+    .cl-consent{display:flex;gap:12px;align-items:flex-start;margin:14px 0 0;font-size:16px;line-height:1.45;cursor:pointer}
+    .cl-consent input{width:22px;height:22px;margin:2px 0 0;flex:none;accent-color:var(--gold)}
 
     .cl-step{margin-top:30px}
     .cl-step h2{margin:0;font-family:var(--display);font-size:clamp(1.15rem,4.2vw,1.6rem);line-height:1.2;outline:0}
@@ -203,7 +206,12 @@
 
         <div class="cl-sendbox">
           <div class="chip-wrap" id="cl-ack-notice-wrap"></div>
-          <p class="cl-note" style="margin-top:10px">Подробнее о данных — в заметке на первом шаге: имена и контакты в анкету не вписываются.</p>
+          <p class="cl-note" style="margin-top:10px">Подробнее о данных — в заметке на первом шаге: имена и контакты в анкету не вписываются. Перед отправкой в Google нужна отдельная галочка согласия.</p>
+          <label class="cl-consent">
+            <input type="checkbox" id="cl-consent">
+            <span>Даю согласие на обработку персональных данных для этой заявки.</span>
+          </label>
+          <p class="cl-note">Текст согласия — отдельная страница: <a href="../consent.html">согласие</a>. Политика: <a href="../privacy.html">политика и cookie</a>.</p>
           <div class="cl-actions">
             <button type="button" class="cl-btn main big" id="cl-send" hidden>Отправить заявку →</button>
             <button type="button" class="cl-btn big" id="cl-copy">Скопировать текст заявки</button>
@@ -520,8 +528,18 @@
       p1.appendChild(el('strong', '', 'О данных. '));
       p1.appendChild(document.createTextNode('Эта анкета не собирает имён, телефонов, почтовых адресов и дат рождения. Не пишите их ни здесь, ни в свободных полях. Ответы сохраняются без привязки к вам, под номером заявки. Связаться с вами лично мы будем в Telegram, в чате с @VlV_7777: пришлите туда номер заявки, который покажет страница после отправки.'));
       var p2 = el('p', '', 'Страница и ответы хранятся на серверах за пределами России (Vercel и Google). Поэтому персональные данные сюда и не нужны. Ответы на вопросы без имён используются только для оценки работы и связи с вами по заявке. Хранятся до завершения работы или до вашей просьбы удалить, но не дольше 12 месяцев с даты заявки.');
-      var p3 = el('p', '', 'Оператор страницы: Лебедев Владимир Викторович, самозанятый, Красноярск. Вопросы и просьба удалить заявку — в Telegram @VlV_7777 с номером заявки.');
-      note.appendChild(p1); note.appendChild(p2); note.appendChild(p3);
+      var p3 = el('p', '', 'Оператор страницы: Лебедев Владимир Викторович, самозанятый, Красноярск. Вопросы и просьба удалить заявку — на 2428433@gmail.com с темой «Персональные данные» и номером заявки, или в Telegram @VlV_7777.');
+      var p4 = el('p');
+      p4.appendChild(document.createTextNode('Тексты: '));
+      var a1 = el('a', '', 'политика');
+      a1.href = '../privacy.html';
+      var a2 = el('a', '', 'согласие');
+      a2.href = '../consent.html';
+      p4.appendChild(a1);
+      p4.appendChild(document.createTextNode(' и '));
+      p4.appendChild(a2);
+      p4.appendChild(document.createTextNode('. Черновик на проверку юристу.'));
+      note.appendChild(p1); note.appendChild(p2); note.appendChild(p3); note.appendChild(p4);
       sec.appendChild(note);
     }
 
@@ -917,6 +935,7 @@
     if (is('audience', 'org')) return 'Для организаций эта анкета не подходит. Напишите нам в Telegram.';
     if (badNow().length) { return 'В некоторых полях есть имена или контакты. Уберите их, пожалуйста: они здесь не нужны.'; }
     if (!A.ack_notice) return 'Отметьте галочку «Я понимаю, что имена, телефоны, почту…», она нужна для отправки.';
+    if (!document.getElementById('cl-consent').checked) return 'Отметьте согласие на обработку персональных данных. Галочка не стоит заранее.';
     if (!hasAnswers()) return 'Пока нечего отправлять: ответьте хотя бы на один вопрос.';
     return '';
   }
@@ -1143,5 +1162,13 @@
   });
 })();
 </script>
+<div id="cookie-banner" class="cookie-banner cookie-banner--high" data-key="altera-cookie" hidden>
+  <p>Черновик анкеты хранится в браузере и так. Аналитика и реклама не включаются, пока вы не нажмёте «Принять». Сейчас таких скриптов нет. <a href="/privacy.html">Политика и cookie</a>.</p>
+  <div class="cookie-banner__row">
+    <button type="button" data-cookie="reject">Отклонить</button>
+    <button type="button" data-cookie="accept">Принять</button>
+  </div>
+</div>
+<script src="/cookie.js" defer></script>
 </body>
 </html>
